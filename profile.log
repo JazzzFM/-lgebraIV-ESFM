@@ -1,0 +1,1873 @@
+FUNCTION  <SNR>119_get_matching_delim()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 742
+Called 4 times
+Total time:   0.000290
+ Self time:   0.000290
+
+count  total (s)   self (s)
+    4              0.000052   let [re, flags, stopline] = self.is_open ? [self.re.close,  'nW', line('.') + s:stopline] : [self.re.open,  'bnW', max([line('.') - s:stopline, 1])]
+                            
+    4              0.000170   let [lnum, cnum] = searchpairpos(self.re.open, '', self.re.close, flags, '', stopline)
+    4              0.000047   let match = matchstr(getline(lnum), '^' . re, cnum-1)
+                            
+    4              0.000010   return [match, lnum, cnum]
+
+FUNCTION  airline#extensions#wordcount#formatters#default#format()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/wordcount/formatters/default.vim line 6
+Called 172 times
+Total time:   0.026423
+ Self time:   0.008989
+
+count  total (s)   self (s)
+  172              0.000652   let fmt = get(g:, 'airline#extensions#wordcount#formatter#default#fmt', '%s words')
+  172              0.000704   let fmt_short = get(g:, 'airline#extensions#wordcount#formatter#default#fmt_short', fmt == '%s words' ? '%sW' : fmt)
+  172   0.015701   0.001713   let words = string(s:wordcount())
+  172              0.000306   if empty(words)
+                                return
+  172              0.000094   endif
+  172              0.000701   let result = g:airline_symbols.space . g:airline_right_alt_sep . g:airline_symbols.space
+  172              0.000285   if winwidth(0) >= 80
+  172   0.005025   0.001579     let separator = s:get_decimal_group()
+  172              0.000396     if words > 999 && !empty(separator)
+                                  " Format number according to locale, e.g. German: 1.245 or English: 1,245
+                                  let words = substitute(words, '\d\@<=\(\(\d\{3\}\)\+\)$', separator.'&', 'g')
+  172              0.000085     endif
+  172              0.000677     let result = printf(fmt, words). result
+                              else
+                                let result = printf(fmt_short, words). result
+  172              0.000097   endif
+  172              0.000179   return result
+
+FUNCTION  <SNR>137_indent_delims()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 151
+Called 6 times
+Total time:   0.001686
+ Self time:   0.000192
+
+count  total (s)   self (s)
+    6   0.001683   0.000189   return s:sw*(  max([  s:count(a:prev_line, s:re_open)             - s:count(a:prev_line, s:re_close), 0])      - max([  s:count(a:line, s:re_close)             - s:count(a:line, s:re_open), 0]))
+
+FUNCTION  <SNR>119_parser_delim_get_regexp()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 673
+Called 8 times
+Total time:   0.000409
+ Self time:   0.000409
+
+count  total (s)   self (s)
+    8              0.000037   let l:type = a:0 > 0 ? a:1 : 'delim_all'
+                            
+                              " First check for unmatched math delimiter
+    8              0.000018   if a:delim ==# '.'
+                                return g:vimtex#delim#re.delim_math[a:side ? 'open' : 'close']
+    8              0.000010   endif
+                            
+                              " Next check normal delimiters
+    8              0.000235   let l:index = index(map(copy(g:vimtex#delim#lists[l:type].name),   'v:val[' . a:side . ']'), a:delim)
+    8              0.000057   return l:index >= 0 ? g:vimtex#delim#lists[l:type].re[l:index][a:side] : ''
+
+FUNCTION  airline#check_mode()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline.vim line 146
+Called 356 times
+Total time:   0.125898
+ Self time:   0.028121
+
+count  total (s)   self (s)
+  356              0.001421   let context = s:contexts[a:winnr]
+                            
+  356              0.001182   if get(w:, 'airline_active', 1)
+  356              0.000961     let l:m = mode()
+  356              0.000681     if l:m ==# "i"
+  350              0.000743       let l:mode = ['insert']
+    6              0.000021     elseif l:m ==# "R"
+                                  let l:mode = ['replace']
+    6              0.000131     elseif l:m =~# '\v(v|V||s|S|)'
+                                  let l:mode = ['visual']
+    6              0.000019     elseif l:m ==# "t"
+                                  let l:mode = ['terminal']
+    6              0.000012     else
+    6              0.000032       let l:mode = ['normal']
+  356              0.000232     endif
+  356              0.001639     let w:airline_current_mode = get(g:airline_mode_map, l:m, l:m)
+                              else
+                                let l:mode = ['inactive']
+                                let w:airline_current_mode = get(g:airline_mode_map, '__')
+  356              0.000256   endif
+                            
+  356              0.000997   if g:airline_detect_modified && &modified
+  352              0.001257     call add(l:mode, 'modified')
+  356              0.000250   endif
+                            
+  356              0.000640   if g:airline_detect_paste && &paste
+                                call add(l:mode, 'paste')
+  356              0.000225   endif
+                            
+  356              0.001481   if g:airline_detect_crypt && exists("+key") && !empty(&key)
+                                call add(l:mode, 'crypt')
+  356              0.000205   endif
+                            
+  356              0.000692   if g:airline_detect_spell && &spell
+                                call add(l:mode, 'spell')
+  356              0.000201   endif
+                            
+  356              0.000562   if &readonly || ! &modifiable
+                                call add(l:mode, 'readonly')
+  356              0.000208   endif
+                            
+  356              0.001346   let mode_string = join(l:mode)
+  356              0.001242   if get(w:, 'airline_lastmode', '') != mode_string
+    2   0.001701   0.000079     call airline#highlighter#highlight_modified_inactive(context.bufnr)
+    2   0.096225   0.000070     call airline#highlighter#highlight(l:mode, context.bufnr)
+    2              0.000004     let w:airline_lastmode = mode_string
+  356              0.000183   endif
+                            
+  356              0.000385   return ''
+
+FUNCTION  <SNR>137_get_prev_line()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 70
+Called 12 times
+Total time:   0.001548
+ Self time:   0.000338
+
+count  total (s)   self (s)
+   12              0.000020   let l:lnum = a:lnum
+   12              0.000031   let l:prev = getline(l:lnum)
+                            
+   12   0.001419   0.000209   while l:lnum != 0 && (l:prev =~# '^\s*%'     || s:is_verbatim(l:prev, l:lnum)     || (a:skip_amps && l:prev =~# s:indent_amps.re_align))
+                                let l:lnum = prevnonblank(l:lnum - 1)
+                                let l:prev = getline(l:lnum)
+   12              0.000011   endwhile
+                            
+   12              0.000012   return l:lnum
+
+FUNCTION  airline#util#append()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/util.vim line 33
+Called 2492 times
+Total time:   0.024086
+ Self time:   0.024086
+
+count  total (s)   self (s)
+ 2492              0.005371   if a:minwidth > 0 && winwidth(0) < a:minwidth
+                                return ''
+ 2492              0.001599   endif
+ 2492              0.006945   let prefix = s:spc == "\ua0" ? s:spc : s:spc.s:spc
+ 2492              0.006705   return empty(a:text) ? '' : prefix.g:airline_left_alt_sep.s:spc.a:text
+
+FUNCTION  <SNR>119_parser_tex()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 502
+Called 10 times
+Total time:   0.008428
+ Self time:   0.000610
+
+count  total (s)   self (s)
+                              "
+                              " TeX shorthand are these
+                              "
+                              "   $ ... $   (inline math)
+                              "   $$ ... $$ (displayed equations)
+                              "
+                              " The notation does not provide the delimiter side directly, which provides
+                              " a slight problem. However, we can utilize the syntax information to parse
+                              " the side.
+                              "
+   10              0.000021   let result = {}
+   10              0.000020   let result.type = 'env'
+   10              0.000015   let result.corr = a:match
+   10              0.000053   let result.get_matching = function('s:get_matching_tex')
+   10              0.000107   let result.re = { 'this'  : '\m' . escape(a:match, '$'), 'corr'  : '\m' . escape(a:match, '$'), 'open'  : '\m' . escape(a:match, '$'), 'close' : '\m' . escape(a:match, '$'),}
+   10   0.007954   0.000136   let result.side = vimtex#util#in_syntax(   (a:match ==# '$' ? 'texMathZoneX' : 'texMathZoneY'),   a:lnum, a:cnum+1) ? 'open' : 'close'
+   10              0.000031   let result.is_open = result.side ==# 'open'
+                            
+   10              0.000023   if (a:side !=# 'both') && (a:side !=# result.side)
+                                "
+                                " The current match ($ or $$) is not the correct side, so we must
+                                " continue the search recursively. We do this by changing the cursor
+                                " position, since the function searchpos relies on the current cursor
+                                " position.
+                                "
+                                let l:save_pos = vimtex#pos#get_cursor()
+                            
+                                " Move the cursor
+                                call vimtex#pos#set_cursor(a:direction ==# 'next' ? vimtex#pos#next(a:lnum, a:cnum) : vimtex#pos#prev(a:lnum, a:cnum))
+                            
+                                " Get new result
+                                let result = s:get_delim({ 'direction' : a:direction, 'type' : a:type, 'side' : a:side,})
+                            
+                                " Restore the cursor
+                                call vimtex#pos#set_cursor(l:save_pos)
+   10              0.000009   endif
+                            
+   10              0.000012   return result
+
+FUNCTION  airline#themes#get_highlight()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/themes.vim line 31
+Called 72 times
+Total time:   0.009709
+ Self time:   0.000810
+
+count  total (s)   self (s)
+   72   0.009683   0.000784   return call('airline#highlighter#get_highlight', [a:group] + a:000)
+
+FUNCTION  <SNR>139_get_decimal_group()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/wordcount/formatters/default.vim line 59
+Called 172 times
+Total time:   0.003446
+ Self time:   0.003446
+
+count  total (s)   self (s)
+  172              0.001382   if match(v:lang, '\v\cC|en') > -1
+                                return ','
+  172              0.001320   elseif match(v:lang, '\v\cde|dk|fr|pt') > -1
+                                return '.'
+  172              0.000088   endif
+  172              0.000130   return ''
+
+FUNCTION  vimtex#util#in_syntax()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/util.vim line 63
+Called 187 times
+Total time:   0.133168
+ Self time:   0.133168
+
+count  total (s)   self (s)
+                            
+                              " Usage: vimtex#util#in_syntax(name, [line, col])
+                            
+                              " Get position and correct it if necessary
+  187              0.001026   let l:pos = a:0 > 0 ? [a:1, a:2] : [line('.'), col('.')]
+  187              0.000357   if mode() ==# 'i'
+  186              0.000518     let l:pos[1] -= 1
+  187              0.000121   endif
+  187              0.001246   call map(l:pos, 'max([v:val, 1])')
+                            
+                              " Check syntax at position
+  187              0.129045   return match(map(synstack(l:pos[0], l:pos[1]),          "synIDattr(v:val, 'name')"),      '^' . a:name) >= 0
+
+FUNCTION  airline#extensions#vimtex#get_scope()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/vimtex.vim line 51
+Called 356 times
+Total time:   0.022876
+ Self time:   0.021065
+
+count  total (s)   self (s)
+  356              0.000717   let l:status = ''
+                            
+  356              0.001362   let vt_local = get(b:, 'vimtex_local', {})
+  356              0.000644   if empty(vt_local)
+                                let l:status .= g:airline#extensions#vimtex#main
+  356              0.000233   else
+  356              0.000769     if get(vt_local, 'active')
+                                  let l:status .= g:airline#extensions#vimtex#sub_local
+  356              0.000211     else
+  356              0.001056       let l:status .= g:airline#extensions#vimtex#sub_main
+  356              0.000238     endif
+  356              0.000231   endif
+                            
+  356              0.001463   if get(get(get(b:, 'vimtex', {}), 'viewer', {}), 'xwin_id')
+                                let l:status .= g:airline#extensions#vimtex#viewer
+  356              0.000224   endif
+                            
+  356              0.001237   let l:compiler = get(get(b:, 'vimtex', {}), 'compiler', {})
+  356              0.000733   if !empty(l:compiler)
+  356   0.004936   0.003125     if has_key(l:compiler, 'is_running') && b:vimtex.compiler.is_running()
+                                  if get(l:compiler, 'continuous')
+                                    let l:status .= g:airline#extensions#vimtex#continuous
+                                  else
+                                    let l:status .= g:airline#extensions#vimtex#compiled
+                                  endif
+  356              0.000210     endif
+  356              0.000224   endif
+                            
+  356              0.000710   if !empty(l:status)
+  356              0.001375     let l:status = g:airline#extensions#vimtex#left . l:status . g:airline#extensions#vimtex#right
+  356              0.000212   endif
+  356              0.000476   return l:status
+
+FUNCTION  <SNR>119_get_delim()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 384
+Called 177 times
+Total time:   0.114795
+ Self time:   0.096607
+
+count  total (s)   self (s)
+                              "
+                              " Arguments:
+                              "   opts = {
+                              "     'direction'   :  next
+                              "                      prev
+                              "                      current
+                              "     'type'        :  env_tex
+                              "                      env_math
+                              "                      env_all
+                              "                      delim_tex
+                              "                      delim_math
+                              "                      delim_modq_math (possibly modified math delimiter)
+                              "                      delim_mod_math  (modified math delimiter)
+                              "                      delim_all
+                              "                      all
+                              "     'side'        :  open
+                              "                      close
+                              "                      both
+                              "     'syn_exclude' :  Don't match in given syntax
+                              "  }
+                              "
+                              " Returns:
+                              "   delim = {
+                              "     type    : env | delim
+                              "     side    : open | close
+                              "     name    : name of environment [only for type env]
+                              "     lnum    : number
+                              "     cnum    : number
+                              "     match   : unparsed matched delimiter
+                              "     corr    : corresponding delimiter
+                              "     re : {
+                              "       open  : regexp for the opening part
+                              "       close : regexp for the closing part
+                              "     }
+                              "   }
+                              "
+  177   0.002827   0.001702   let l:save_pos = vimtex#pos#get_cursor()
+  177              0.000844   let l:re = g:vimtex#delim#re[a:opts.type][a:opts.side]
+  177              0.000258   while 1
+  177              0.051739     let [l:lnum, l:cnum] = a:opts.direction ==# 'next' ? searchpos(l:re, 'cnW', line('.') + s:stopline) : a:opts.direction ==# 'prev'   ? searchpos(l:re, 'bcnW', max([line('.') - s:stopline, 1]))   : searchpos(l:re, 'bcnW', line('.'))
+  177              0.000842     if l:lnum == 0 | break | endif
+                            
+  146              0.000750     if has_key(a:opts, 'syn_exclude') && vimtex#util#in_syntax(a:opts.syn_exclude, l:lnum, l:cnum)
+                                  call vimtex#pos#set_cursor(vimtex#pos#prev(l:lnum, l:cnum))
+                                  continue
+  146              0.000143     endif
+                            
+  146              0.000126     break
+  177              0.000249   endwhile
+  177   0.009002   0.002216   call vimtex#pos#set_cursor(l:save_pos)
+                            
+  177              0.012407   let l:match = matchstr(getline(l:lnum), '^' . l:re, l:cnum-1)
+                            
+  177              0.001634   if a:opts.direction ==# 'current' && l:cnum + strlen(l:match) + (mode() ==# 'i' ? 1 : 0) <= col('.')
+  163              0.000258     let l:match = ''
+  163              0.000191     let l:lnum = 0
+  163              0.000150     let l:cnum = 0
+  177              0.000125   endif
+                            
+  177              0.000764   let l:result = { 'type' : '', 'lnum' : l:lnum, 'cnum' : l:cnum, 'match' : l:match,}
+                            
+ 1018              0.001310   for l:type in s:types
+  855              0.009162     if l:match =~# '^' . l:type.re
+   14   0.010654   0.000377       let l:result = extend( l:type.parser(l:match, l:lnum, l:cnum,               a:opts.side, a:opts.type, a:opts.direction), l:result, 'keep')
+   14              0.000015       break
+  841              0.000502     endif
+ 1018              0.001112   endfor
+                            
+  177              0.000699   return empty(l:result.type) ? {} : l:result
+
+FUNCTION  <SNR>44_Compile()
+    Defined: ~/.vim/bundle/vim-latex-live-preview/plugin/latexlivepreview.vim line 71
+Called 175 times
+Total time:   0.002318
+ Self time:   0.002318
+
+count  total (s)   self (s)
+                            
+  175              0.001575     if !exists('b:livepreview_buf_data') || has_key(b:livepreview_buf_data, 'preview_running') == 0
+  175              0.000237         return
+                                endif
+                            
+                                " Change directory to handle properly sourced files with \input and bib
+                                " TODO: get rid of lcd
+                                execute 'lcd ' . b:livepreview_buf_data['root_dir']
+                            
+                                " Write the current buffer in a temporary file
+                                silent exec 'write! ' . b:livepreview_buf_data['tmp_src_file']
+                            
+                                call s:RunInBackground(b:livepreview_buf_data['run_cmd'])
+                            
+                                lcd -
+
+FUNCTION  VimtexIndent()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 29
+Called 6 times
+Total time:   0.005061
+ Self time:   0.000828
+
+count  total (s)   self (s)
+    6              0.000035   let s:sw = exists('*shiftwidth') ? shiftwidth() : &shiftwidth
+                            
+    6   0.000879   0.000073   let l:prev_lnum = s:get_prev_line(prevnonblank(a:lnum - 1), 0)
+    6              0.000018   if l:prev_lnum == 0 | return indent(a:lnum) | endif
+                            
+                              " Get current and previous line and remove comments
+    6              0.000075   let l:line = substitute(getline(a:lnum), '\\\@<!%.*', '', '')
+    6              0.000086   let l:prev_line = substitute(getline(l:prev_lnum),   '\\\@<!%.*', '', '')
+                            
+                              " Check for verbatim modes
+    6   0.000605   0.000046   if s:is_verbatim(l:line, a:lnum)
+                                return empty(l:line) ? indent(l:prev_lnum) : indent(a:lnum)
+    6              0.000002   endif
+                            
+                              " Align on ampersands
+    6   0.000232   0.000039   if s:indent_amps.check(a:lnum, l:line, l:prev_line)
+                                return s:indent_amps.indent
+    6              0.000006   endif
+                            
+                              " Use previous indentation for comments
+    6              0.000028   if l:line =~# '^\s*%'
+                                return indent(a:lnum)
+    6              0.000003   endif
+                            
+                              " Ensure previous line does not start with ampersand
+    6   0.000799   0.000057   let l:prev_lnum = s:get_prev_line(l:prev_lnum, get(g:, 'vimtex_indent_on_ampersands', 1))
+    6              0.000014   if l:prev_lnum == 0 | return 0 | endif
+    6              0.000089   let l:prev_line = substitute(getline(l:prev_lnum), '\\\@<!%.*', '', '')
+                            
+                              " Indent environments, delimiters, and tikz
+    6              0.000016   let l:ind = indent(l:prev_lnum)
+    6   0.000270   0.000051   let l:ind += s:indent_envs(l:line, l:prev_line)
+    6   0.001745   0.000059   let l:ind += s:indent_delims(l:line, a:lnum, l:prev_line, l:prev_lnum)
+    6   0.000076   0.000048   let l:ind += s:indent_tikz(l:prev_lnum, l:prev_line)
+    6              0.000003   return l:ind
+
+FUNCTION  airline#highlighter#highlight()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 218
+Called 2 times
+Total time:   0.096155
+ Self time:   0.012565
+
+count  total (s)   self (s)
+    2              0.000015   let bufnr = a:0 ? a:1 : ''
+    2              0.000018   let p = g:airline#themes#{g:airline_theme}#palette
+                            
+                              " draw the base mode, followed by any overrides
+    2              0.000059   let mapped = map(a:modes, 'v:val == a:modes[0] ? v:val : a:modes[0]."_".v:val')
+    2              0.000013   let suffix = a:modes[0] == 'inactive' ? '_inactive' : ''
+    6              0.000017   for mode in mapped
+    4              0.000017     if mode == 'inactive' && winnr('$') == 1
+                                  " there exist no inactive windows, don't need to create all those
+                                  " highlighting groups
+                                  continue
+    4              0.000007     endif
+    4              0.000073     if exists('g:airline#themes#{g:airline_theme}#palette[mode]')
+    4              0.000031       let dict = g:airline#themes#{g:airline_theme}#palette[mode]
+   66              0.000195       for kvp in items(dict)
+   62              0.000217         let mode_colors = kvp[1]
+   62              0.000173         let name = kvp[0]
+   62              0.000262         if name is# 'airline_c' && !empty(bufnr) && suffix is# '_inactive'
+                                      let name = 'airline_c'.bufnr
+   62              0.000056         endif
+   62   0.023090   0.001127         call airline#highlighter#exec(name.suffix, mode_colors)
+                            
+  186              0.000480         for accent in keys(s:accents)
+  124              0.000446           if !has_key(p.accents, accent)
+                                        continue
+  124              0.000099           endif
+  124              0.000554           let colors = copy(mode_colors)
+  124              0.000480           if p.accents[accent][0] != ''
+   62              0.000231             let colors[0] = p.accents[accent][0]
+  124              0.000098           endif
+  124              0.000325           if p.accents[accent][2] != ''
+   62              0.000185             let colors[2] = p.accents[accent][2]
+  124              0.000092           endif
+  124              0.000293           if len(colors) >= 5
+  124              0.000551             let colors[4] = get(p.accents[accent], 4, '')
+                                      else
+                                        call add(colors, get(p.accents[accent], 4, ''))
+  124              0.000095           endif
+  124   0.043620   0.002146           call airline#highlighter#exec(name.suffix.'_'.accent, colors)
+  186              0.000228         endfor
+   66              0.000069       endfor
+                            
+                                  " TODO: optimize this
+   40              0.000069       for sep in items(s:separators)
+   36   0.020684   0.000531         call <sid>exec_separator(dict, sep[1][0], sep[1][1], sep[1][2], suffix)
+   40              0.000031       endfor
+    4              0.000005     endif
+    6              0.000002   endfor
+
+FUNCTION  airline#parts#filetype()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 96
+Called 356 times
+Total time:   0.002369
+ Self time:   0.002369
+
+count  total (s)   self (s)
+  356              0.002152   return winwidth(0) < 90 && strlen(&filetype) > 3 ? matchstr(&filetype, '...'). (&encoding is? 'utf-8' ? '…' : '>') : &filetype
+
+FUNCTION  <SNR>119_get_matching_tex()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 718
+Called 10 times
+Total time:   0.000319
+ Self time:   0.000319
+
+count  total (s)   self (s)
+   10              0.000118   let [re, flags, stopline] = self.is_open ? [self.re.open,  'nW', line('.') + s:stopline] : [self.re.open, 'bnW', max([line('.') - s:stopline, 1])]
+                            
+   10              0.000099   let [lnum, cnum] = searchpos(re, flags, stopline)
+   10              0.000074   let match = matchstr(getline(lnum), '^' . re, cnum-1)
+                            
+   10              0.000015   return [match, lnum, cnum]
+
+FUNCTION  airline#parts#iminsert()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 81
+Called 356 times
+Total time:   0.002276
+ Self time:   0.002276
+
+count  total (s)   self (s)
+  356              0.000910   if g:airline_detect_iminsert && &iminsert && exists('b:keymap_name')
+                                return toupper(b:keymap_name)
+  356              0.000244   endif
+  356              0.000283   return ''
+
+FUNCTION  <SNR>66_ws_refresh()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/whitespace.vim line 159
+Called 3 times
+Total time:   0.000052
+ Self time:   0.000052
+
+count  total (s)   self (s)
+    3              0.000030   if get(b:, 'airline_ws_changedtick', 0) == b:changedtick
+    2              0.000006     return
+    1              0.000001   endif
+    1              0.000002   unlet! b:airline_whitespace_check
+    1              0.000001   if get(g:, 'airline_skip_empty_sections', 0)
+                                exe ':AirlineRefresh'
+    1              0.000001   endif
+    1              0.000002   let b:airline_ws_changedtick = b:changedtick
+
+FUNCTION  513()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 97
+Called 6 times
+Total time:   0.000193
+ Self time:   0.000193
+
+count  total (s)   self (s)
+    6              0.000073   if get(g:, 'vimtex_indent_on_ampersands', 1) && a:cline =~# self.re_align && a:pline =~# self.re_amp
+                            
+                                let l:pre = strdisplaywidth(strpart(a:pline, 0, match(a:pline, self.re_amp)))
+                                let l:cur = strdisplaywidth(strpart(a:cline, 0, match(a:cline, self.re_amp)))
+                                let self.indent = max([indent(a:lnum) - l:cur + l:pre, 0])
+                            
+                                return 1
+    6              0.000003   endif
+                            
+    6              0.000010   let self.indent = 0
+    6              0.000040   return 0
+
+FUNCTION  323()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/compiler/latexmk.vim line 453
+Called 356 times
+Total time:   0.001811
+ Self time:   0.001811
+
+count  total (s)   self (s)
+  356              0.001585   return has_key(self, 'job') && job_status(self.job) ==# 'run'
+
+FUNCTION  vimtex#util#in_comment()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/util.vim line 53
+Called 177 times
+Total time:   0.127662
+ Self time:   0.002312
+
+count  total (s)   self (s)
+  177   0.127543   0.002193   return call('vimtex#util#in_syntax', ['texComment'] + a:000)
+
+FUNCTION  <SNR>61_sync_active_winnr()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions.vim line 116
+Called 1 time
+Total time:   0.000028
+ Self time:   0.000028
+
+count  total (s)   self (s)
+    1              0.000016   if exists('#airline') && winnr() != s:active_winnr
+                                call airline#update_statusline()
+    1              0.000002   endif
+
+FUNCTION  <SNR>73_CheckDefined()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 123
+Called 224 times
+Total time:   0.007803
+ Self time:   0.007803
+
+count  total (s)   self (s)
+                              " Checks, whether the definition of the colors is valid and is not empty or NONE
+                              " e.g. if the colors would expand to this:
+                              " hi airline_c ctermfg=NONE ctermbg=NONE
+                              " that means to clear that highlighting group, therefore, fallback to Normal
+                              " highlighting group for the cterm values
+                            
+                              " This only works, if the Normal highlighting group is actually defined, so
+                              " return early, if it has been cleared
+  224              0.000984   if !exists("g:airline#highlighter#normal_fg_hi")
+                                let g:airline#highlighter#normal_fg_hi = synIDattr(synIDtrans(hlID('Normal')), 'fg', 'cterm')
+  224              0.000173   endif
+  224              0.000914   if empty(g:airline#highlighter#normal_fg_hi) || g:airline#highlighter#normal_fg_hi < 0
+                                return a:colors
+  224              0.000156   endif
+                            
+  456              0.000926   for val in a:colors
+  456              0.001168     if !empty(val) && val !=# 'NONE'
+  224              0.000331       return a:colors
+  232              0.000168     endif
+  232              0.000229   endfor
+                              " this adds the bold attribute to the term argument of the :hi command,
+                              " but at least this makes sure, the group will be defined
+                              let fg = g:airline#highlighter#normal_fg_hi
+                              let bg = synIDattr(synIDtrans(hlID('Normal')), 'bg', 'cterm')
+                              if bg < 0
+                                " in case there is no background color defined for Normal
+                                let bg = a:colors[3]
+                              endif
+                              return a:colors[0:1] + [fg, bg] + [a:colors[4]]
+
+FUNCTION  <SNR>137_indent_tikz()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 170
+Called 6 times
+Total time:   0.000028
+ Self time:   0.000028
+
+count  total (s)   self (s)
+    6              0.000026   if !has_key(b:vimtex.packages, 'tikz') | return 0 | endif
+                            
+                              let l:env_pos = vimtex#env#is_inside('tikzpicture')
+                              if l:env_pos[0] > 0 && l:env_pos[0] < a:lnum
+                                let l:prev_starts = a:prev =~# s:tikz_commands
+                                let l:prev_stops  = a:prev =~# ';\s*$'
+                            
+                                " Increase indent on tikz command start
+                                if l:prev_starts && ! l:prev_stops
+                                  return s:sw
+                                endif
+                            
+                                " Decrease indent on tikz command end, i.e. on semicolon
+                                if ! l:prev_starts && l:prev_stops
+                                  let l:context = join(getline(l:env_pos[0], a:lnum-1), '')
+                                  return -s:sw*(l:context =~# s:tikz_commands)
+                                endif
+                              endif
+                            
+                              return 0
+
+FUNCTION  vimtex#delim#get_matching()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 315
+Called 14 times
+Total time:   0.003035
+ Self time:   0.001320
+
+count  total (s)   self (s)
+   14              0.000076   if empty(a:delim) || !has_key(a:delim, 'lnum') | return {} | endif
+                            
+                              "
+                              " Get the matching position
+                              "
+   14   0.000227   0.000122   let l:save_pos = vimtex#pos#get_cursor()
+   14   0.000707   0.000161   call vimtex#pos#set_cursor(a:delim)
+   14   0.000835   0.000226   let [l:match, l:lnum, l:cnum] = a:delim.get_matching()
+   14   0.000576   0.000121   call vimtex#pos#set_cursor(l:save_pos)
+                            
+                              "
+                              " Create the match result
+                              "
+   14              0.000082   let l:matching = deepcopy(a:delim)
+   14              0.000027   let l:matching.lnum = l:lnum
+   14              0.000018   let l:matching.cnum = l:cnum
+   14              0.000035   let l:matching.match = l:match
+   14              0.000022   let l:matching.corr  = a:delim.match
+   14              0.000031   let l:matching.side = a:delim.is_open ? 'close' : 'open'
+   14              0.000022   let l:matching.is_open = !a:delim.is_open
+   14              0.000029   let l:matching.re.corr = a:delim.re.this
+   14              0.000020   let l:matching.re.this = a:delim.re.corr
+                            
+   14              0.000025   if l:matching.type ==# 'delim'
+    4              0.000009     let l:matching.corr_delim = a:delim.delim
+    4              0.000009     let l:matching.corr_mod = a:delim.mod
+    4              0.000008     let l:matching.delim = a:delim.corr_delim
+    4              0.000009     let l:matching.mod = a:delim.corr_mod
+   10              0.000024   elseif l:matching.type ==# 'env' && has_key(l:matching, 'name')
+                                if l:matching.is_open
+                                  let l:matching.env_cmd = vimtex#cmd#get_at(l:lnum, l:cnum)
+                                else
+                                  unlet l:matching.env_cmd
+                                endif
+   14              0.000005   endif
+                            
+   14              0.000019   return l:matching
+
+FUNCTION  vimtex#pos#set_cursor()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/pos.vim line 7
+Called 205 times
+Total time:   0.007787
+ Self time:   0.002460
+
+count  total (s)   self (s)
+  205   0.007647   0.002320   call cursor(s:parse_args(a:000))
+
+FUNCTION  <SNR>119_parser_delim()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 582
+Called 4 times
+Total time:   0.001849
+ Self time:   0.001013
+
+count  total (s)   self (s)
+    4              0.000029   let result = {}
+    4              0.000026   let result.type = 'delim'
+    4              0.000224   let result.side = a:match =~# g:vimtex#delim#re.delim_all.open ? 'open' : 'close'
+    4              0.000028   let result.is_open = result.side ==# 'open'
+    4              0.000075   let result.get_matching = function('s:get_matching_delim')
+                            
+                              "
+                              " Find corresponding delimiter and the regexps
+                              "
+    4              0.000093   if a:match =~# '^' . g:vimtex#delim#re.mods.both
+                                let m1 = matchstr(a:match, '^' . g:vimtex#delim#re.mods.both)
+                                let d1 = substitute(strpart(a:match, len(m1)), '^\s*', '', '')
+                                let s1 = !result.is_open
+                                let re1 = s:parser_delim_get_regexp(m1, s1, 'mods')  . '\s*' . s:parser_delim_get_regexp(d1, s1, 'delim_math')
+                            
+                                let m2 = s:parser_delim_get_corr(m1, 'mods')
+                                let d2 = s:parser_delim_get_corr(d1, 'delim_math')
+                                let s2 = result.is_open
+                                let re2 = s:parser_delim_get_regexp(m2, s2, 'mods') . '\s*' . (m1 =~# '\\\%(left\|right\)'   ? '\%(' . s:parser_delim_get_regexp(d2, s2, 'delim_math') . '\|\.\)'   : s:parser_delim_get_regexp(d2, s2, 'delim_math'))
+    4              0.000005   else
+    4              0.000010     let d1 = a:match
+    4              0.000006     let m1 = ''
+    4   0.000303   0.000082     let re1 = s:parser_delim_get_regexp(a:match, !result.is_open)
+                            
+    4   0.000500   0.000073     let d2 = s:parser_delim_get_corr(a:match)
+    4              0.000009     let m2 = ''
+    4   0.000269   0.000081     let re2 = s:parser_delim_get_regexp(d2, result.is_open)
+    4              0.000004   endif
+                            
+    4              0.000013   let result.delim = d1
+    4              0.000010   let result.mod = m1
+    4              0.000012   let result.corr = m2 . d2
+    4              0.000010   let result.corr_delim = d2
+    4              0.000009   let result.corr_mod = m2
+    4              0.000039   let result.re = { 'this'  : re1, 'corr'  : re2, 'open'  : result.is_open ? re1 : re2, 'close' : result.is_open ? re2 : re1,}
+                            
+    4              0.000007   return result
+
+FUNCTION  <SNR>139_wordcount()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/wordcount/formatters/default.vim line 27
+Called 172 times
+Total time:   0.013988
+ Self time:   0.013988
+
+count  total (s)   self (s)
+  172              0.000567   if exists("*wordcount")
+  172              0.000330     let l:mode = mode()
+  172              0.000397     if l:mode ==# 'v' || l:mode ==# 'V' || l:mode ==# 's' || l:mode ==# 'S'
+                                  let l:visual_words = wordcount()['visual_words']
+                                  if l:visual_words != ''
+                                    return l:visual_words
+                                  else
+                                    return 0
+                                  endif
+  172              0.000106     else
+  172              0.011207       return wordcount()['words']
+                                endif
+                              elseif mode() =~? 's'
+                                return
+                              else
+                                let old_status = v:statusmsg
+                                let position = getpos(".")
+                                exe "silent normal! g\<c-g>"
+                                let stat = v:statusmsg
+                                call setpos('.', position)
+                                let v:statusmsg = old_status
+                            
+                                let parts = split(stat)
+                                if len(parts) > 11
+                                  return str2nr(parts[11])
+                                else
+                                  return
+                                endif
+                              endif
+
+FUNCTION  <SNR>122_parse_args()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/pos.vim line 67
+Called 205 times
+Total time:   0.005327
+ Self time:   0.005327
+
+count  total (s)   self (s)
+                              "
+                              " The arguments should be in one of the following forms (when unpacked):
+                              "
+                              "   [lnum, cnum]
+                              "   [bufnum, lnum, cnum, ...]
+                              "   {'lnum' : lnum, 'cnum' : cnum}
+                              "
+                            
+  205              0.000600   if len(a:args) > 1
+                                return s:parse_args([a:args])
+  205              0.000378   elseif len(a:args) == 1
+  205              0.000867     if type(a:args[0]) == type({})
+   14              0.000085       return [get(a:args[0], 'lnum'), get(a:args[0], 'cnum')]
+  191              0.000187     else
+  191              0.000398       if len(a:args[0]) == 2
+                                    return a:args[0]
+  191              0.000096       else
+  191              0.000448         return a:args[0][1:]
+                                  endif
+                                endif
+                              else
+                                return a:args
+                              endif
+
+FUNCTION  <SNR>66_check_mixed_indent()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/whitespace.vim line 15
+Called 1 time
+Total time:   0.001320
+ Self time:   0.001320
+
+count  total (s)   self (s)
+    1              0.000003   let indent_algo = get(g:, 'airline#extensions#whitespace#mixed_indent_algo', 0)
+    1              0.000001   if indent_algo == 1
+                                " [<tab>]<space><tab>
+                                " spaces before or between tabs are not allowed
+                                let t_s_t = '(^\t* +\t\s*\S)'
+                                " <tab>(<space> x count)
+                                " count of spaces at the end of tabs should be less than tabstop value
+                                let t_l_s = '(^\t+ {' . &ts . ',}' . '\S)'
+                                return search('\v' . t_s_t . '|' . t_l_s, 'nw')
+    1              0.000001   elseif indent_algo == 2
+                                return search('\v(^\t* +\t\s*\S)', 'nw')
+    1              0.000000   else
+    1              0.001309     return search('\v(^\t+ +)|(^ +\t+)', 'nw')
+                              endif
+
+FUNCTION  airline#util#wrap()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/util.vim line 26
+Called 1424 times
+Total time:   0.008037
+ Self time:   0.008037
+
+count  total (s)   self (s)
+ 1424              0.003427   if a:minwidth > 0 && winwidth(0) < a:minwidth
+                                return ''
+ 1424              0.000915   endif
+ 1424              0.001605   return a:text
+
+FUNCTION  383()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/envs.vim line 48
+Called 21624 times
+Total time:   1.372051
+ Self time:   1.329661
+
+count  total (s)   self (s)
+21624              0.511147   let l:env = matchstr(a:line, self.re.name)
+                            
+21624   0.199782   0.157392   if !empty(l:env) && self.validate(l:env)
+21624              0.322585     if a:line =~# self.re.start
+11016              0.041278       if a:line !~# '\\end'
+11016              0.014853         return 'a1'
+                                  endif
+10608              0.158837     elseif a:line =~# self.re.end
+10608              0.041569       if a:line !~# '\\begin'
+10608              0.013891         return 's1'
+                                  endif
+                                endif
+                              endif
+
+FUNCTION  385()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/envs.vim line 104
+Called 18 times
+Total time:   0.001466
+ Self time:   0.001466
+
+count  total (s)   self (s)
+   18              0.000022   let i = v:foldend
+  194              0.000158   while i >= v:foldstart
+  176              0.000660     if getline(i) =~# '^\s*\\label'
+                                  return matchstr(getline(i), '^\s*\\label\%(\[.*\]\)\?{\zs.*\ze}')
+  176              0.000072     end
+  176              0.000122     let i -= 1
+  194              0.000082   endwhile
+   18              0.000011   return ''
+
+FUNCTION  386()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/envs.vim line 116
+Called 18 times
+Total time:   0.001582
+ Self time:   0.001582
+
+count  total (s)   self (s)
+   18              0.000028   let i = v:foldend
+  194              0.000152   while i >= v:foldstart
+  176              0.000676     if getline(i) =~# '^\s*\\caption'
+                                  return matchstr(getline(i), '^\s*\\caption\(\[.*\]\)\?{\zs.\{-1,}\ze\(}\s*\)\?$')
+  176              0.000061     end
+  176              0.000123     let i -= 1
+  194              0.000071   endwhile
+                            
+                              " If no caption found, check for a caption comment
+   18              0.000128   return matchstr(a:line,'\\begin\*\?{.*}\s*%\s*\zs.*')
+
+FUNCTION  389()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/envs.vim line 27
+Called 21642 times
+Total time:   0.042410
+ Self time:   0.042410
+
+count  total (s)   self (s)
+21642              0.031070       return 1
+
+FUNCTION  393()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/markers.vim line 24
+Called 21624 times
+Total time:   0.299181
+ Self time:   0.299181
+
+count  total (s)   self (s)
+21624              0.100541   if a:line =~# self.re.start
+                                let s:self.opened = 1
+                                return 'a1'
+21624              0.078175   elseif a:line =~# self.re.end
+                                let s:self.opened = 0
+                                return 's1'
+21624              0.015536   endif
+
+FUNCTION  395()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/preamble.vim line 21
+Called 21828 times
+Total time:   0.248063
+ Self time:   0.248063
+
+count  total (s)   self (s)
+21828              0.186504   if a:line =~# self.re.start
+                                return '>1'
+21828              0.015507   endif
+
+FUNCTION  398()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/sections.vim line 41
+Called 21828 times
+Total time:   1.003383
+ Self time:   0.657788
+
+count  total (s)   self (s)
+21828   0.473942   0.128347   call self.refresh()
+                            
+                              " Fold chapters and sections
+43452              0.098907   for [l:part, l:level] in self.folds
+21828              0.238414     if a:line =~# l:part
+  204              0.000818       return '>' . l:level
+21624              0.016802     endif
+43248              0.039317   endfor
+
+FUNCTION  airline#extensions#whitespace#check()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/whitespace.vim line 50
+Called 356 times
+Total time:   0.053922
+ Self time:   0.036927
+
+count  total (s)   self (s)
+  356              0.001745   let max_lines = get(g:, 'airline#extensions#whitespace#max_lines', 20000)
+  356              0.002336   if &readonly || !&modifiable || !s:enabled || line('$') > max_lines || get(b:, 'airline_whitespace_disabled', 0)
+                                return ''
+  356              0.000265   endif
+                            
+  356              0.001167   if !exists('b:airline_whitespace_check')
+    1              0.000002     let b:airline_whitespace_check = ''
+    1              0.000003     let checks = get(b:, 'airline_whitespace_checks', get(g:, 'airline#extensions#whitespace#checks', s:default_checks))
+                            
+    1              0.000001     let trailing = 0
+    1              0.000002     if index(checks, 'trailing') > -1
+    1              0.000001       try
+    1              0.000002         let regexp = get(g:, 'airline#extensions#whitespace#trailing_regexp', '\s$')
+    1              0.000138         let trailing = search(regexp, 'nw')
+                                  catch
+                                    echomsg 'airline#whitespace: error occurred evaluating '. regexp
+                                    echomsg v:exception
+                                    return ''
+    1              0.000000       endtry
+    1              0.000001     endif
+                            
+    1              0.000001     let mixed = 0
+    1              0.000001     let check = 'indent'
+    1              0.000008     if index(checks, check) > -1 && index(get(s:skip_check_ft, &ft, []), check) < 0
+    1   0.001329   0.000009       let mixed = s:check_mixed_indent()
+    1              0.000000     endif
+                            
+    1              0.000001     let mixed_file = ''
+    1              0.000001     let check = 'mixed-indent-file'
+    1              0.000007     if index(checks, check) > -1 && index(get(s:skip_check_ft, &ft, []), check) < 0
+    1   0.000068   0.000008       let mixed_file = s:check_mixed_indent_file()
+    1              0.000001     endif
+                            
+    1              0.000001     let long = 0
+    1              0.000002     if index(checks, 'long') > -1 && &tw > 0
+                                  let long = search('\%>'.&tw.'v.\+', 'nw')
+    1              0.000001     endif
+                            
+    1              0.000002     if trailing != 0 || mixed != 0 || long != 0 || !empty(mixed_file)
+    1              0.000001       let b:airline_whitespace_check = s:symbol
+    1              0.000001       if strlen(s:symbol) > 0
+    1              0.000002         let space = (g:airline_symbols.space)
+                                  else
+                                    let space = ''
+    1              0.000000       endif
+                            
+    1              0.000000       if s:show_message
+    1              0.000001         if trailing != 0
+    1              0.000003           let trailing_fmt = get(g:, 'airline#extensions#whitespace#trailing_format', '[%s]trailing')
+    1              0.000005           let b:airline_whitespace_check .= space.printf(trailing_fmt, trailing)
+    1              0.000000         endif
+    1              0.000001         if mixed != 0
+                                      let mixed_indent_fmt = get(g:, 'airline#extensions#whitespace#mixed_indent_format', '[%s]mixed-indent')
+                                      let b:airline_whitespace_check .= space.printf(mixed_indent_fmt, mixed)
+    1              0.000001         endif
+    1              0.000000         if long != 0
+                                      let long_fmt = get(g:, 'airline#extensions#whitespace#long_format', '[%s]long')
+                                      let b:airline_whitespace_check .= space.printf(long_fmt, long)
+    1              0.000000         endif
+    1              0.000002         if !empty(mixed_file)
+                                      let mixed_indent_file_fmt = get(g:, 'airline#extensions#whitespace#mixed_indent_file_format', '[%s]mix-indent-file')
+                                      let b:airline_whitespace_check .= space.printf(mixed_indent_file_fmt, mixed_file)
+    1              0.000000         endif
+    1              0.000000       endif
+    1              0.000001     endif
+  356              0.000200   endif
+  356   0.019410   0.003795   return airline#util#shorten(b:airline_whitespace_check, 120, 9)
+
+FUNCTION  <SNR>137_is_verbatim()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 86
+Called 18 times
+Total time:   0.001769
+ Self time:   0.000268
+
+count  total (s)   self (s)
+   18   0.001762   0.000261   return a:line !~# '\v\\%(begin|end)\{%(verbatim|lstlisting|minted)' && vimtex#env#is_inside('\%(lstlisting\|verbatim\|minted\)')[0]
+
+FUNCTION  <SNR>137_count()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 204
+Called 24 times
+Total time:   0.001494
+ Self time:   0.001494
+
+count  total (s)   self (s)
+   24              0.000030   let l:sum = 0
+   24              0.001132   let l:indx = match(a:line, a:pattern)
+   28              0.000038   while l:indx >= 0
+    4              0.000005     let l:sum += 1
+    4              0.000053     let l:match = matchstr(a:line, a:pattern, l:indx)
+    4              0.000011     let l:indx += len(l:match)
+    4              0.000054     let l:indx = match(a:line, a:pattern, l:indx)
+   28              0.000020   endwhile
+   24              0.000023   return l:sum
+
+FUNCTION  384()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/envs.vim line 65
+Called 18 times
+Total time:   0.004424
+ Self time:   0.001356
+
+count  total (s)   self (s)
+   18              0.000225   let env = matchstr(a:line, self.re.name)
+   18   0.000119   0.000099   if !self.validate(env) | return | endif
+                            
+   18              0.000017   let nt = 73
+   18              0.000009   let ne = 12
+                            
+                              " Set caption/label based on type of environment
+   18              0.000018   if env ==# 'frame'
+                                let label = ''
+                                let caption = self.parse_caption_frame(a:line)
+   18              0.000016   elseif env ==# 'table'
+                                let label = self.parse_label()
+                                let caption = self.parse_caption_table(a:line)
+   18              0.000004   else
+   18   0.001533   0.000067     let label = self.parse_label()
+   18   0.001662   0.000080     let caption = self.parse_caption(a:line)
+   18              0.000010   endif
+                            
+                              " Add parenthesis to label
+   18              0.000016   if label !=# ''
+                                let label = substitute(strpart(label,0,nt-ne-2), '\(.*\)', '(\1)','')
+   18              0.000010   endif
+                            
+                              " Set size of label and caption part of string
+   18              0.000067   let nl = len(label) > nt - ne ? nt - ne : len(label)
+   18              0.000030   let nc = nt - ne - nl - 1
+   18              0.000039   let caption = strpart(caption, 0, nc)
+                            
+                              " Create title based on env, caption and label
+   18              0.000095   let title = printf('%-' . ne . 's%-' . nc . 's %' . nl . 's', env, caption, label)
+                            
+                              " Combine level and title and return the trimmed fold text
+   18              0.000073   let text = printf('%-5s %-' . nt . 's', a:level, strpart(title, 0, nt))
+   18              0.000294   return substitute(text, '\s\+$', '', '') . ' '
+
+FUNCTION  airline#parts#crypt()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 59
+Called 356 times
+Total time:   0.002177
+ Self time:   0.002177
+
+count  total (s)   self (s)
+  356              0.002004   return g:airline_detect_crypt && exists("+key") && !empty(&key) ? g:airline_symbols.crypt : ''
+
+FUNCTION  <SNR>73_get_array()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 44
+Called 296 times
+Total time:   0.003257
+ Self time:   0.003257
+
+count  total (s)   self (s)
+  296              0.001419   let opts=empty(a:opts) ? '' : join(a:opts, ',')
+  296              0.001676   return g:airline_gui_mode ==# 'gui' ? [ a:fg, a:bg, '', '', opts ] : [ '', '', a:fg, a:bg, opts ]
+
+FUNCTION  vimtex#fold#text()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold.vim line 120
+Called 18 times
+Total time:   0.006466
+ Self time:   0.002042
+
+count  total (s)   self (s)
+   18              0.000056   let l:line = getline(v:foldstart)
+   18              0.000080   let l:level = v:foldlevel > 1 ? repeat('-', v:foldlevel-2) . g:vimtex_fold_levelmarker : ''
+                            
+  144              0.000116   for l:type in b:vimtex.fold_types_ordered
+  144              0.001096     if l:line =~# l:type.re.start
+   18   0.004534   0.000110       let l:text = l:type.text(l:line, l:level)
+   36              0.000045       if !empty(l:text) | return l:text | endif
+  126              0.000049     endif
+  126              0.000054   endfor
+
+FUNCTION  <SNR>73_get_syn()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 25
+Called 592 times
+Total time:   0.021952
+ Self time:   0.021952
+
+count  total (s)   self (s)
+  592              0.001991   if !exists("g:airline_gui_mode")
+                                let g:airline_gui_mode = airline#init#gui_mode()
+  592              0.000430   endif
+  592              0.000894   let color = ''
+  592              0.003423   if hlexists(a:group)
+  568              0.004837     let color = synIDattr(synIDtrans(hlID(a:group)), a:what, g:airline_gui_mode)
+  592              0.000534   endif
+  592              0.001669   if empty(color) || color == -1
+                                " should always exists
+   24              0.000183     let color = synIDattr(synIDtrans(hlID('Normal')), a:what, g:airline_gui_mode)
+                                " however, just in case
+   24              0.000050     if empty(color) || color == -1
+                                  let color = 'NONE'
+   24              0.000017     endif
+  592              0.000377   endif
+  592              0.000819   return color
+
+FUNCTION  vimtex#delim#get_current()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 306
+Called 177 times
+Total time:   0.118176
+ Self time:   0.003381
+
+count  total (s)   self (s)
+  177   0.118066   0.003271   return s:get_delim(extend({ 'direction' : 'current', 'type' : a:type, 'side' : a:side,}, get(a:, '1', {})))
+
+FUNCTION  vimtex#fold#level()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold.vim line 99
+Called 75707 times
+Total time:  15.195695
+ Self time:  10.189901
+
+count  total (s)   self (s)
+75707              0.293964   let l:line = getline(a:lnum)
+                            
+                              " Filter out lines that do not start any folds (optimization)
+75707              7.256529   if l:line !~# b:vimtex.fold_re | return '=' | endif
+                            
+                              " Never fold \begin|end{document}
+21828              0.242769   if l:line =~# '^\s*\\\%(begin\|end\){document}'
+                                return 0
+21828              0.015338   endif
+                            
+174216              0.237651   for l:type in b:vimtex.fold_types_ordered
+174216   6.167327   1.161533     let l:value = l:type.level(l:line, a:lnum)
+326604              0.487292     if !empty(l:value) | return l:value | endif
+152388              0.113804   endfor
+                            
+                              " Return foldlevel of previous line
+                              return '='
+
+FUNCTION  airline#parts#paste()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 63
+Called 356 times
+Total time:   0.001152
+ Self time:   0.001152
+
+count  total (s)   self (s)
+  356              0.000996   return g:airline_detect_paste && &paste ? g:airline_symbols.paste : ''
+
+FUNCTION  airline#parts#readonly()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 88
+Called 356 times
+Total time:   0.002605
+ Self time:   0.002605
+
+count  total (s)   self (s)
+  356              0.001108   if &readonly && !filereadable(bufname('%'))
+                                return '[noperm]'
+  356              0.000260   else
+  356              0.000644     return &readonly ? g:airline_symbols.readonly : ''
+                              endif
+
+FUNCTION  airline#highlighter#exec()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 91
+Called 224 times
+Total time:   0.073542
+ Self time:   0.021989
+
+count  total (s)   self (s)
+  224              0.000584   if pumvisible()
+                                return
+  224              0.000174   endif
+  224              0.000493   let colors = a:colors
+  224              0.000375   if s:is_win32term
+                                let colors[2] = s:gui2cui(get(colors, 0, ''), get(colors, 2, ''))
+                                let colors[3] = s:gui2cui(get(colors, 1, ''), get(colors, 3, ''))
+  224              0.000174   endif
+  224   0.042520   0.003300   let old_hi = airline#highlighter#get_highlight(a:group)
+  224              0.000583   if len(colors) == 4
+   36              0.000090     call add(colors, '')
+  224              0.000171   endif
+  224              0.000395   if g:airline_gui_mode ==# 'gui'
+                                let new_hi = [colors[0], colors[1], '', '', colors[4]]
+  224              0.000186   else
+  224              0.002106     let new_hi = ['', '', printf("%s", colors[2]), printf("%s", colors[3]), colors[4]]
+  224              0.000200   endif
+  224   0.010452   0.002649   let colors = s:CheckDefined(colors)
+  224   0.007382   0.002852   if old_hi != new_hi || !s:hl_group_exists(a:group)
+                                let cmd = printf('hi %s %s %s %s %s %s %s %s', a:group, s:Get(colors, 0, 'guifg='), s:Get(colors, 1, 'guibg='), s:Get(colors, 2, 'ctermfg='), s:Get(colors, 3, 'ctermbg='), s:Get(colors, 4, 'gui='), s:Get(colors, 4, 'cterm='), s:Get(colors, 4, 'term='))
+                                exe cmd
+                                if has_key(s:hl_groups, a:group)
+                                  let s:hl_groups[a:group] = colors
+                                endif
+  224              0.000151   endif
+
+FUNCTION  <SNR>119_parser_delim_get_corr()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/delim.vim line 691
+Called 4 times
+Total time:   0.000427
+ Self time:   0.000427
+
+count  total (s)   self (s)
+    4              0.000017   let l:type = a:0 > 0 ? a:1 : 'delim_all'
+                            
+   24              0.000059   for l:pair in g:vimtex#delim#lists[l:type].name
+   24              0.000089     if a:delim ==# l:pair[0]
+    3              0.000008       return l:pair[1]
+   21              0.000090     elseif a:delim ==# l:pair[1]
+    1              0.000001       return l:pair[0]
+   20              0.000025     endif
+   20              0.000032   endfor
+
+FUNCTION  airline#parts#spell()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 67
+Called 356 times
+Total time:   0.008740
+ Self time:   0.008740
+
+count  total (s)   self (s)
+  356              0.003882   let spelllang = g:airline_detect_spelllang ? printf(" [%s]", toupper(substitute(&spelllang, ',', '/', 'g'))) : ''
+  356              0.000731   if g:airline_detect_spell && &spell
+                                if winwidth(0) >= 90
+                                  return g:airline_symbols.spell . spelllang
+                                elseif winwidth(0) >= 70
+                                  return g:airline_symbols.spell
+                                else
+                                  return split(g:airline_symbols.spell, '\zs')[0]
+                                endif
+  356              0.000205   endif
+  356              0.000315   return ''
+
+FUNCTION  <SNR>53_Highlight_Matching_Pair()
+    Defined: /usr/share/vim/vim81/plugin/matchparen.vim line 39
+Called 349 times
+Total time:   0.044325
+ Self time:   0.044325
+
+count  total (s)   self (s)
+                              " Remove any previous match.
+  349              0.001589   if exists('w:paren_hl_on') && w:paren_hl_on
+    3              0.000010     silent! call matchdelete(3)
+    3              0.000005     let w:paren_hl_on = 0
+  349              0.000281   endif
+                            
+                              " Avoid that we remove the popup menu.
+                              " Return when there are no colors (looks like the cursor jumps).
+  349              0.001555   if pumvisible() || (&t_Co < 8 && !has("gui_running"))
+                                return
+  349              0.000183   endif
+                            
+                              " Get the character under the cursor and check if it's in 'matchpairs'.
+  349              0.001017   let c_lnum = line('.')
+  349              0.000739   let c_col = col('.')
+  349              0.000403   let before = 0
+                            
+  349              0.000902   let text = getline(c_lnum)
+  349              0.008340   let matches = matchlist(text, '\(.\)\=\%'.c_col.'c\(.\=\)')
+  349              0.000763   if empty(matches)
+                                let [c_before, c] = ['', '']
+  349              0.000252   else
+  349              0.001634     let [c_before, c] = matches[1:2]
+  349              0.000241   endif
+  349              0.004631   let plist = split(&matchpairs, '.\zs[:,]')
+  349              0.001091   let i = index(plist, c)
+  349              0.000419   if i < 0
+                                " not found, in Insert mode try character before the cursor
+  349              0.001254     if c_col > 1 && (mode() == 'i' || mode() == 'R')
+  348              0.000883       let before = strlen(c_before)
+  348              0.000446       let c = c_before
+  348              0.000689       let i = index(plist, c)
+  349              0.000211     endif
+  349              0.000352     if i < 0
+                                  " not found, nothing to do
+  341              0.000335       return
+    8              0.000006     endif
+    8              0.000005   endif
+                            
+                              " Figure out the arguments for searchpairpos().
+    8              0.000010   if i % 2 == 0
+    6              0.000009     let s_flags = 'nW'
+    6              0.000019     let c2 = plist[i + 1]
+    2              0.000001   else
+    2              0.000002     let s_flags = 'nbW'
+    2              0.000002     let c2 = c
+    2              0.000003     let c = plist[i - 1]
+    8              0.000006   endif
+    8              0.000008   if c == '['
+                                let c = '\['
+                                let c2 = '\]'
+    8              0.000004   endif
+                            
+                              " Find the match.  When it was just before the cursor move it there for a
+                              " moment.
+    8              0.000007   if before > 0
+    8              0.000028     let has_getcurpos = exists("*getcurpos")
+    8              0.000009     if has_getcurpos
+                                  " getcurpos() is more efficient but doesn't exist before 7.4.313.
+    8              0.000022       let save_cursor = getcurpos()
+                                else
+                                  let save_cursor = winsaveview()
+    8              0.000006     endif
+    8              0.000031     call cursor(c_lnum, c_col - before)
+    8              0.000004   endif
+                            
+    8              0.000047   if !has("syntax") || !exists("g:syntax_on")
+                                let s_skip = "0"
+    8              0.000002   else
+                                " Build an expression that detects whether the current cursor position is
+                                " in certain syntax types (string, comment, etc.), for use as
+                                " searchpairpos()'s skip argument.
+                                " We match "escape" for special items, such as lispEscapeSpecial.
+    8              0.000033     let s_skip = '!empty(filter(map(synstack(line("."), col(".")), ''synIDattr(v:val, "name")''), ' . '''v:val =~? "string\\|character\\|singlequote\\|escape\\|comment"''))'
+                                " If executing the expression determines that the cursor is currently in
+                                " one of the syntax types, then we want searchpairpos() to find the pair
+                                " within those syntax types (i.e., not skip).  Otherwise, the cursor is
+                                " outside of the syntax types and s_skip should keep its value so we skip
+                                " any matching pair inside the syntax types.
+                                " Catch if this throws E363: pattern uses more memory than 'maxmempattern'.
+    8              0.000009     try
+    8              0.009028       execute 'if ' . s_skip . ' | let s_skip = "0" | endif'
+                                catch /^Vim\%((\a\+)\)\=:E363/
+                                  " We won't find anything, so skip searching, should keep Vim responsive.
+                                  return
+    8              0.000013     endtry
+    8              0.000006   endif
+                            
+                              " Limit the search to lines visible in the window.
+    8              0.000044   let stoplinebottom = line('w$')
+    8              0.000029   let stoplinetop = line('w0')
+    8              0.000017   if i % 2 == 0
+    6              0.000017     let stopline = stoplinebottom
+    2              0.000000   else
+    2              0.000002     let stopline = stoplinetop
+    8              0.000010   endif
+                            
+                              " Limit the search time to 300 msec to avoid a hang on very long lines.
+                              " This fails when a timeout is not supported.
+    8              0.000044   if mode() == 'i' || mode() == 'R'
+    8              0.000061     let timeout = exists("b:matchparen_insert_timeout") ? b:matchparen_insert_timeout : g:matchparen_insert_timeout
+                              else
+                                let timeout = exists("b:matchparen_timeout") ? b:matchparen_timeout : g:matchparen_timeout
+    8              0.000006   endif
+    8              0.000011   try
+    8              0.000724     let [m_lnum, m_col] = searchpairpos(c, '', c2, s_flags, s_skip, stopline, timeout)
+                              catch /E118/
+                                " Can't use the timeout, restrict the stopline a bit more to avoid taking
+                                " a long time on closed folds and long lines.
+                                " The "viewable" variables give a range in which we can scroll while
+                                " keeping the cursor at the same position.
+                                " adjustedScrolloff accounts for very large numbers of scrolloff.
+                                let adjustedScrolloff = min([&scrolloff, (line('w$') - line('w0')) / 2])
+                                let bottom_viewable = min([line('$'), c_lnum + &lines - adjustedScrolloff - 2])
+                                let top_viewable = max([1, c_lnum-&lines+adjustedScrolloff + 2])
+                                " one of these stoplines will be adjusted below, but the current values are
+                                " minimal boundaries within the current window
+                                if i % 2 == 0
+                                  if has("byte_offset") && has("syntax_items") && &smc > 0
+                            	let stopbyte = min([line2byte("$"), line2byte(".") + col(".") + &smc * 2])
+                            	let stopline = min([bottom_viewable, byte2line(stopbyte)])
+                                  else
+                            	let stopline = min([bottom_viewable, c_lnum + 100])
+                                  endif
+                                  let stoplinebottom = stopline
+                                else
+                                  if has("byte_offset") && has("syntax_items") && &smc > 0
+                            	let stopbyte = max([1, line2byte(".") + col(".") - &smc * 2])
+                            	let stopline = max([top_viewable, byte2line(stopbyte)])
+                                  else
+                            	let stopline = max([top_viewable, c_lnum - 100])
+                                  endif
+                                  let stoplinetop = stopline
+                                endif
+                                let [m_lnum, m_col] = searchpairpos(c, '', c2, s_flags, s_skip, stopline)
+    8              0.000010   endtry
+                            
+    8              0.000014   if before > 0
+    8              0.000014     if has_getcurpos
+    8              0.000039       call setpos('.', save_cursor)
+                                else
+                                  call winrestview(save_cursor)
+    8              0.000006     endif
+    8              0.000007   endif
+                            
+                              " If a match is found setup match highlighting.
+    8              0.000025   if m_lnum > 0 && m_lnum >= stoplinetop && m_lnum <= stoplinebottom 
+    2              0.000004     if exists('*matchaddpos')
+    2              0.000029       call matchaddpos('MatchParen', [[c_lnum, c_col - before], [m_lnum, m_col]], 10, 3)
+                                else
+                                  exe '3match MatchParen /\(\%' . c_lnum . 'l\%' . (c_col - before) . 'c\)\|\(\%' . m_lnum . 'l\%' . m_col . 'c\)/'
+    2              0.000001     endif
+    2              0.000002     let w:paren_hl_on = 1
+    8              0.000006   endif
+
+FUNCTION  401()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/sections.vim line 92
+Called 21828 times
+Total time:   0.345595
+ Self time:   0.345595
+
+count  total (s)   self (s)
+                              "
+                              " Parse current buffer to find which sections to fold and their levels.  The
+                              " patterns are predefined to optimize the folding.
+                              "
+                              " We ignore top level parts such as \frontmatter, \appendix, \part, and
+                              " similar, unless there are at least two such commands in a document.
+                              "
+                            
+                              " Only refresh if file has been changed
+21828              0.187774   let l:time = getftime(expand('%'))
+21828              0.067655   if l:time == self.time | return | endif
+    1              0.000005   let self.time = l:time
+                            
+                              " Initialize
+    1              0.000007   let self.folds = []
+    1              0.000004   let level = 0
+    1              0.000098   let buffer = getline(1,'$')
+                            
+                              " Parse part commands (frontmatter, appendix, etc)
+                              " Note: We want a minimum of two top level parts
+    1              0.003422   let lines = filter(copy(buffer), 'v:val =~ ''' . self.re.parts . '''')
+    1              0.000011   if len(lines) >= 2
+                                let level += 1
+                                call insert(self.folds, [self.re.parts, level])
+    1              0.000002   endif
+                            
+                              " Parse section commands (part, chapter, [sub...]section)
+    1              0.003945   let lines = filter(copy(buffer), 'v:val =~ ''' . self.re.sections . '''')
+    6              0.000023   for part in self.sections
+    5              0.000034     let partpattern = '^\s*\%(\\\|% Fake\)' . part . ':\?\>'
+    9              0.000023     for line in lines
+    5              0.000102       if line =~# partpattern
+    1              0.000005         let level += 1
+    1              0.000013         call insert(self.folds, [partpattern, level])
+    1              0.000002         break
+    4              0.000007       endif
+    9              0.000013     endfor
+    6              0.000011   endfor
+
+FUNCTION  403()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/cmd_addplot.vim line 31
+Called 21828 times
+Total time:   0.437232
+ Self time:   0.437232
+
+count  total (s)   self (s)
+21828              0.278894   if a:line =~# self.re.start
+                                let self.opened = 1
+                                return 'a1'
+21828              0.041044   elseif self.opened && a:line =~# self.re.end
+                                let self.opened = 0
+                                return 's1'
+21828              0.014850   endif
+
+FUNCTION  <SNR>66_check_mixed_indent_file()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/whitespace.vim line 32
+Called 1 time
+Total time:   0.000060
+ Self time:   0.000060
+
+count  total (s)   self (s)
+    1              0.000004   let c_like_langs = get(g:, 'airline#extensions#c_like_langs', [ 'c', 'cpp', 'cuda', 'go', 'javascript', 'ld', 'php' ])
+    1              0.000004   if index(c_like_langs, &ft) > -1
+                                " for C-like languages: allow /** */ comment style with one space before the '*'
+                                let head_spc = '\v(^ +\*@!)'
+    1              0.000000   else
+    1              0.000001     let head_spc = '\v(^ +)'
+    1              0.000001   endif
+    1              0.000035   let indent_tabs = search('\v(^\t+)', 'nw')
+    1              0.000007   let indent_spc  = search(head_spc, 'nw')
+    1              0.000002   if indent_tabs > 0 && indent_spc > 0
+                                return printf("%d:%d", indent_tabs, indent_spc)
+    1              0.000000   else
+    1              0.000001     return ''
+                              endif
+
+FUNCTION  410()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/cmd_multi.vim line 32
+Called 21828 times
+Total time:   0.803366
+ Self time:   0.803366
+
+count  total (s)   self (s)
+21828              0.490282   if a:line =~# self.re.start
+                                let self.opened += 1
+                                return 'a1'
+21828              0.182334   elseif self.opened > 0 && a:line =~# self.re.end
+                                let self.opened -= 1
+                                return 's1'
+21828              0.015268   endif
+
+FUNCTION  413()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/cmd_single.vim line 32
+Called 21828 times
+Total time:   0.466086
+ Self time:   0.466086
+
+count  total (s)   self (s)
+21828              0.287524   if a:line =~# self.re.start
+                                let self.opened = 1
+                                return 'a1'
+21828              0.051115   elseif self.opened && a:line =~# self.re.end
+                                let self.opened = 0
+                                return 's1'
+21828              0.015367   endif
+
+FUNCTION  <SNR>73_hl_group_exists()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 82
+Called 224 times
+Total time:   0.004530
+ Self time:   0.004530
+
+count  total (s)   self (s)
+  224              0.001526   if !hlexists(a:group)
+                                return 0
+  224              0.001793   elseif empty(synIDattr(hlID(a:group), 'fg'))
+                                return 0
+  224              0.000183   endif
+  224              0.000253   return 1
+
+FUNCTION  <SNR>68_wordcount_update()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/wordcount.vim line 10
+Called 177 times
+Total time:   0.039156
+ Self time:   0.012733
+
+count  total (s)   self (s)
+  177              0.000644   if empty(bufname(''))
+                                return
+  177              0.000114   endif
+  177              0.003561   if match(&ft, get(g:, 'airline#extensions#wordcount#filetypes')) > -1
+  177              0.000503     let l:mode = mode()
+  177              0.000528     if l:mode ==# 'v' || l:mode ==# 'V' || l:mode ==# 's' || l:mode ==# 'S'
+                                  let b:airline_wordcount = airline#extensions#wordcount#formatters#{s:formatter}#format()
+                                  let b:airline_change_tick = b:changedtick
+  177              0.000119     else
+  177              0.001671       if get(b:, 'airline_wordcount_cache', '') is# '' || b:airline_wordcount_cache isnot# get(b:, 'airline_wordcount', '') || get(b:, 'airline_change_tick', 0) != b:changedtick ||  get(b:, 'airline_winwidth', 0) != winwidth(0)
+                                    " cache data
+  172   0.029124   0.002701         let b:airline_wordcount = airline#extensions#wordcount#formatters#{s:formatter}#format()
+  172              0.000387         let b:airline_wordcount_cache = b:airline_wordcount
+  172              0.000303         let b:airline_change_tick = b:changedtick
+  172              0.000345         let b:airline_winwidth = winwidth(0)
+  177              0.000094       endif
+  177              0.000098     endif
+  177              0.000097   endif
+
+FUNCTION  vimtex#pos#get_cursor()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/pos.vim line 12
+Called 191 times
+Total time:   0.001230
+ Self time:   0.001230
+
+count  total (s)   self (s)
+  191              0.001111   return exists('*getcurpos') ? getcurpos() : getpos('.')
+
+FUNCTION  airline#parts#mode()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/parts.vim line 55
+Called 356 times
+Total time:   0.010506
+ Self time:   0.004454
+
+count  total (s)   self (s)
+  356   0.010335   0.004283   return airline#util#shorten(get(w:, 'airline_current_mode', ''), 79, 1)
+
+FUNCTION  airline#statusline()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline.vim line 137
+Called 356 times
+Total time:   0.004453
+ Self time:   0.004453
+
+count  total (s)   self (s)
+  356              0.001794   if has_key(s:contexts, a:winnr)
+  356              0.002363     return '%{airline#check_mode('.a:winnr.')}'.s:contexts[a:winnr].line
+                              endif
+                            
+                              " in rare circumstances this happens...see #276
+                              return ''
+
+FUNCTION  463()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/matchparen.vim line 39
+Called 177 times
+Total time:   0.003689
+ Self time:   0.003689
+
+count  total (s)   self (s)
+  177              0.002140   silent! call matchdelete(w:vimtex_match_id1)
+  177              0.000822   silent! call matchdelete(w:vimtex_match_id2)
+  177              0.000385   unlet! w:vimtex_match_id1
+  177              0.000195   unlet! w:vimtex_match_id2
+
+FUNCTION  464()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/matchparen.vim line 45
+Called 177 times
+Total time:   0.259357
+ Self time:   0.006795
+
+count  total (s)   self (s)
+  177   0.004572   0.000883   call self.clear()
+                            
+  177   0.129684   0.002022   if vimtex#util#in_comment() | return | endif
+                            
+  177   0.120593   0.002417   let l:current = vimtex#delim#get_current('all', 'both')
+  177              0.000569   if empty(l:current) | return | endif
+                            
+   14   0.003229   0.000194   let l:corresponding = vimtex#delim#get_matching(l:current)
+   14              0.000046   if empty(l:corresponding) | return | endif
+   14              0.000035   if empty(l:corresponding.match) | return | endif
+                            
+    6              0.000022   let [l:open, l:close] = l:current.is_open ? [l:current, l:corresponding] : [l:corresponding, l:current]
+                            
+    6              0.000011   if exists('*matchaddpos')
+    6              0.000111     let w:vimtex_match_id1 = matchaddpos('MatchParen', [[l:open.lnum, l:open.cnum, strlen(l:open.match)]])
+    6              0.000057     let w:vimtex_match_id2 = matchaddpos('MatchParen', [[l:close.lnum, l:close.cnum, strlen(l:close.match)]])
+                              else
+                                let w:vimtex_match_id1 = matchadd('MatchParen', '\%' . l:open.lnum . 'l\%' . l:open.cnum . 'c' . l:open.re.this)
+                                let w:vimtex_match_id2 = matchadd('MatchParen', '\%' . l:close.lnum . 'l\%' . l:close.cnum . 'c' . l:close.re.this)
+    6              0.000003   endif
+
+FUNCTION  airline#highlighter#get_highlight()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 55
+Called 296 times
+Total time:   0.048119
+ Self time:   0.022910
+
+count  total (s)   self (s)
+  296              0.001465   if get(g:, 'airline_highlighting_cache', 0) && has_key(s:hl_groups, a:group)
+                                return s:hl_groups[a:group]
+  296              0.000247   else
+  296   0.014387   0.002849     let fg = s:get_syn(a:group, 'fg')
+  296   0.013323   0.002909     let bg = s:get_syn(a:group, 'bg')
+  296              0.005012     let reverse = g:airline_gui_mode ==# 'gui' ? synIDattr(synIDtrans(hlID(a:group)), 'reverse', 'gui') : synIDattr(synIDtrans(hlID(a:group)), 'reverse', 'cterm')|| synIDattr(synIDtrans(hlID(a:group)), 'reverse', 'term')
+  296              0.002184     let bold = synIDattr(synIDtrans(hlID(a:group)), 'bold')
+  296              0.000533     let opts = a:000
+  296              0.000368     if bold
+   62              0.000120       let opts = ['bold']
+  296              0.000226     endif
+  296   0.007191   0.003934     let res = reverse ? s:get_array(bg, fg, opts) : s:get_array(fg, bg, opts)
+  296              0.000249   endif
+  296              0.001031   let s:hl_groups[a:group] = res
+  296              0.000350   return res
+
+FUNCTION  airline#util#shorten()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/util.vim line 12
+Called 712 times
+Total time:   0.021667
+ Self time:   0.021667
+
+count  total (s)   self (s)
+  712              0.010048   if winwidth(0) < a:winwidth && len(split(a:text, '\zs')) > a:minwidth
+  356              0.000850     if get(a:000, 0, 0)
+                                  " shorten from tail
+                                  return '…'.matchstr(a:text, '.\{'.a:minwidth.'}$')
+  356              0.000272     else
+                                  " shorten from beginning of string
+  356              0.004705       return matchstr(a:text, '^.\{'.a:minwidth.'}').'…'
+                                endif
+  356              0.000246   else
+  356              0.000481     return a:text
+                              endif
+
+FUNCTION  airline#highlighter#highlight_modified_inactive()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 204
+Called 2 times
+Total time:   0.001622
+ Self time:   0.000186
+
+count  total (s)   self (s)
+    2              0.000021   if getbufvar(a:bufnr, '&modified')
+    2              0.000050     let colors = exists('g:airline#themes#{g:airline_theme}#palette.inactive_modified.airline_c') ? g:airline#themes#{g:airline_theme}#palette.inactive_modified.airline_c : []
+                              else
+                                let colors = exists('g:airline#themes#{g:airline_theme}#palette.inactive.airline_c') ? g:airline#themes#{g:airline_theme}#palette.inactive.airline_c : []
+    2              0.000003   endif
+                            
+    2              0.000010   if !empty(colors)
+    2   0.001505   0.000069     call airline#highlighter#exec('airline_c'.(a:bufnr).'_inactive', colors)
+    2              0.000003   endif
+
+FUNCTION  VimtexIndentExpr()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 24
+Called 6 times
+Total time:   0.005106
+ Self time:   0.000045
+
+count  total (s)   self (s)
+    6   0.005103   0.000042   return VimtexIndent(v:lnum)
+
+FUNCTION  airline#extensions#keymap#status()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/extensions/keymap.vim line 10
+Called 356 times
+Total time:   0.004330
+ Self time:   0.004330
+
+count  total (s)   self (s)
+  356              0.002247   if (get(g:, 'airline#extensions#keymap#enabled', 1) && has('keymap'))
+  356              0.001818     return printf('%s', (!empty(&keymap) ? (g:airline_symbols.keymap . ' '. &keymap) : ''))
+                              else
+                                return ''
+                              endif
+
+FUNCTION  <SNR>73_exec_separator()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/highlighter.vim line 164
+Called 36 times
+Total time:   0.020153
+ Self time:   0.001775
+
+count  total (s)   self (s)
+   36              0.000072   if pumvisible()
+                                return
+   36              0.000024   endif
+   36   0.005346   0.000351   let l:from = airline#themes#get_highlight(a:from.a:suffix)
+   36   0.005063   0.000349   let l:to = airline#themes#get_highlight(a:to.a:suffix)
+   36              0.000096   let group = a:from.'_to_'.a:to.a:suffix
+   36              0.000040   if a:inverse
+   12              0.000050     let colors = [ l:from[1], l:to[1], l:from[3], l:to[3] ]
+   24              0.000015   else
+   24              0.000110     let colors = [ l:to[1], l:from[1], l:to[3], l:from[3] ]
+   36              0.000022   endif
+   36              0.000096   let a:dict[group] = colors
+   36   0.009057   0.000388   call airline#highlighter#exec(group, colors)
+
+FUNCTION  vimtex#env#is_inside()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/env.vim line 129
+Called 18 times
+Total time:   0.001501
+ Self time:   0.001501
+
+count  total (s)   self (s)
+   18              0.000086   let l:stopline = max([line('.') - 50, 1])
+   18              0.001408   return searchpairpos('\\begin\s*{' . a:env . '\*\?}', '', '\\end\s*{' . a:env . '\*\?}', 'bnW', '', l:stopline)
+
+FUNCTION  airline#util#prepend()
+    Defined: ~/.vim/bundle/vim-airline/autoload/airline/util.vim line 47
+Called 356 times
+Total time:   0.002639
+ Self time:   0.002639
+
+count  total (s)   self (s)
+  356              0.000882   if a:minwidth > 0 && winwidth(0) < a:minwidth
+                                return ''
+  356              0.000200   endif
+  356              0.000991   return empty(a:text) ? '' : a:text.s:spc.g:airline_right_alt_sep.s:spc
+
+FUNCTION  <SNR>137_indent_envs()
+    Defined: ~/.vim/bundle/vimtex/indent/tex.vim line 115
+Called 6 times
+Total time:   0.000219
+ Self time:   0.000219
+
+count  total (s)   self (s)
+    6              0.000006   let l:ind = 0
+                            
+                              " First for general environments
+    6              0.000048   let l:ind += s:sw*(    a:prev =~# '\\begin{.*}' && a:prev !~# '\\end{.*}' && a:prev !~# s:envs_ignored)
+    6              0.000034   let l:ind -= s:sw*(    a:cur !~# '\\begin{.*}' && a:cur =~# '\\end{.*}' && a:cur !~# s:envs_ignored)
+                            
+                              " Indentation for prolonged items in lists
+    6              0.000036   let l:ind += s:sw*((a:prev =~# s:envs_item)    && (a:cur  !~# s:envs_enditem))
+    6              0.000031   let l:ind -= s:sw*((a:cur  =~# s:envs_item)    && (a:prev !~# s:envs_begitem))
+    6              0.000043   let l:ind -= s:sw*((a:cur  =~# s:envs_endlist) && (a:prev !~# s:envs_begitem))
+                            
+    6              0.000007   return l:ind
+
+FUNCTION  391()
+    Defined: ~/.vim/bundle/vimtex/autoload/vimtex/fold/cmd_single_opt.vim line 32
+Called 21828 times
+Total time:   0.376432
+ Self time:   0.376432
+
+count  total (s)   self (s)
+21828              0.219915   if a:line =~# self.re.start
+                                let self.opened = 1
+                                return 'a1'
+21828              0.042062   elseif self.opened && a:line =~# self.re.end
+                                let self.opened = 0
+                                return 's1'
+21828              0.014600   endif
+
+FUNCTIONS SORTED ON TOTAL TIME
+count  total (s)   self (s)  function
+75707  15.195695  10.189901  vimtex#fold#level()
+21624   1.372051   1.329661  383()
+21828   1.003383   0.657788  398()
+21828   0.803366             410()
+21828   0.466086             413()
+21828   0.437232             403()
+21828   0.376432             391()
+21828   0.345595             401()
+21624   0.299181             393()
+  177   0.259357   0.006795  464()
+21828   0.248063             395()
+  187   0.133168             vimtex#util#in_syntax()
+  177   0.127662   0.002312  vimtex#util#in_comment()
+  356   0.125898   0.028121  airline#check_mode()
+  177   0.118176   0.003381  vimtex#delim#get_current()
+  177   0.114795   0.096607  <SNR>119_get_delim()
+    2   0.096155   0.012565  airline#highlighter#highlight()
+  224   0.073542   0.021989  airline#highlighter#exec()
+  356   0.053922   0.036927  airline#extensions#whitespace#check()
+  296   0.048119   0.022910  airline#highlighter#get_highlight()
+
+FUNCTIONS SORTED ON SELF TIME
+count  total (s)   self (s)  function
+75707  15.195695  10.189901  vimtex#fold#level()
+21624   1.372051   1.329661  383()
+21828              0.803366  410()
+21828   1.003383   0.657788  398()
+21828              0.466086  413()
+21828              0.437232  403()
+21828              0.376432  391()
+21828              0.345595  401()
+21624              0.299181  393()
+21828              0.248063  395()
+  187              0.133168  vimtex#util#in_syntax()
+  177   0.114795   0.096607  <SNR>119_get_delim()
+  349              0.044325  <SNR>53_Highlight_Matching_Pair()
+21642              0.042410  389()
+  356   0.053922   0.036927  airline#extensions#whitespace#check()
+  356   0.125898   0.028121  airline#check_mode()
+ 2492              0.024086  airline#util#append()
+  296   0.048119   0.022910  airline#highlighter#get_highlight()
+  224   0.073542   0.021989  airline#highlighter#exec()
+  592              0.021952  <SNR>73_get_syn()
+

@@ -1,0 +1,796 @@
+    \section{Los Números Naturales}
+    \begin{definition}
+        Definimos la función sucesor de un conjunto $x$ como $x^+ = x \cup
+        \{x\}$.
+        \\
+        Se denota al conjunto $\emptyset$ como 0, y al conjunto $\emptyset^+$ como 1.
+    \end{definition}
+    \begin{axiom}{de Infinitud}
+        \[
+            \exists A \quad x \in A \, \Leftrightarrow \, \emptyset \in x \, \land
+            \, x \in x^+
+        \]
+    \end{axiom}
+        \begin{definition}
+            Se dice que un conjunto $X$ es un conjunto sucesor si
+            \begin{enumerate}
+                \item $\emptyset \in X$
+                \item $ \forall x \, (x \in X \, \Rightarrow \, x^{+} \in X)$
+            \end{enumerate}
+    \end{definition}
+    Así el axioma del infinito postula la existencia de un conjunto sucesor. \\
+    Sea $A$ un conjunto sucesor.
+    Note que la existencia de $A$ está garantizada por el axioma del infinito.
+    \\
+    Sea $ B = \{ \, x \in \mathcal{P}(A) \, | \, \emptyset \in x \, \land \quad
+    [\forall z \, (z \in x \, \Rightarrow \, z^+ \in x)]\}$. \\
+    Por el axioma de especificación el conjunto $B$ es un conjunto. Se definirá
+    el conjunto $\mathbb{N}$ de los números naturales como $\bigcap B$.
+    \begin{proposition}
+        La definición de $\mathcal{N}$ es independiente de la elección de $A$.
+    \end{proposition}
+    \begin{proof}
+        Observe que 
+        \begin{enumerate}
+            \item $\emptyset \in x \quad \forall x \in B$. $\therefore \quad \emptyset
+                \in \mathbb{N}$.
+            \item Si $x \in \mathbb{N}$, entonces $x \in z \, \forall z \in B$.
+        \end{enumerate}
+        Como todo elemento de $B$ es un conjunto sucesor, se tiene que $x^+ \in
+        z \, \forall z \in B \quad \therefore \, x \in \mathbb{N}$. Así
+        $\mathbb{N}$ es un conjunto sucesor.  \\
+        Sea $H$ un conjunto sucesor. Veamos que $A\cap H$ es un conjunto
+        sucesor. Además:
+        \begin{align*}
+            A \cap H &\in \mathcal{P}(A) \\
+            \therefore A \cap H &\in B \\
+        \end{align*}
+        Lo anterior implica que $\mathbb{N} \subset A \cap H \subset H$.
+        Así $\mathbb{N} \subset X \quad \forall X $, $X$ conjunto sucesor.
+    \end{proof}
+    Se tiene:
+    \begin{enumerate}
+        \item $ 0 \in \mathbb{N}$
+        \item $ \forall x \quad (x \in \mathbb{N} \, \rightarrow \,x^+ \in
+            \mathbb{N} $
+        \item Si $S \subset \mathbb{N}$ que satisface:
+            \begin{enumerate}
+                \item $ 0 \in S$
+                \item $ \forall x \quad (x \in S \, \rightarrow \,x^+ \in S$
+            \end{enumerate}
+        \item $\forall x \quad ( x \in \mathbb{N} \rightarrow x^+ \neq 0 )$ ya
+            que $ x \in x^+$
+        \item $\forall x \, \forall y \quad [(x \in \mathbb{N} \, \land \, y \in
+            \mathbb{N} \, \land \, x^+ = y^+ ) \Rightarrow \, x = y]$
+    \end{enumerate}
+    La última afirmación se verificará a partir de la siguiente definición y los
+    siguientes dos lemas:
+    \begin{definition}
+        Un conjunto $A$ se dice \textbf{transitivo} sí $\forall x \, \forall y [
+        (x \in A \, \land \, y \in x ) \, \, \Rightarrow y \in A]$.
+    \end{definition}
+    \begin{remark}
+        Son equivalentes las siguientes afirmaciones:
+        \begin{enumerate}
+            \item $A$ es un conjunto transitivo.
+            \item $\forall  x \, (x \in A \, \Rightarrow x \subset A)$.
+            \item $ \bigcup A \subset A $.
+            \item $ A \subset \mathcal{P}(A)$.
+        \end{enumerate}
+    \end{remark}
+    \begin{proof}
+        \textit{i $\rightarrow$ ii} \\
+        Si $x \in A \, \land y \in x$, al ser $A$ transitivo, $y \in A \,
+        \therefore \, x \subset A$.
+        \textit{ii $\rightarrow$ iii} \\
+        \textit{iii $\rightarrow$ iv} \\
+        \textit{iv $\rightarrow$ i} \\
+    \end{proof}
+    \begin{definition}
+        Por número natural se entiende cualquier $x$, $x \in \mathbb{N}$.
+    \end{definition}
+    \begin{lemma}\label{lem:p1l1}
+        Todo elemento de $\mathbb{N}$ es un conjunto transitivo.
+    \end{lemma}
+    \begin{proof}
+        Sea 
+        \[
+            S = \{n \in N \, | \, \forall x \, (x \in n \, \Rightarrow \, x
+            \subset n)\}
+        \]
+        Observe que:
+        \begin{enumerate}
+            \item $0 \in S$ ya que $0 \in \mathbb{N}$ y $\forall x \, ( x \in \emptyset
+                \, \Rightarrow \, x \subset \emptyset )$
+            \item Suponga que $n \in S$, entonces $n \in \mathbb{N}$. Además
+                $n^+ \in \mathbb{N}$. Sea $x \in n^+$ entonces $x \in n \, \lor
+                \, x = n$. 
+                \begin{itemize}
+                    \item Si $x \in n$ entonces, dado que $n \in S$, $x \subset
+                        n$. Además, $n \subset n^+$, por lo cual $x \subset
+                        n^+$.
+                    \item Si $x=n$, entonces $x \subset n^+$
+                \end{itemize}
+        \end{enumerate}
+        Así $S = \mathbb{N}$ que era lo que se quería demostrar.
+
+    \end{proof}
+    \begin{lemma}
+        Ningún número natural es subconjunto de alguno de sus elementos.
+        \[
+            \forall n \, [(n \in \mathbb{N} \, \land \, x \in n) \Rightarrow \,
+            n  \setminus x \neq \emptyset]
+        \]
+    \end{lemma}
+    \begin{proof}
+        Sea $S = \{ n \in \mathbb{N} \, | \, \forall x \, (x \in n \Rightarrow n
+     \setminus x \neq \emptyset\}$
+    \begin{enumerate}
+        \item $ 0 \in S$ ya que $\emptyset \in \mathbb{N} \, \land \, \forall x
+            (x \in \emptyset \Rightarrow \emptyset  \setminus x \neq \emptyset )$
+        \item Suponga que $n \in S$ , entonces, en particular $n \in \mathbb{N}
+            \, \therefore n^+ \in \mathbb{N}$. Se verificará que $ n^+ \in S$.
+            Sea $x \in n^+$, entonces $x \in n \, \lor \, x = n$. 
+            \begin{itemize}
+                \item Suponga que $x \in n$. Entonces dado que $n \in S$, $n  \setminus x
+                    \neq \emptyset$. En consecuencia $n^+  \setminus x \neq \emptyset$ ya
+                que si $n^+  \setminus x = \emptyset$ todo elemento de $n^+$ pertenecería
+                a $x$, en particular, como $n \subset n^+ $ todo elemento de $n$
+                pertenecería a $x$ lo cual contradice que $ n  \setminus x \neq
+                \emptyset$. 
+            \item Suponga ahora que $x=n$. Así, procediendo por reducción al
+                absurdo, considere $n^+ \subset n$. Como $ n \in S \, \land \, n
+                 \setminus n = \emptyset$ se tiene $n \notin n$. Como $n \in n^+$, se
+                tiene
+                $ \neg(n^+ \subset n)$, así como $n^+ \subset n$, se tiene una
+                contradicción $\therefore$ $n^+  \setminus x \neq \emptyset$.
+        \end{itemize}
+    \end{enumerate}
+    Así $S = \mathbb{N}$
+    \end{proof}
+    Los lemas anteriores permiten justificar la propiedad \textit{e}.
+    \begin{proof}
+        Sean $x$, $y$ números naturales tales que $x^+ = y^+$.  Así por ser
+        elementos de $\mathbb{N}$ se tienen dos posibilidades $x=y$ ó $x \in y
+        \, \land \, y \in x$ lo cual implica del lema \ref{lem:p2l1} que $x=y$.
+    \end{proof}
+    Las propiedades 1, 2, 3, 4, y 5 fueron postuladas en 1889 por Peano como un
+    conjunto de axiomas, y la existencia de un conjunto con dichas propiedades.
+    Consigo se construyeron los conjuntos
+    $\mathbb{Z},\mathbb{Q},\mathbb{R},\mathbb{C}$ y sus propiedades analíticas y
+    aritméticas. Peano reconoce que sus axiomas fueron postulados un año antes
+    por Richard Dedekind.
+    \vspace{1cm}
+    \hline
+    \vspace{1cm}
+    
+    Considere la función: $ S : \mathbb{N} \rightarrow \mathbb{N}$. $S(n)=n^+$.
+    \\
+    \begin{itemize}
+        \item $S$ es inyectiva, ya que si $S(n)= S(m)$, de la propiedad
+            5 se sigue que $n=m$.
+        \item $S$ no es suprayectiva, ya que la propiedad 4 indica $0 \notin
+            S(\mathbb{N})$. De hecho $S(\mathbb{N}) = \mathbb{N} \setminus \{0\}$
+            Veamos que, como $0\notin S(\mathbb{N})$ se tiene que $S(\mathbb{N})
+            \subset \mathbb{N}$. \\
+            Además siendo $M=S(\mathbb{N})\bigcup\{0\}$ se tiene que:
+            \begin{enumerate}
+                \item $0 \in M$
+                \item si $n \in M$ entonces $n^+ \in M$.
+            \end{enumerate}
+    \end{itemize}
+    
+    La propiedad 3 implica $\mathbb{N}=M$ $\therefore$ si $x \in N\setminus \{0\}$, entonces
+    $x \in  M\setminus \setzero$ por lo cual $x \in S(\mathbb{N})$. $\therefore
+    \, S(\mathbb{N}) = \mathbb{N} \setminus \setzero$\\
+
+
+    \begin{definition}
+        Sea $X$ un conjunto; $g:\, X \rightarrow X$ una función, y $x_0 \in X$.
+        Decimos que la terna $(X, g, x_0)$ es un \textit{sistema de Peano} si:
+        \begin{enumerate}
+            \item $g$ es inyectiva
+            \item $g(X) = X \setminus \{x_0\}$
+            \item $[\, A\subset X \, \land \, x_0 \in A \, \land \, ( \, g(x)
+                \in A \, \, \forall x \in A \, ) \, ] \Rightarrow A=X$
+        \end{enumerate}
+    \end{definition}
+    \begin{remark}
+        $(\mathbb{N}, S, 0)$ es un sistema de Peano.
+    \end{remark}
+    \begin{definition}
+        Dado un conjunto $A$, una \textit{operación binaria en} $A$ es una
+        función $f: \, A\times A \rightarrow A$.
+        \begin{itemize}
+            \item Si $B \subset A$, se dice que $B$ es \textit{cerrado bajo} $f$
+                si $f(B\times B) \subset B$.
+            \item $f$ es \textit{conmutativa} sí $f(x,y)=f(y,x)\quad \forall \,
+                x, y \in A$
+            \item $f$ es \textit{asociativa} sí $f(x, f(y,z)) = f(f(x, y), z)
+                \quad \forall \, x, y, z \in A$
+        \end{itemize}
+    \end{definition}
+    \begin{proposition}{(de recurrencia)}\label{pr:recurrencia} Sea $A$ un conjunto no vacío, $G: \, A
+        \rightarrow A$ una función y $a \in A$. Entonces existe una única
+        función $F: \, \mathbb{N} \rightarrow A$ tal que $\forall \, n \in
+        \mathbb{N} \quad F(n^+)= G(F(n))$ y $F(0) = a$.
+    \end{proposition}
+    \begin{proof}
+        Sea $C = \{ \, T \in  \mathcal{P}(\mathbb{N} \times A) \, | \, (0,a) \in
+        T \, \land \, [\,(n,b) \in T \rightarrow (n^+, G(b))\in T \,]\, \}$
+        Veamos que $C$ es no vacío ya que $\mathbb{N}\times A \in C$. \\
+        Sea $F = \bigcap C$. Veamos que $F \in C$ ya que $(0,a) \in T \, \forall \,
+        T \in C$ y si $(n,b) \in F$, se tiene que $(n, b) \in T \, \forall \,T
+        \in C \, \therefore \, (n^+, G(b)) \in T \, \forall \, T \in C \,
+        \therefore \, (n^+, G(b))\in F$ \\
+        Se verificará que $F$ es función. \\
+        Sea $M= \{\, n\in \mathbb{N} \, | \, \exists ! \, b\in S \quad (n,b) \in F
+        \, \}$ \\
+        \textbf{Hecho 1:} $0 \in M$ \\
+        Veamos que $0 \in \mathbb{N}$, y $(0,a) \in F$. \\
+        Suponga que existe $b \in A$ tal que  $(0,b) \in F \, \land \, b \neq
+        a$. Sea $F_b = F \setminus \{(0,b)\}$. Se tiene que $F_b \neq F$, ya que
+        $(0,b) \in F\setminus F_b$; además $F_b \subset F$. \\
+        Como $F \subset \mathbb{N} \times A$ se tiene $F_b \subset \mathbb{N}
+        \times A$; además $(0,a) \in F_b$. \\
+        Sea $(n,b) \in F_b$, enconces $(n,b) \in F \, \therefore$ como $F \in C
+        \, \Rightarrow \, (n^+, G(n))\in F$ Además como $n^+ \neq 0$, se tiene
+        $(n^+, G(b))\in F_b\, \therefore \, (n^+, G(b))\in F \setminus
+        \{(0,b)\}$ i.e $(n^+, G(b))\in F_b$ \\
+        Se ha probado que $F_b \in C \, \therefore \, F\subset F_b$. Así,
+        $F=F_b$ lo cual es una contradicción, por lo tanto $a=b$, por ende $0
+        \in M$. \\
+        \textbf{Hecho 2:} $n^+ \in M \quad \forall n \in M$ \\
+        Sea $n \in M$, entonces $\exists ! b\in A$ tal que $(n,b) \in F$. Como
+        $F \in C$, se tiene entonces que $(n^+, G(b))\in F$. \\
+        Suponga que existe $c \in A$ tal que $(n^+, c)\in F \, \land \, c \neq
+        G(b)$. \\
+        Sea $F_c = F \setminus \{(n^+, c)\}$. Se tiene que $F \neq F_c$, ya que
+        $(n^+, c) \in F \setminus F_c$. Además $F_c \subset F$. \\
+        Observe que $F_c \in \mathcal{P}(\mathbb{N} \times A)$, además
+        $(0,a)\in F$ y como $0 \neq n^+$, se tiene: $(0,a) \neq (n^+, c) \,
+        \therefore \, (0,a) \in F_c$. \\
+        Sea $(m, d)\in F_c$, entonces $(m,d)\in F$ y como $F \in C$, se tiene
+        que $(m^+, G(d))\in F \, \land \, (m^+, G(d)) \neq (n^+, c)$; ya que de
+        lo contrario, $n^+ = m^+ \, \land \, G(d) =  c \neq G(b) \, \therefore
+        \, n=m \, \land \, G(d) \neq G(b)$. Así $n=m \, \land \, d\neq b$. \\
+        Se tiene por lo anterior que seleccionando $n=m$, $d \neq b$. Así
+        $(n,b), (n,d) \in F$ lo cual contradiría que $n \in M$. Por lo cual
+        $c=G(b)$ entonces $n^+ \in M$. \\
+        Los hechos 1 y 2 implican que $M=\mathbb{N}$, es decir que $\forall n
+        \in N \quad \exists !b\, : \,  F(n) = b$. Así $F$ es función. \\
+        Suponga ahora que $\bar{F}: \, \mathbb{N} \rightarrow S$ es una función
+        tal que $\bar{F}(0) =a \, \land \, \bar{F}(n^+)=G(F(n))$. Sea $H=\{n\in
+        \mathbb{N} \, | \, F(n) = \bar{F}(n) \}$. Veamos que $0 \in H$ ya que
+        $F(0)=\bar{F}(0) = a$. Considere ahora a $n \in H$ (ya que es no vacío),
+        entonces $F(n^+)=G(F(n))=G(\bar{F}(n))=\bar{F}(n^+)$; así $n^+ \in H$.
+        Por lo cual $H = \mathbb{N}$ entonces $F=\bar{F}$.
+    \end{proof}
+    \begin{proposition}\label{pr:recurrencia2} Sean $A$ un conjunto, $G:\, \mathbb{N}\times A \rightarrow
+        A$ una función, y $0 \in A$. Entonces existe una única función $F: \,
+        \mathbb{N} \rightarrow A$ tal que:
+        \begin{enumerate}
+            \item $F(0) = a$
+            \item $F(n^+)=G(n,F(n)) \quad \forall n \in \mathbb{N}$
+        \end{enumerate}
+    \end{proposition}
+    Para la demostración se procede de forma similar a la prueba anterior.
+    \begin{proof}
+        Considere $C=\{\,T \in \mathcal{P}(\mathbb{N} \times A) \, | \, (0,a) \in
+        T \, \land \, (n,b) \in T \, \Rightarrow \, (n^+, G(n,b)) \in T\,\}$.
+        Trivialmente $C$ es no vacío ya que para cualquier $(n,b)\in
+        \mathbb{N}\times A$,  $G(n, b) \in A$ así, $\mathbb{N}
+        \times A \in C$. Considere ahora a $F = \bigcup C$; de la misma forma
+        que la prueba anterior $F \in C$.
+        Sea $M = \{n \in \mathbb{N} \, | \, \exists! \, b \quad (n,b) \in F$. Se
+        verificará que $0 \in M$, y que si $n \in M$ entonces $n^+ \in M$.\\
+        \textbf{Hecho 1.} $0 \in M$. \\
+        Suponga que existe $b \in A$ tal que $b \neq a \, \land \, (0,b) \in
+        F$. Sea $F_b = F \setminus {(0,b)}$ veamos que $(0,b) \in F \setminus
+        F_b$ de forma que $F_b \subset F$. \\
+        Considere ahora $n \in \mathbb{N}$ de forma que como $n^+ \neq 0$,
+        si $(n, c)\in F_b$, entonces $(n^+,G(n,c))\in F_b$; así $F_b \in C$. 
+        La condición anterior implica
+        que $F \subset F_b$ así $F=F_b$ lo cual contradice que $(0,b) \in F
+        \setminus F_b$, por lo tanto $a=b$, así $0 \in M$. \\
+        \textbf{Hecho 2.} $n \in M \, \Rightarrow n^+ \in M$.\\
+        Sea $n \in \mathbb{N} \, \land \, (n, b)\in F$. Suponga que $\exists c$
+        tal que $c \neq G(n, b) \, 
+        \land \, (n^+, c) \in F$. Considere ahora $F_c = F \setminus \{(n^+,
+        c)\}$. Veamos que $(n^+, c) \in F \setminus F_c$ así $F_c \subset F$.
+        Como $0 \neq n^+$ y $(0,a) \in F$, $(0,a) \in F_c$. \\
+        Así también $(n,b) \in F_c$ ya que $n \neq n^+ \,\therefore \,
+        (n,b)\neq(n^+,c)$. Y, $(n^+, G(n,b)) \in F_c$ puesto que $(n^+,
+        G(n,b))\neq (n^+, c)$ así $F_c \in C$ por lo cual $F \subset F_c$. Lo
+        cual contradice que $(n^+, c) \in F \setminus F_c$. Así, de los hechos
+        anteriores se tiene que $0 \in M$ y si $n \in M$, entonces $n^+ \in M$.
+        De lo cual se concluye que $M= \mathbb{N}$ así $F$ es función.\\ \\
+        Finalmente, la unicidad se concluye de un razonamiento idéntico al de la
+        proposición anterior.
+
+    \end{proof}
+    \lineskip
+    \begin{proposition} Existe una única función $f: \, \mathbb{N} \times
+        \mathbb{N} \rightarrow \mathbb{N}$ tal que:
+        \begin{enumerate}
+            \item $f(0,n) = n \quad \forall n \in \mathbb{N}$.
+            \item $f(n^+,m) = f(m,n)^+ \quad \forall \, n, m \in \mathbb{N} $
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        Considere la función:
+        \begin{align*}
+            G:& \, \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N} \\
+              & \, (x,y) \rightarrow y^+
+        \end{align*}
+        La proposición \ref{pr:recurrencia} garantiza la existencia de una
+        función $f_n:\, \mathbb{N}\rightarrow \mathbb{N} $ única tal que:
+        \begin{enumerate}
+            \item $f(0) = n$
+            \item $f(m^+) = G(m, f(m)) \quad \forall m \in \mathbb{N}$
+        \end{enumerate}
+        Sea $f:\, \mathbb{N} \times \mathbb{N} \rightarrow \mathbb{N}$ la
+        función definida como $f(m,n) = f_n(m)$. Se tiene así:
+        \begin{enumerate}
+            \item $f(0,n) = f_n(0)=n$
+            \item $f(n^+,m) = f_m(n^+) = G(n, f(n))= f_m(n)^+ = f(m,n)^+$
+        \end{enumerate}
+        Se verificará que $f$ es única. \\
+        Suponga que existe $h:\, \mathbb{N} \times \mathbb{N} \rightarrow
+        \mathbb{N}$ tal que: 
+        \begin{enumerate}
+            \item $h(0,n) =n $
+            \item $h(n^+,m) = h(m,n)^+$
+        \end{enumerate}
+        Sea $h_n: \, \mathbb{N} \rightarrow \mathbb{N}$ tal que $h_n(m) =
+        h(m,n)$; y dado $n \in \mathbb{N}$, definamos a $M = \{\, x \in \mathbb{N}
+        \, | \, h_n(x) = f_n(x) \, \}$.
+        Veamos que $h_n(0)=n=f_n(0) \, \therefore \, 0 \in M$. \\
+        Suponga que $x \in M$; así $h_n(x) = f_n(x)$. Se sigue entonces que:
+        \[
+        h_n(x^+)=h(x^+,n)=G(x,h_n(x))=G(x, f(x))= f_n(x^+)
+        \]
+        Así $M=\mathbb{N}$. Al ser la elección de $n$ arbitraria se tiene que
+        $f(n,m)=h(n,m) \quad \forall \, n,m \in \mathbb{N}$.
+    \end{proof}
+    \\
+    A la operación binaria dada por la proposición anterior se le denominará
+    adición en $\mathbb{N}$ y $f(n,m)$ se denotará por $n + m$. 
+    \vspace{1cm}
+
+    \begin{proposition} Sean $m,n,p$ números naturales, entonces:
+        \begin{enumerate}
+            \item $(n+m)+p = n+(m+p)$
+            \item $m + n = n + m$
+            \item Si $m +p = n + p$ entonces $m = n$
+            \item Si $m +p = 0$ entonces $m=0 \, \land \, n=0$
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof} 
+        $\quad$ \\ 
+        \begin{enumerate}
+            \item Definamos a $M= \{\, x \in \mathbb{N} \, | \, x + (y + z) = (x +
+                y) + z \quad \forall y, z \in \mathbb{N} \, \}$. \\
+                Veamos que $0 \in M$ ya que 
+
+                \begin{align*}
+                    0 + (y + z) &= (y+z) \\
+                               &= y+z \\
+                               &= (0 + y ) + z \\
+                \end{align*}
+                Así $ 0 \in M$. \\
+                Supongamos ahora que $x \in M$, es decir, que 
+                \[
+                    x (y+z) = (x+y)+z
+                \]
+                Entonces se tiene que:
+                \begin{align*}
+                    x^+ + (y +z) & = (x + (y + z))^+ \\
+                                 & = ((x + y)+ z))^+ \\
+                                 & = ((x+ y)^+ +z) \\
+                                 & = (x^+ + y ) + z
+                \end{align*}
+                Así $M = \mathbb{N}$.
+            \item Definamos a $M = \{\, x \in \mathbb{N} \, | \, x + y = y + x
+                \quad \forall \, y \in \mathbb{N} \, \}$.
+                \begin{itemize}
+                    \item Se verificará que $0 \in M$.
+                 \begin{itemize}
+                    \item Caso 1: $y=0$. \\
+                        En dado caso se tiene:
+                        \begin{align*}
+                            y+0 &= 0 + 0 \\
+                                &= 0 + y
+                         \end{align*}
+                    \item Caso 2: $y \neq 0$. \\
+                        En dado caso $\exists y_-$ tal que $y_-^+ = y$
+                         \begin{align*}
+                            0+y &= y \\
+                            y+0 &= (0 + y_-)^+ \\
+                                &= y_-^+ \\
+                                &= y
+                        \end{align*}
+                \end{itemize} 
+                Así, verificamos que $0 \in M$.
+            \item Ahora verificaremos que si $x \in M \, \Rightarrow \,x^+ \in
+                M$. \\
+
+            Sea $M' = \{ \, x \in \mathbb{N} \, | \, x^+ + y = x + y^+ \, \}$. \\
+            \begin{itemize}
+                \item Se probará que $0 \in M'$. \\
+                    Veamos que $\forall y \in \mathbb{N}$:
+                    \begin{align*}
+                        0^+ + y &= 1 + y \\
+                                &= (y + 0)^+ \quad \mathrm{Como}\, 0 \in M\\
+                                &= (0 + y)^+\\
+                                &=  y^+ + 0 \quad \mathrm{Adem\acute{a}s}\\
+                        y^+ + 0 &=  0 + y^+ = 0
+                    \end{align*}
+                    Así $0 \in M'$.
+    \begin{remark} Ésto último prueba que $1 + y = y^+$.
+    \end{remark}
+                    \item Se probará que si $x \in M'$ entonces $x^+ \in M'$ \\
+                        $\forall y \in \mathbb{N}$
+                        \begin{align*}
+                            x^+ + y &= (y + x)^+ \\
+                                    &= (y + x) + 1 \\
+                                    &= y + (x + 1) \\
+                                    &= y + (x + 0^+) \\
+                                    &= y + (x^+ + 0) \\
+                                    &= y + (0 + x^+) \\
+                                    &= y + x^+
+                        \end{align*}
+                        Así $x^+ \in M'$.
+                        Por lo tanto $M' = \mathbb{N}$.
+            \end{itemize}
+
+                Suponga que $x \in M$, entonces $x + y = y +x \quad \forall y
+                \in \mathbb{N}$. Así:
+                \begin{align*}
+                    x^+ + y &= (y + x)^+ \\
+                            &= (y + x)+1 \\
+                            &= y + (x + 1) \\
+                            &= y + (0 + x^+) \\
+                            &= y + x^+
+                \end{align*}
+                Así $M = \mathbb{N}$
+        \end{itemize}
+    \item Sea $M = \{ p \in \mathbb{N} \, | \, (m + p = n + p \, \Rightarrow \, m
+        = p) \quad \forall \, n, m \in \mathbb{N} \, \}$. 
+        \begin{itemize}
+            \item $0 \in M$. \\
+                Veamos que $\forall \, m, n \in \mathbb{N}$:
+                Suponga que $ m + 0 = n + 0 $
+                \begin{align*}
+                    m + 0 &= n + 0 \\
+                    0 + m &= 0 + n \\
+                        m &= n 
+                \end{align*}
+                Así $0 \in M$ 
+            \item $\forall \, m, n \in \mathbb{N}$ suponga que $(p +m = p + n) \,
+                \Rightarrow \,m = n 
+                \quad p \in \mathbb{N}$. Vemos que si:
+                \begin{align*}
+                    p^+ + m &= p^+ + n \\
+                    (m + p)^+ &= (n + p)^+ \\
+                    (p + m)^+ &= (p + n)^+ \, \Rightarrow \\
+                    p + m &= p + n \, \Rightarrow \\
+                        m &= n 
+                \end{align*}
+        \end{itemize}
+        Así $M = \mathbb{N}$.
+    \item Sea $M= \{\, x \in \mathbb{N} \, | \, x + y = 0 \, \Rightarrow \, x =
+    0 \, \land \, y = 0 \, \quad \forall x \in \mathbb{N} \,\}$. Considere a $x,
+    y \in \mathbb{N}$ tales que $x + y = 0$. Entonces:
+        \begin{align*}
+            x + y &= 0 \\
+                  &= 0 + y \\
+        \end{align*}
+        De la propiedad 3, tenemos que $x = 0$. Como $x, y$ fueron arbitrarios: 
+        $x \in M$ entonces $\mathbb{N} \subset M$. 
+        Así $M = \mathbb{N}$. 
+    \end{enumerate}
+    \end{proof}
+    \begin{proposition} Existe una única función $g: \, \mathbb{N} \times
+        \mathbb{N} \, \rightarrow \mathbb{N}$ tal que:
+        \begin{enumerate}
+            \item $g(0,n) = 0\quad \forall n \in \mathbb{N}$
+            \item $g(n^+,m) = g(n,m)+m \quad \forall n,m \in \mathbb{N}$
+        \end{enumerate}
+    \end{proposition}
+    \begin{proof}
+        La proposición \ref{pr:recurrencia} implica que existe una única función
+        $F_n: \mathbb{N} \, \rightarrow \, \mathbb{N}$ así se tiene que la 
+    \end{proof}
+
+\begin{definition}
+    Sea $x \in \mathbb{N}$. Se define el conjunto de descendientes de $x$
+    denotado por $Dx$ como el conjunto $\{ \, S^n (x) \, | \, n \in
+    \mathbb{N}\,\}$.
+
+    \begin{remark} $x\in Dx$.
+    \end{remark}
+\end{definition}
+\begin{definition} Sea $A \subset \mathbb{N}$. Se define el conjunto de
+    sucesores de elementos de $A$, denotado por $A^{\Delta}$, como el conjunto
+    $\{S(x) \, | \, x \in A \, \}$.
+\end{definition}
+\begin{proposition}
+    \label{prop:21}
+    Sean $x$, $y \in \mathbb{N}$, entonces: 
+    \begin{align*}
+        &i)\, Dx = \{x\} \cup Dx^+ 
+        &ii)\,Dx^+ \subset [Dx]^{\Delta}\\
+        &iii)\,x \notin Dx^+  &iv)\,Dx = Dy \, \mathrm{entonces} \, x=y \\
+    \end{align*}
+\end{proposition}
+\begin{proof}$i)$ Sea $u \in Dx$, entonces $\exists n \in \mathbb{N}$ tal que $u =
+    S^n(x)$. Entonces $u=x \, \lor \, u \neq x$. \\
+    Si $u = x$, entonces $u \in {x} \cup Dx^+$. \\
+    Si $u \neq x$, entonces $n \neq 0$. Así, como $S(\mathbb{N}) = \mathbb{N}
+    \setminus \{0\} $se tiene $\n \in S(\mathbb{N})$, por lo tanto $\exists m \in
+    \mathbb{N}$ tal que $n= S(m)$, \textit{i.e.}, $n=m^+ \, \therefore u = S^{m^+}(x) = 
+    S\circ S^{m}(x) = S^m \circ S(x) = S^m(x^+)$ lo cual muestra que $u\in
+    Dx^+\, \therefore \, u \in \{x\} \cup Dx^+$. Así se demuestra $i)$. \\
+
+    $ii)$ Sea $m \in Dx^+$. Se debe verificar que $m \in [Dx]^{\Delta}$. Como $m
+    \in Dx^+$, existe $n\in \mathbb{N}$ tal que: $m = S^n(x^+) =S^n \circ S(x) =
+    S \circ S^n (x)$, lo cual muestra que $m \in [Dx]^{\Delta}$. \\
+
+    $iii)$ Sea $M= \{x \in \mathbb{N} \, | \, x \notin Dx^+ \}$ \\
+    Si $0 \in D0^+$, entonces $\exists r \in \mathbb{N}$ tal que: \\
+    $0 = S^r(0^+) = S^r \circ S(0) = S \circ S^r (0)$, lo cual implica que $0
+    \in S(\mathbb{N})$ en contradicción con el hecho $S(\mathbb{N}) =
+    \mathbb{N}\setminus \{0\}$ por lo tanto $0 \notin D0^+$, i. e., $0 \in M$.
+    \\
+    Sea $x \in M$. Se verificará que $x^+ \in M$. \\
+    Suponga que $x^+ \notin M$, entonces $x^{++}\in D0^{++}$. De $ii)$ $Dx{++}
+    \subset [Dx^+]^{\Delta}\, \therefore \, x^+ \in [D_x^+]^{\Delta}$. Así
+    $\exists q \in Dx^{+}$ tal que $x^+ = S(q)$, es decir, $x^+ = q^+ \,
+    \therefore \, x=q$, y así $x \in Dx^+$, lo cual contradice que $x \in M\,
+    \therefore \, x^+ \in M$. Así $M = \mathbb{N}$. \\
+
+    $iv)$ Por hipótesis $Dx=Dy$. Suponga que $x \neq y$. Observe que, como $x
+    \in Dx$ y $Dx = Dy$, se tiene que $x \in Dy$. Además $Dy = \{y\} \cup Dy^+$.
+    Así como $x \neq y$, se tiene $x \in Dy^+\, \therefore \, Dx \subset Dy$ (ya
+    que si $u \in Dx, \, \exists n \in \mathbb{N}$ tal que $u = S^n(x)$. Además,
+    como $x \in Dy^+ \, \exists m \in \mathbb{N}$ tal que $x \in S^m(y^+)\,
+    \therefore \, u=S^n \circ S^m(y^+)$ lo cual muestra que $u \in Dy^+$). Así
+    $Dy \subset Dy^+ \, \therefore \, y \in Dy^+$ lo cual contradice a $iii)$.
+    Así $x=y$.
+\end{proof}
+\begin{proposition}\label{prop:22} Sea $R= \{\, (m,n)\in \mathbb{N}\times \mathbb{N} \, | \, n
+    \in Dm\}$. $R$ es un orden parcial en $\mathbb{N}$.
+\end{proposition}
+\begin{proof}
+    $1)$ Dado $n \in \mathbb{N} \, n \in Dn\, \therefore (n,n)\in R$. Es decir, $R$
+    es reflexiva. \\
+    $2)$ Sean $(n,m)$ y $(m,r)\in R$, entonces $m \in Dn \, \land \, r \in Dm\,
+    \therefore \, Dm \subset Dn \, \land \, Dr \subset Dm \, \therefore \, Dr
+    \subset Dn$ entonces $r \in Dn \, \therefore \, (n,r) \in R$.
+    $3)$ Suponga que $(n,m)$ y $(m,n)\in R$. Entonces $m \in Dn \, \land n \in Dm
+    \, \therefore \, Dm \subset Dn \, \land \, Dm \subset Dn \, \therefore \, Dm =
+    Dn$, y de la proposición anterior se tiene que $m=n$. Así $R$ es antisimétrica.
+\end{proof}
+\begin{lemma} 
+    Sea $x\in \mathbb{N}$, entonces:
+    \[
+        Dx = \bigcap \{\, A \in \mathcal{P}(\mathbb{N})\, | \, x \in A \, \, n
+        \in A \,\Rightarrow \, n^+ \in A\}
+    \]
+\end{lemma}
+\begin{proof}
+    Sea $B = \bigcap\{ \, A \in \mathcal{P}(\mathbb{N}) \, | \, x \in A \,\land \,
+    \forall n \in \mathbb{N} \, n \in A \, \Rightarrow \, n^+ \in A \}$. Sea $M
+    = \{\, n \in \mathbb{N} \, | \, S^n(x) \in B\,\}$. Sea $Z =\{ \, A \in \mathcal{P}(\mathbb{N}) \, | \, x \in A \,\land \,
+    \forall n \in \mathbb{N} \, n \in A \, \Rightarrow \, n^+ \in A \}$.
+    Entonces $B = \bigcap Z$. Observe que $x \in A \, \forall A \in Z \,
+    \therefore \, x \in \bigcap Z $, es decir $x \in B$, \textit{i.e.}, $ S^o(x) \in B \,
+    \therefore \, 0 \in M$. \\
+    Sea $n \in M$, entonces, $ S^n(x) \in B \, \therefore \, S^n^+(x) = S^n\circ
+    S(x) = S \circ S^n(x) \in B$. Como $B \in Z \, \land \, S^n(x) \in B$, se
+    tiene que $S\circ S^n(x) \in B \, \therefore \, S^n^+(x) \in B \, \therefore
+    \, n^+ \in M$. Así $M=\mathbb{N}$. En consecuencia $Dx \subset B$. \\
+    se tiene que $x \in Dx$. Además $u \in Dx$ implica $u^+ \in Dx$. Por lo
+    tanto $B \subset Dx$. Así $B = Dx$.
+\end{proof}
+\begin{proposition}\label{prop:23}
+    Sea $M \subset \mathbb{N}$, $M \neq \emptyset$. Si $x^+ \in M \, \forall x \in M$,
+    entonces existe un único $n \in \mathbb{N}$ tal que $M=Dn$.
+\end{proposition}
+\begin{proof}
+    \textbf{Hecho 1:} Sea $K=\{ n \in \mathbb{N} \, | \, n \notin M \,
+    \Rightarrow M \subset Dn^+\}$.\\
+    Por el lema anterior $D0 = \bigcap \{A \in
+        \mathcal{P}(\mathbb{N}) \, | \, 0 \in A  \, \land \, (\forall n \in
+    \mathbb{N} \, n \in A \Rightarrow n^+ \in A)\,\}$. Se tiene entonces $0
+    \in D0 \, \land \, (n \in D0 \Rightarrow n^+ \in D0) \, \therefore \, D0
+    = \mathbb{N}$. Por otra parte $D0 = \{0\} \cup Do^+$. Así $\mathbb{N} =
+    \{0\} \cup D0^+$. En consecuencia $\mathbb{N}\setminus \{0\} \subset
+    D0^+$. \\
+    Así mismo como $0 \notin D0^+$. y $D0^+ \subset \mathbb{N}$. Se tiene
+    $D0^+ \subset \mathbb{N} \setminus \{ 0\}\, \therefore \, D0^+ =
+    \mathbb{N} \setminus \{0\}$ y así si $0 \notin M$, se tiene $M \subset
+    D0^+\, \therefore\, 0 \in K$. \\
+    Sea $n \in K$, se verificará que $n^+ \in K$.\\
+    Suponga $n^+ \notin M$, entonces $n \notin M$ ya que $x^+ \in M\,
+    \forall x \in M$. Así como $n \in k$, se tiene $M \subset Dn^+$, y como
+    $Dn^+ = \{n^+\} \cup Dn^{++}$. Además $n^+ \notin M$, luego $M \subset
+    Dn^{++}$, lo cual implica que $n^+\in K\, \therefore \, K
+    =\mathbb{N}$.\\
+    \textbf{Hecho 2:} $\forall n \in \mathbb{N} \, [(n \notin M \, \land \,
+    n^+ \in M)\Rightarrow M=Dn^+]$.\\
+    Sea $n \in \mathbb{N}$ tal que $n\notin M \, \land \, n^+ \in M$. Como $n
+    \notin M$, por el hecho 1 se tiene que $M \subset Dn^+$. Por el lema
+    anterior $Dn^+ \subset A\quad \dorall A$ tal que $ n^+ \in A \, \land \,
+    \forall x \in \mathbb{N} \, (x \in A \Rightarrow x^+ \in A )$. Como
+    $n^+ \in M \, \land \, x^+ \in M \quad \forall x \in M$, se concluye que
+    $Dn^+ \subset M \, \therefore \, Dn^+ = M$. \\
+
+    $0 \in M \, \lor \, 0 \notin M$ \\
+    - Si $0\in M$, entonces se tiene que $M = \mathbb{N}$ y así $M=D0$.\\
+    - Suponga que $0\notin M$.\\
+    Se verificará que existe $n \in \mathbb{N}$ tal que $n \notin M \, \land \,
+    n^+ \in M$,de esta manera, por el hecho 2 se tendrá que $M=Dn^+$. \\
+    Procediendo por reducción al absurdo suponga que no existe tal $n \in
+    \mathbb{N}$. Entonces: $\forall n \in \mathbb{N}  \, \quad n \in M \, \lor
+    \, n^+ \notin M\, \ldots (\lambda)$. \\
+    Considere el conjunto $T = \{n\in \mathbb{N} \, | \, n \notin M\}$.\\
+    -Se tiene $0 \in T$ ya que se está considerando el caso en que $0 \notin M$.
+    \\
+    -Sea $n \in T$, entonces $n \notin M\, \therefore$ de $(\lambda)$ se tiene
+    $n^+ \notin M \, \therefore \, n^+ \in T$. Teniendo así $T = \mathbb{N}$,
+    por lo cual $M = \emptyset$, lo cual contradice que $M \neq \emptyset$. Por
+    lo tanto sí existe $n \in \mathbb{N}$ tal que $n \notin M \, \land \, n^+
+    \in M$ y por ello, del hecho 2: $M=Dn^+$. De la proposición \ref{prop:21} se
+    tiene que si $M=D^n \, \land M = D^m$, entonces $n=m$, así $n$ es único.
+\end{proof}
+
+\begin{proposition}\label{prop:24} $R = \{(m,n) \in \mathbb{N} \times
+    \mathbb{N} \, | \, n \in Dm \}$ es un buen orden en $\mathbb{N}$.
+\end{proposition}
+\begin{proof}
+    Se ha probado previamente que $R$ es un orden parcial. Sea $A \subset
+    \mathbb{N}$, $A \neq \emptyset$. Se debe probar que $A$ tiene un primer
+    elemento. Considere el conjunto $B = \{ R \in \mathcal{P}(\mathbb{N}) \, |
+    \, A \subset T \, \land \, S(T) \subset T \}$; veamos que $B \neq
+    \emptyset$, ya que $ \mathbb{N} \in B$. \\
+    Sea $M = \bigcap B$, observe que $M \subset B$. Como $A \subset M \, \land
+    \, A \neq \emptyset$, se tiene $M \neq \emptyset$. Además, como $M \in B \,
+    \forall x \, ( x \in M \Rightarrow x^+ \in M)$. La proposición \ref{prop:23}
+    implica que existe un único $n \in \mathbb{N}$ tal que $M = Dn$. Se
+    verificará que dicho $n \in A$. Procediendo por contradicción suponga que
+    $n \notin A$. Se tiene por la proposition \ref{prop:21} que $Dn = \{n\} \cup
+    Dn^+$. Como $A \subset M$, entonces $A \subset \{n\} \cup Dn^+$, y así como
+    $n \notin A$, se tiene: $A \subset Dn^+ \ldots (i)$.\\
+    Además, $\forall x \, (x \in Dn^+ \Rightarrow x^+ \in Dn^+)$, es decir,
+    $S(Dn^+)\subset Dn^+ \ldots (ii)$. \\
+    $i)$, y $ii)$ implican que $Dn^+ \in B \, \therefore \, M \subset Dn^+$,
+    \textit{i.e.}, $Dn \subset Dn^+$. Así, como $n \in Dn$, se tiene $n\in Dn^+$, lo cual
+    contradice la parte $iii)$ de la proposición \ref{prop:21} $\therefore \, n
+    \in A$.\\
+    Se mostrará que $n$ es el primer elemento de $A$.\\
+    Sea $x \in A \, | \, x=n \, \lor \, x\neq n$.\\
+    $a)$ Si $x=n$, se tiene $(n,x) \in R$, ya que $R$ es en particular
+    reflexiva.
+    $b)$ Suponga que $x \neq n$. \\
+    Como $A\subset M \, \land \, M=Dn$, se tiene $A\subset\{n\}\cup Dn^+$. Yasí,
+    dao que $x\neq n$, se tiene $x \in Dn^+\, \therefore (n^+,x)\in R$. Por otra
+    parte $(n,n^+)\in R$ ya que $n^+ \in Dn$. Y, como $R$ es transitiva, se
+    concluye que $(n,x)\in R$, finalmente mostrando que $n$ es el primer
+    elemento de $A$.
+\end{proof}
+\textbf{Notación:} $(n,m)\in R$ se denotará $n \leq m$. Si, además $n \neq m$,
+se escribirá $n < m$.
+\begin{proposition} \label{prop:25} Sean $n,m \in \mathbb{N}$. Entonces se
+    cumple una única de las siguientes tres afirmaciónes:
+    \[
+        i) n=m \quad \quad ii) n<m \quad \quad iii) m<n
+    \]
+\end{proposition}
+\begin{proof}
+    Como $R$ es un buen orden en $\mathbb{N}$, se tiene que $R$ es un orden
+    total en $\mathbb{N}$. Así $(n,m)\in R \, \lor \, (m,n) \in R$. Así, como
+    $R$ es antisimétrica, si $n \neq m$, solo se puede cummplir una única de las
+    siguientes condiciones: $(n,m)\in R$ o $(m,n)\in R$, así se tiene únicamente
+    una de $n<m$, $m<n$.\\
+    Si $n=m$, no se cumple ni $n<m$ ni $m<n$. 
+\end{proof}
+\begin{proposition}\label{prop:26} Sean $n, m \in \mathbb{N}$, si $n^+ >m$,
+    entonces $n \geq m$. 
+\end{proposition}
+\begin{proof}
+    Por hipótesis $n^+ > m$. Procediendo por contradicción, suponga que no se
+    cumple $n \geq m$, entonces $(m,n)\notin R\, \therefore \, m \neq n \, \land
+    \, \neg (m<n)$. La proposición \ref{prop:25} implica que $n<m  \, \querefore
+    \, n \leq m \, \land n \neq m$. En particular $(n,m)\in R$. Así $m \in Dn \,
+    \therefore \, \exists r \in \mathbb{N}$ tal que $m = S^r(n)$. \\
+    Como $m \neq n $, se tiene $r \neq 0\, \therefore \, r \in \mathbb{N}
+    \setminus \{0\}$, \textit{i.e.}, $r \in S(\mathbb{N})$, por lo cual $\exists q \in
+    \mathbb{N}$ tal que $r = q^+$. \\
+    Así $m= S^{q^+}= S^q \circ S(n) = S^q(n^+)$ lo cual implica que $m \in Dn^+
+    \, \therefore \, (n^+,m) \in R \ldots (\lambda)$. Por hipótesis se tiene
+    $n^+ > m \ldots (\alpha)\, \therefore \, n^+ \neq m$. De $(\lambda)$ se
+    tiene $n^+ < m \ldots (\beta)$. De $(\alpha)$ y $(\beta)$ se tiene $m < n^+
+    \, \land n^+ < m$, lo cual contradice la proposición \ref{prop:25}.
+\end{proof}
+\begin{proposition} \label{prop:27} 
+    $i) \forall  n,m \in \mathbb{N} \, \n \leq m$ sí y sólo sí $\exists p \in
+    \mathbb{N}$ tal que $n + p=m$. \\
+    $ii) \forall n,m,p \in \mathbb{N} \, n <m$ sí y sólo sí $n +p < m +p$. \\
+    $iii) \forall n,m,p \in \mathbb{N}$, si $p \neq 0$, entonces $n <m$ sí y
+    sólo sí $np<mp$. 
+\end{proposition}
+\begin{proof} \\ 
+     
+    $i)$ Dados $n,m \in \mathbb{N}$, considere el conjunto $K=\{ t \in
+    \mathbb{N} \, | \, S^t(n) = n+t\}$.\\
+    $\cdot$ $S^0 (n) = n = n +0 \, \therefore \, 0 \in K$. \\
+    $\cdot$ Sea $t \in K$, entonces $S^{t^+} = S \circ S^t(n) = S(S^t(n)) =
+    S(n+t) = S(t +n) = (t + n)^+ = t^++ n = n + t^+$. Se tiene así que $t^+ \in
+    K\, \therefore \, K = \mathbb{N}$.  \\
+    $\Rightarrow )$ Por hipótesis $n \leq m$, \textit{i.e.},  $m \in Dn \,
+    \therefore \, \exists p \in \mathbb{N}$ tal que $m = S^p (n)$. Como $K =
+    \mathbb{N}$, $p \in K\, \therefore \, S^p(n) = n +p$ \textit{i.e.},
+    $m=n+p$.\\
+    $\Leftarrow )$ Ahora por hipótesis, $\exists p \in \mathbb{N}$ tal que $n +
+    p = m$. Como $p \in \mathbb{N} \, \land K = \mathbb{N}$, se tiene que $p \in
+    K\, \therefore \, n+p=S^p(n)$, \textit{i.e.} $m \in Dn \, \therefore  \, n
+    \leq m$.\\
+
+    $ii)$ Sean $n,m,p \in \mathbb{N}$. \\
+    $\Rightarrow ) $ Suponga que  $n <m$, entonces $(n,m)\in R \, \land \, n
+    \neq m$. En particular $m \in Dn\, \therefore \, \exists r \in \mathbb{N}$
+    tal que $m = S^r(n)$, \textit{i.e.}, $m = n + r$. Observe que $r\neq 0$, ya
+    que $ n \neq m$. \\
+    Como $m = n + r$, se tiene: \\
+    $m + p = (n + r)+p= (n+p)+r ) S^r(n +p)\, \therefore \, m + p \in D_{n+p}$.
+    En consecuencia $n + p \leq m +p$. Además, como: $m +p = (n +p)+r$ y $r \neq
+    0$ se tiene de $A_3$ que $m+p \neq n+p\, \therefore \, n+p < m+p$.\\
+    $\Leftarrow )$ Por hipótesis $n+p < m+p$. \\
+    Suponga que no se cumple $n <m$. Entonces $n=m \, \lor \, m<n$. En el primer
+    caso $n + p =m + p$, lo cual no ocurre. En el segundo caso, de la
+    suficiencia probada previamente, se tendría: $m + p < n + p$, lo cual no
+    ocurre. $\therefore\ n < m$.\\
+
+    $iii)$ Sean $n, m, p \in \mathbb{N}, p \neq 0$.\\
+    $\Rightarrow )$ Suponga que $n <m$. Entonces, de $i)$ $\exists q \in
+    \mathbb{N}$ tal que $m = n + q$. Además $q \neq 0$ ya que $n \neq m \,
+    \therefore \, mp = (n +q)p = np + qp$.\\
+    $M_4$ implica que $qp \neq 0$ ya que $q \neq 0 \, \land \,  p \neq 0 \,
+    \therefore \, mp > np$. \\
+    $\Leftarrow )$ Asuma ahora $np <mp$, se debe probar $n <m$. \\
+    Suponga que no se cumple $n <m$. Entonces $n = m \, \lor \, m<n$. En el
+    primer caso se tendría $np = mp$, lo cual no ocurre. En el segundo caso se
+    tendría, por la suficiencia previamente probada, $mp < np$ lo cual no ocurre
+    $\therefore\, n<m$.
+\end{proof}
+\subsection{Ejercicios}
+\begin{problem}
+    
+    $a)$ Sea $m \in \mathbb{N}$ Demuestre que existe una única función $F_m:
+    \mathbb{N} \rightarrow \mathbb{N}$ tal que $F_m(0) = 1$, $F_m(n^+) =
+    g_m(F_m(n))$, siendo $g_m$ la función: $g_m: \mathbb{N} \rightarrow
+    \mathbb{N}\quad n \rightarrow nm$ \\
+    $b)$ Considere la función $f: \mathbb{N}\times \mathbb{N} \rightarrow
+    \mathbb{N}\quad (m,n) \rightarrow F_m(n)$. \\
+    Verifique que:
+    \begin{enumerate}
+        \item $f(m,0) =1, \forall m \in \mathbb{N}$ 
+        \item $f(m,n^+) = F_m(n)m$
+    \end{enumerate}
+    Denotando $f(m,n)$ por $m^n$, verifique lo siguiente: \\
+    Dados $m,n, u \in \mathbb{N}$
+    \begin{enumerate}
+        \item $u^m \cdot u^n = u ^{m+n}$
+        \item $(u^m)^n = u^{mn}$
+        \item $(un)^m = u^mn^m$
+        \item $1^n = 1$
+    \end{enumerate}
+\end{problem}
+    \section{Equivalencias del Axioma de Elección}
+    \input{tex/AxiomaDeEleccion}
+
+
+
+

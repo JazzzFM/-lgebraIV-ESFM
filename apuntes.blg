@@ -1,0 +1,9 @@
+[0] Config.pm:304> INFO - This is Biber 2.12
+[0] Config.pm:307> INFO - Logfile is 'apuntes.blg'
+[20] biber:315> INFO - === lun dic 10, 2018, 01:49:40
+[39] Biber.pm:371> INFO - Reading 'apuntes.bcf'
+[106] Biber.pm:889> INFO - Found 0 citekeys in bib section 0
+[112] Utils.pm:193> WARN - The file 'apuntes.bcf' does not contain any citations!
+[119] bbl.pm:636> INFO - Writing 'apuntes.bbl' with encoding 'UTF-8'
+[119] bbl.pm:739> INFO - Output to apuntes.bbl
+[119] Biber.pm:110> INFO - WARNINGS: 1

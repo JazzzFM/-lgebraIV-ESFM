@@ -1,0 +1,1449 @@
+\section{Enteros}
+Considere la siguiente relación en $\mathbb{N} \times \mathbb{N}$:
+\[
+  R = \{((n,m),(r,s))\in (\mathbb{N} \times \mathbb{N}) \times (
+  \mathbb{N} \times \mathbb{N}) \, | \, n +s = r + m \}
+\]
+\begin{lemma}\label{lemma:1}
+  $R$ es una relación de equivalencia.
+\end{lemma}
+\begin{proof}
+  Sean $n,m \in \mathbb{N}$. Note que $n+m = n + m \, \therefore \,
+  ((n,m),(n,m))\in R$, así $R$ es reflexiva. \\
+  Sea $((n,m),(r,s)) \in R$, entonces $n+s = m + r$ o bien, $ m + r = n+ s$,
+  así $R$ es simétrica. \\
+  Sean $((n,m),(r,s)), ((r,s),(u,v)) \in R$, entonces se tiene que $n + s = m
+  + r \, \land \, r + v = s + u$. Así 
+  \[
+    n + s + r + v = r + m + u + s
+  \]
+  Así tenemos que $ n + v = m + u$, por lo tanto $((n,m), (u,v)) \in R$.
+  Concluyendo que $R$ es una relación de equivalencia.
+\end{proof}
+\begin{definition} Dada la relación de equivalencia anterior, se define el
+  conjunto de \textbf{números enteros} denotado por $\mathbb{Z}$ como el
+  conjunto cociente $\mathbb{N}\times\mathbb{N}_{/R}$.
+\end{definition}
+Los elementos de $\mathbb{N}\times\mathbb{N}$ se denominarán diferencias.
+\begin{definition}
+  Una diferencia se dice positiva si $n > m$.
+\end{definition}
+\begin{lemma}\label{lemma:2}
+  Sea $(n,m)$ una diferencia positiva. Si $(r,s) \in [(n,m)]$, entonces
+  $(r,s)$ también es una diferencia positiva.
+\end{lemma}
+\begin{proof}
+  Se tiene que $n > m$, por lo tanto, existe un $p \in
+  \mathbb{N}\setminus\{0\}$ tal que $n = m+p$. Si $(r, s) \in [(n,m)] $,
+  entonces: $n + s = r + m$. Así $m + p + s = r + m$, por lo tanto $p + s =
+  r$. Como $p \neq 0$, se concluye que $r>s$, luego $(r,s)$ es positiva.
+\end{proof}
+\begin{lemma}\label{lemma:3} 
+  Sea $(n,m)$ una diferencia positiva. Entonces existe un único $p \in
+  \mathbb{N}$ tal que $(p,0) \in [(n,m)]$.
+\end{lemma}
+\begin{proof}
+  Como $(n,m)$ una diferencia positiva. Entonces existe $p \in \mathbb{N}$ tal
+  que $n = m+ p$. Como $n = n + 0 $, se tiene así: $n+0 = m + p \, \therefore
+  \, ((n,m),(0,p))\in R$. \\
+  Sea $q \in \mathbb{N}$ tal que $(q,0) \in [(n,m)]$, entonces $((q,0), (p,0)
+  \in R \Rightarrow q + 0 = p + 0$, así $q = p$.
+\end{proof}
+\begin{definition}
+  En $\mathbb{N}\times \mathbb{N}$ se define la operación binaria $f$,
+  denominada \textbf{adición}, en la forma siguiente:
+  \begin{align*}
+    f &: (\mathbb{N} \times \mathbb{N})\times (\mathbb{N} \times \mathbb{N})
+    \rightarrow \mathbb{N} \times \mathbb{N} \\
+    & ((n,m),(r,s)) \rightarrow (n+r,m+s)
+  \end{align*}
+  Se define así mismo la operación binaria $g$ en $\mathbb{N}\times
+  \mathbb{N}$ denominada \textbf{producto} de la forma siguiente: 
+  \begin{align*}
+    g&:(\mathbb{N} \times \mathbb{N})\times(\mathbb{N} \times \mathbb{N})
+    \rightarrow \mathbb{N} \times \mathbb{N} \\
+    &((n,m),(r,s)) \rightarrow (nr + ms, mr + ns)
+  \end{align*}
+  $f((n,m),(r,s))$ se denotará $(n,m) + (r,s)$, y $g((n,m),(r,s))$ se denotará
+  $(n,m)(r,s)$.
+\end{definition}
+\begin{lemma}\label{lemma:4}
+  Sean $x,y,u,v \in \mathbb{N} \times \mathbb{N}$ tales que $(x,u)\in R \,
+  \land \, (y,v) \in R$, entonces $(x +y, u +v) \in R$.
+\end{lemma}
+\begin{proof}
+  Sean $x = (x_1, x_2)$; $y = (y_1, y_2)$;$u = (u_1, u_2)$;$v = (v_1, v_2)$.\\
+  Por hipótesis: $x_1 + u_2 = x_2 + u_1 \, \land \, y_1 + v_2 = y_2 + v_1\,
+  \ldots (\lambda)$.\\
+  Se debe probar que $((x_1 + y_1 , x_2 + y_2),(u_1 + v_1,
+  u_2 + v_2)) \in R$. Pero como consecuencia de $\lambda)$ $x_1 + y_1 + u_2 +
+  v_2 = x_2 + y_2 + u_1 +v_1$.
+\end{proof}
+\begin{lemma}\label{lemma:5}
+  \begin{enumerate}
+    \item La adición en $\mathbb{N} \times \mathbb{N}$ es asociativa y
+      conmutativa.
+    \item La suma de dos diferencias positivas es una diferencia
+      positiva.
+    \item Sean $x,y,u\in \mathbb{N} \times \mathbb{N}$, si $(x +y, x
+      +u)\in R$, entonces $(y,u) \in R$. 
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  \begin{enumerate}
+    \item Sean $ (n,m),(r,s),(a,b)$ elementos de $\mathbb{N} \times
+      \mathbb{N}$.\\
+      $(n,m)+(r,s) = (n+r,m+s)=(r+n,s+m)=(r,s)+(n,m)$.\\
+      Así mismo: \\
+      \begin{align*}
+        [(n,m) + (r + s)] + (a,b) &= (n + r, m + s) + ( a, b) = ((n + r)
+        + a, (m + s) + b) \\
+        &= (n + (r + a), (m + (s + b)) = (n,m) + (r+a, s+b) \\
+        &=(n,m) + [(r,s) + (a,b)] 
+      \end{align*}
+    \item  Sean $(n,m), (r,s)$ diferencias positivas. Entonces :$n > m \,
+      \land \, r>s $ Así, existen $q,p \in \mathbb{N}$ tales que: $n = m
+      +p$, y $ r =s+ q$.\\
+      Así, $ n +r = m + s + p + q$, como $q \neq 0 \, \land p \neq 0$. se
+      tiene que $q + p \neq 0$, así $n + r > m + s$. Se tiene entonces 
+      que $(n,m) + (r, s)$ es una diferencia positiva.
+    \item Suponga que $ (x +y, x +u) \in R$. Sean $x = (x_1, x_2)$; $y =
+      (y_1,y_2)$; $u = (u_1, u_2)$. Entonces $x_1 + y_1 + x_2 + u_2 = x_2
+      + y_2 + x_1 + u_1$. Así $y_1 + u_2 = u_1 + y_2$, \textit{i.e.},
+      $(y,u)\in R$.
+  \end{enumerate}
+\end{proof}
+\begin{lemma}\label{lemma:6}
+  Sean $x,y,u,v$ diferencias. Si $(x,u)\in R \, \land \, (y,v) \in R$ entonces
+  $(xy, uv) \in R$.
+\end{lemma}
+\begin{proof}
+  HAY QUE HACERLA.
+\end{proof}
+\begin{lemma}\label{lemma:7}
+  \begin{enumerate}
+    \item El producto de diferencias es asociativo y conmutativo.
+    \item Si $x,y,u \in \mathbb{N} \times \mathbb{N}$, entonces $(x + y)u =
+      xu + yu$.
+    \item El producto de dos diferencias positivas es una diferencia
+      positiva.
+    \item Si $x, y , u \in \mathbb{N} \times \mathbb{N}$ satisfacen $(xu,
+      yu) \in R$ y además, siendo $u = (u_1, u_2)$, con $u_1 \neq
+      u_2$, entonces $(x,y) \in R$.
+  \end{enumerate}
+\end{lemma}
+\begin{proof}
+  HAY QUE HACERLA.
+\end{proof}
+\begin{definition}
+  Un entero $[(n,m)]$ se dice positivo si existen $(p,q)\in [(n,m)]$ tal que
+  $(p,q)$ es positivo; \textit{i.e.} tal que $p>q$.
+\end{definition}
+\begin{remark}
+  Si $[(n,m)]$ es un entero positivo, y $(r,s) \in [(n,m)]$, entonces $(r,s)$
+  es una diferencia positiva.
+\end{remark}
+\begin{definition}
+  El conjunto de los enteros positivos se denotará por $\mathbb{Z}^+$. En
+  notación de construcción de conjuntos:
+  \[
+    \mathbb{Z}^+ = \{ x \in \mathbb{Z} \, | \, \exists (n,m) \in x,\, n >m
+    \, \}
+  \]
+\end{definition}
+Considere la función $f: \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z}$ 
+\[
+  ([x], [y]) \rightarrow ([x + y])
+\]
+Se debe verificar que $f$ está bien definida.
+Suponga que $[x] = [u]$, y  $[y] = [v]$. Entonces $(x,u) \in R \, \land \, (y,v)
+\in R$. El lema \ref{lemma:4} implica que $(x + y, u + v) \in R$, es decir,
+$[x+y] = [u+v]$.
+\begin{definition}
+  A la operación binaria $f$ en $\mathbb{Z}$ se le denomina adición y
+  $f([x],[y])$ se denotará por $[x]+[y]$.
+\end{definition}
+\begin{proposition}\label{prop:28}
+  \begin{enumerate}
+    \item La adición en $\mathbb{Z}$ es asociativa y conmutativa.
+    \item Dados $a,b,c \in \mathbb{Z}$, sí $a+c = b +c$ entonces $a = b$.
+    \item Si $a, b \in \mathbb{Z^+}$, entonces $a + b \in \mathbb{Z^+}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Sean $a,b,c \in \mathbb{Z}$. Existen $x, y, x \in \mathbb{N}
+  \times \mathbb{N}$ tales que $a = [x]$, $b = [y]$, $ c = [z]$.
+  \begin{enumerate}
+    \item Se tiene del lema \ref{lemma:5} $a+b = [x +
+      y] = [y + x] = b + a$.\\
+      Así mismo. 
+      \begin{align*}
+        (a + b) + c &= [x+y] + [z] \\
+                    &= [(x + y) + z] \\
+                    &= [x + (y + z)] \\
+                    &= [x] + [y + z] \\
+                    &= a + (b + c)
+      \end{align*}
+      Así $+$ es asociativa y conmutativa.
+    \item Se tiene por hipótesis $[x] + [z] = [y] + [z]$, \textit{i.e.}, $[x
+      + z] = [y + z] \, \therefore \, (x+z,y+z) \in R$. El lema
+      \ref{lemma:3} implica que $(x,y) \in R \, \therefore \, [x] = [y]$. 
+    \item Sean $a, b \in \mathbb{Z}^+$ El lema \ref{lemma:5} implica que $x
+      + y $ es una diferencia positiva, así $[x + y] \in \mathbb{Z}^+$.
+  \end{enumerate}
+\end{proof}
+\begin{proposition}\label{prop:29}
+  Sean $a,b,c \in \mathbb{Z}$, entonces existe un único $c \in
+  \mathbb{Z}$ tal que $a + c = b$.
+\end{proposition}
+\begin{proof}
+  Existen $x,y$ diferencias, con $x = (x_1, x_2), y = (y_1,y_2)$ tales que $a
+  = [x] \, \land \, b = [y]$, así $a=b \, \lor \, a\neq b$.\\
+  $i)$ Si $a = b$. Sea $c = [(0,0)]$, entonces:
+  $a + c = [(x_1, x_2)] + [(0,0)] = [(x_1, x_2)] = a = b$. \\
+  $ii)$ Si $a \neq b$, tenemos que $((x_1,x_2),(y_1,y_2)) \notin R$. Así 
+  \[
+    x_1 + y_2 < x_2 + y_1 \quad \lor \quad x_1 + y_2 > x_2 + y_1
+  \]
+  Sin pérdida de la generalidad asumamos que: $ x_1 + y_2 < x_2 + y_1 $. Así,
+  existe $z \in \mathbb{N}$ tal que $x_1 + y_2 + z = x_2 + y_1$, Así $a +
+  [(0,z)]= a +c  = b$, con $c = [(0,z)]$. Suponga que existe $d$ tal que $a +
+  d = b$, entonces $a + d = a + c$, pero por proposición anterior $c =d$, así
+  $d$ es único.
+\end{proof}
+\begin{remark}
+  Veamos que $[(0,0)]+a = a$, así denotaremos a $[(0,0)]$ como $0_z$ y se
+  denomina neutro aditivo de $\mathbb{Z}$.
+\end{remark}
+Considere la función: 
+\begin{align*} 
+  g&: \mathbb{Z} \times \mathbb{Z} \rightarrow \mathbb{Z} \\
+   &([x],[y]) \rightarrow [xy]
+\end{align*}
+Se verificará que $g$ está bien definida: \\
+Si $[x] = [u] \, \land \, [y] = [v]$ entonces $(x,u), (y,u) \in R$. El lema
+\ref{lemma:6} implica que $(xy, uv) \in R$ así, $[xy] = [uv]$.
+\begin{definition}
+  $g$ es una operación binaria en \mathbb{Z} que se denomina \textbf{producto}
+  en $\mathbb{Z}$ y $g(a,b)$ se denota $ab$.
+\end{definition}
+\begin{proposition}\label{prop:30}
+  \begin{enumerate}
+    \item El producto es asociativo y conmutativo.
+    \item El producto de dos enteros positivos es un entero positivo.
+    \item Sean $a,b,c \in \mathbb{Z}$ tales que $ab =ac$ con $a \neq 0_q$
+      entonces $b = c$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof} La demostración se sigue inmediatamente del lema \ref{lemma:7}
+\end{proof}
+\begin{definition} Al $c$ descrito en la proposición \ref{prop:29}, tal que
+  $a + c = 0_q$ se denomina \textbf{inverso aditivo} de $a$ y se denota
+  $-a$.\\
+  Dados $a,b \in \mathbb{Z}$, $a + (-b)$ se denotará $a -b$.
+\end{definition}
+\begin{proposition}\label{prop:31} Sean $a, b, c \in \mathbb{Z}$, entonces $a(b + c) = ab +
+  ac$.
+\end{proposition}
+\begin{proof} La demostración se sigue inmediatamente del lema \ref{lemma:7}
+\end{proof}
+Sean $\mathbb{Z}^0 = \{ [(n,0) \in \mathbb{Z} \, | \, n \in \mathbb{N} \}$, y
+$\mathbb{Z}_0 = \{ [(0,n) \in \mathbb{Z} \, | \, n \in \mathbb{N}\setminus\{0\} \}$.
+\begin{proposition}\label{prop:32}
+  $\mathbb{Z}^0 \cap \mathbb{Z}_0 = \emptyset \, \land \, \mathbb{Z}^0 \cup
+  \mathbb{Z}_0 = \mathbb{Z}$.
+\end{proposition}
+\begin{proof}
+  Suponga que $\mathbb{Z}^0 \cap \mathbb{Z}_0 \neq \emptyset$, es decir
+  $[(p,q)] \in \mathbb{Z}^0 \cap \mathbb{Z}_0$. Así se tiene que $\exists n, m
+  \in \mathbb{N}$, $m \neq 0$  tales que $((n,0),(0,m))\in R$. Así $n + m =
+  0$. La proposición \ref{prop:18} implica que $n = 0 \, \land \, m = 0$. Se
+  tiene así que $m \neq 0 \, \land m = 0$, lo cual no puede suceder, por lo
+  tanto $\mathbb{Z}^0 \cap \mathbb{Z}_0 = \emptyset$. \\
+  Sea ahora $[(r,s)] \in \mathbb{Z}$. Se tiene $r \geq s \, \lor \, r < s$.
+  \\
+  Si $r \geq s$, entonces $\exists p \in \mathbb{N}$ tal que $r = s + p$, así
+  $((r,s), (p,0))\in R$. Lo cual implica que $[(r,z)] \in \mathbb{Z}^0$. \\
+  Si $r < s$, entonces $\exists q \in \mathbb{N}\setminus \{0\}$ tal que $s =
+  r + q$, así $((r,s),(0,q))\in R$. Así $[(r,s)] \in \mathbb{Z}_0$. Por lo
+  cual se concluye que $\mathbb{Z}^0 \cup \mathbb{Z}_0 = \mathbb{Z}$.
+\end{proof}
+Considere 
+\begin{align*}
+  f&: \mathbb{Z}^0 \rightarrow \mathbb{Z}^0 \\
+   & [(n,0)]\rightarrow [(n^+, 0)] 
+\end{align*}
+Si $[(n,0)]=[(m,0)]$ entonces $((n,0),(m,0))\in R$, así $n=m \Rightarrow n^+ =
+m^+$ entonces $[(n^+,0)]= [(m^+,0)]$, así $f$ es independiente de la elección
+del represante de clase.
+\begin{proposition}\label{prop:33}
+  $(\mathbb{Z}^0, f, 0_z)$ es un sistema de Peano.
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}
+    \item $0_z \in \mathbb{Z}^0$.
+    \item Sean $m,n$ tales que $f([(n,0)])=f([(m,0)])$, así $[n^+,0] = [m^+,
+      0]$, $n^+ = m^+ \, \therefore \, n = m$. Así $f$ es inyectiva.
+    \item Se verificará que $f(\mathbb{Z}^+) = \mathbb{Z}^0
+      \setminus\{0_z\}$.\\
+      Sea $a\in f(\mathbb{Z}^+)$, entonces existe $[(n,0)] \in
+      \mathbb{Z}^0$ tal que $a = f([(n,0)])$ así $a = [(n^+,0)]$. Como $n^+
+      \neq 0$ se tiene que $a \neq 0_z$. Considere ahora $b \in
+      \mathbb{Z}^0\setminus\{0_z\}$, entonces $\exists m \in
+      \mathbb{N}\setminus\{0\}$ tal que $b = [(m,0)]$, como $m \neq 0$,
+      entonces $\exists r\in \mathbb{N}$ tal que $r^+ = m$. Así,
+      $f([(r,0)])= [(m^+,0)]$ así $b \in f(\mathbb{Z}^0)$. Por lo cual
+      $f(\mathbb{Z}^0) = \mathbb{Z}\setminus\{0\}$.
+    \item Sea $M \subset \mathbb{Z}^0$ tal que $[(0,0)] \in M \, \land \,
+      f(M) = M \setminus\{0\}$. Se debe probar que $M = \mathbb{Z}^0$. \\
+      Sea $K = \{n \in \mathbb{N} \, | \, [(0,n)] \in M\}$. \\
+      Veamos que $0 \in K$. \\
+      Suponga que $n \in K$, entonces $[(n,0)] \in M$. Como $f(M) \subset
+      M$, se tiene $[(n^+,0)] \in M$, así $n^+ \in K$, por lo cual $K=
+      \mathbb{N}$, así $\mathbb{Z}^0 \subset M \Rightarrow \mathbb{Z}^0 =
+      M$. 
+  \end{enumerate}
+\end{proof}
+Sea $A$ un conjunto:
+\[
+  A^1 = A ;\quad A^2 = A \times A; \ldots
+\]
+En general $A^n$ denota a $A^{n-1}$ donde $n \in \mathbb{N}\setminus \{0,1\}$.\\
+\begin{definition}
+  Dado $n \in \mathbb{N}\setminus \{0\}$. Una \textbf{operación} en $A$ es una
+  función $f: A^n \rightarrow A$.
+\end{definition}
+\begin{definition}
+  Una \textbf{relación} en $A$ es un subconjunto de $A^n \times A$.
+\end{definition}
+\begin{definition}
+  Si $f: A^n \rightarrow A$ es una operación en $A$, se dirá que $n$ es la
+  característica de $f$. Así mismo, si $R \subset A^n \times A$ es una
+  relación en $A$, se dirá que $n$ es la característica de $R$.
+\end{definition}
+\begin{definition}
+  Se dice que $A$ tiene una \textbf{estructura algebráica}, si en $A$, están
+  definidas $f_1, \ldots, f_m$ operaciónes, $R_1, \ldots, R_s$ relaciones, y
+  si se definen además $a_1, \ldots, a_r$ elementos, siendo así la estructura
+  algebráica la $1+m+s+r$-ada $(A;f_1, \ldots, f_m; R_1, \ldots, R_s; a_1,
+  \ldots, a_r)$. Dos estructuras algebráicas $A$, $A'$ se dicen del mismo tipo si tienen
+  la misma cantidad de operaciones, relaciones, y elementos.
+\end{definition}
+\begin{definition}
+  Considere dos estructuras algebráicas del mismo tipo $A$, $A'$. Una función
+  $f: A \rightarrow A'$ se dice un \textbf{morfismo} si:
+  \begin{enumerate}
+    \item $f$ preserva operaciones, es decir:
+      \[
+        f(f_i(x_i,\ldots,x_w_i)) = f_i(f(x_1),\ldots, f(x_w_i)) \,
+        \forall i \in \{1,\ldots, m\}\, \land \, w_i = \mathrm{car} f_i
+      \]
+    \item $f$ preserva relaciones.
+    \item $f(a_i) = a'_i \, \forall i \in \{1,\ldots, r\}$
+  \end{enumerate}
+  Si $f$ es inyectiva, $f$ se denomina \textbf{monomorfismo}.\\
+  Si $f$ es suprayectiva, $f$ se denomina \textbf{epimorfismo}. \\
+  Si $f$ es biyectiva, $f$ se denomina \textbf{isomorfismo}.
+\end{definition}
+\begin{proposition}[Teorema de recurrencia]\label{prop:34}
+  Considere un sistema de Peano $(X, f, x_0)$. Sean $A$ un conjunto, y $G:A
+  \rightarrow A$ una función,y $a\in A$, entonces existe una única función $F:X
+  \rightarrow A$ que satisface:
+  \begin{align*}
+    F(f(x)) &= G(F(x)) \, \forall x \in X \\
+    F(x_0) &= a
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  HAY QUE HACERLA.
+\end{proof}
+\begin{proposition}\label{prop:35}
+  Cualesquiera dos sistemas de Peano son isomorfos.
+\end{proposition}
+\begin{proof}
+  Sean $(X, f, x_0)$, $(X', f, x_0')$ dos sistemas de Peano. \\
+  Considerando el sistema de Peano $(X,f,x_0)$, la proposición \ref{prop:34}
+  implica que existe $F: X \rightarrow X'$ tal que:
+  \begin{align*}
+    F \circ f &= f' \circ F\\
+    F(x_0) &= x_0'
+  \end{align*}
+  Nuevamente, por la proposición \ref{prop:34}, se verifica que existe $F': X'
+  \rightarrow X$, tal que:
+  \begin{align*}
+    F' \circ f' &= f \circ F' \\
+    F'(x_0') &= x_0
+  \end{align*}
+  Veamos que:
+  \begin{align*}\label{aux:34}
+    (F' \circ F)\circ f &= F' \circ(F\circ f') \\
+                        &= (F' \circ f')\circ F \\
+                        &=(f\circ F') \circ F \\
+                        &= f\circ(F' \circ F)
+  \end{align*}
+  Se tiene así que $F' \circ F: X \rightarrow X$ satisface $(F'\circ F) \circ
+  f = f \circ (F' \circ F)$. Además $F' \circ F (x_0) = x_0$. Observe que la
+  identidad $I: X \rightarrow X$ satisface: 
+  \[
+    I \circ f = f \circ I \, \land \, I(x_0) = x_0
+  \]
+  La proposición \ref{prop:34}, considerando el sistema de Peano $(X,f,x_0)$
+  afirma que existe una única función $H: X \rightarrow X$ tal que:
+  \[
+    H(x_0) = x_0 \quad \quad H \circ f = f \circ H
+  \]
+  Por lo tanto $F' \circ F = $. Se verifica análogamente que $F \circ F'$ es
+  la identidad en $X'$. Así $F$ es biyectiva. Además $F$ preserva operaciones
+  y $F(x_0) = x_0'$. Por lo cual es un isomorfismo.
+\end{proof}
+\begin{problem}
+  $g: \mathbb{N} \rightarrow \mathbb{Z}^0 \, n \rightarrow [(n,0)]$ es un
+  isomorfismo entre $(\mathbb{Z}^0, f, 0_z)$ y $(\mathbb{N}, S, 0)$. \\
+  $g$ es así mismo un isomorfismo entre las estructuras algebráicas
+  $(\mathbb{Z}^0, +, \cdot, 0_z, 1_z)$ y $(\mathbb{N}, +, \cdot, 0, 1)$. 
+\end{problem}
+\begin{problem}\label{ej:2}
+  Sea $x \in \mathbb{Z}$, demuestre que se cumple una única de las siguientes
+  afirmaciones:
+  \[
+    x \in \mathbb{Z^+} \qquad \qquad x = 0_z \qquad \qquad -x \in \mathbb{Z^+}
+  \]
+\end{problem}
+\begin{proposition}\label{prop:36}
+  Sea $x \in \mathbb{Z} \setminus \{0_z\}$, entonces $xx \in \mathbb{Z}^+$.
+\end{proposition}
+\begin{proof} Por el ejercicio \ref{ej:2} anterior, se tiene $x \neq 0_z \,\lor
+  \, x\in \mathbb{Z}^+ \, \lor \, -x \in \mathbb{Z}^+$.
+  $i)$ Si $x \in \mathbb{Z}^+$, entonces la proposición 30 implica que $xx \in
+  \mathbb{Z}^+$. \\
+  $ii)$ Suponga ahora que $-x \in \mathbb{Z}^+$. Así $(-x)(-x) \in
+  \mathbb{Z}^+$. Se tiene $\mathbb{Z}^0 \cup \mathbb{Z}_0 = \mathbb{Z}$ así $x
+  \in \mathbb{Z}^0 \, \lor \, x \in \mathbb{Z}_0$. \\
+  $a)$ Si $x \in \mathbb{Z}^0 \, \exists n \in \mathbb{N}$ tal que $x =
+  [(n,0)] \, \therefore \, xx = [(n,0)(n,0)] = [(nn, 0)]$. Por otra parte $-x
+  = [(0,n)]$, así $(-x)(-x) = [(0,n)(0,n)] = [(nn,0)] = xx$. \\
+  $b)$ Si $x \in \mathbb{Z}_0 \, \exists n \in \mathbb{N}$ tal que $x =
+  [(0,m)] \, \therefore \, xx = [(0,m)(0,m)] = [(mm,0)]$ Así mismo $(-x)(-x)=
+  [(m,0)(m,0)] = [(mm,0)] = xx \, \therefore xx\in \mathbb{Z}^+$. \\
+\end{proof}
+\paragraph{Resumen}
+Si $x,y,z \in \mathbb{Z}$:\\
+\begin{enumerate}
+  \item $x +y = y +x$
+  \item $(x +y) + z = x + (y +z)$
+  \item $0_z + x = x$
+  \item $ \exists (-x) \in \mathbb{Z}$ tal que $(x)+ (-x) = 0_z$
+  \item $xy = yx$
+  \item $(xy)z = x(yz)$
+  \item $1_z x =x$
+  \item $x(y+z) = xy + xz$
+\end{enumerate}
+Las 8 propiedades anteriores permiten afirmar que $(\mathbb{Z}, +, \cdot, 0_z,
+1_z)$ es un anillo conmutativo con identidad. \\
+Además:
+\begin{enumerate}
+  \item Si $xy \in \mathbb{Z}^+$, entonces $x + y \in \mathbb{Z}^+ \, \land \,
+    xy \in \mathbb{Z}^+$.
+  \item $1_z \neq 0_z$ ya que $((1,0), (0,0))\notin R$ \textit{i.e.} $[(1,0)]
+    \neq [(0,0)]$.
+  \item Si $z \neq 0_z $ y $yx = yz$ se tiene $x = y$.
+\end{enumerate}
+\section{Racionales}
+\begin{definition}
+  Sean $a,b \in \mathbb{Z}$, $b \neq 0_z$, la pareja $(a,b)$ se denominará
+  \textbf{cociente}. Al conjunto $\mathbb{Z} \times \mathbb{Z} \setminus \{0_z\}$.
+\end{definition}
+Sea $T = \{ ((a,b),(c,d)) \in (\mathbb{Z} \times \mathbb{Z} \setminus\{0_z\})
+\times (\mathbb{Z} \times \mathbb{Z} \setminus\{0_z\}) \, | \, ad = bc \}$ \\
+Se verificará que $T$ es una relación de equivalencia.\\
+$i)$ $((a,b), (a,b)) \in T$, ya que $ab=ab$, así $T$ es reflexiva. \\
+$ii)$ Suponga que $((a,b),(c,d)) \in T$
+entonces: $ad=bc \, \land \, bc=ac$, así $((a,b), (c,d)) \in T$. Así $T$ es
+simétrica. \\
+$iii)$ Suponga que $((a,b),(c,d))\in T$ y que $((c,d),(e,f))\in T$ entonces: $ad
+= bc$ y $cf = de \ldots (\sigma)$. \\
+Así $(ad)(cf) = (bc)(de)$. Además $b \neq 0_z \, \land \, d \neq 0_z$, lo cual
+implica que $bd \neq 0_z$. \\
+Si $c \neq 0_z$, se tiene $dc \neq 0_z$, y así de $\lambda)$, se tendría que $af
+=be$. Por otra parte, si $c = 0_z$, se tendría de $\sigma)$ que $ad = 0_z$, por
+lo cual como $d \neq 0_z$, $a= 0_z$. \\
+Así mismo de $\sigma)$ $de \neq 0_z$, como $d \neq 0$, $e=0$. Por ello $af=be$.
+De ésta forma se concluye que $((a,b),(e,f))\in T$, así $T$ es transitiva. Así
+$T$ es una relación de equivalencia. \\
+\begin{definition}
+  $\mathbb{Z} \times \mathbb{Z} \setminus \{0_z\} /_T$ se denomina conjunto de
+  \textbf{números racionales} y se denotará por $\mathbb{Q}$.
+\end{definition}
+
+Considere las funciones:
+\begin{align*}
+  f : (\mathbb{Z} \times (\mathbb{Z} \setminus\{0_z\}))\times(\mathbb{Z}
+  \times (\mathbb{Z} \setminus\{0_z\})) &\rightarrow \mathbb{Z} \times
+  (\mathbb{Z} \setminus\{0_z\}) \\
+  ((a,b),(c,d)) &\mapsto (ad + bc, bd) \\
+  g : (\mathbb{Z} \times (\mathbb{Z} \setminus\{0_z\}))\times(\mathbb{Z}
+  \times (\mathbb{Z} \setminus\{0_z\})) &\rightarrow \mathbb{Z} \times
+  (\mathbb{Z} \setminus \{0_z\}\\
+  ((a,b),(c,d)) &\mapsto (ac,bd)
+\end{align*}
+Observe que en la definición de $f$ y $g$ se tiene que $b \neq 0_z$ y $d \neq
+0_z$, entonces $bd \neq 0_z$.\\
+$f$ y $g$ son operaciones binarias en el conjunto de cocientes, que se denominan
+respectivamente adición y producto. Denotados de la forma usual.
+\begin{lemma}\label{lemma:rat1} 
+  Sean $x, y, u, v$ cocientes, $(x,u), (y,v)\in T$. Entonces: $(x+y, u+v)\in T
+  \quad \land \quad (xy, uv)\in T$.
+\end{lemma}
+\begin{proof}
+  Sean $x_1, x_2 \in \mathbb{Z}$, $x_2 \neq 0_z$, los componentes de $x$
+  \textit{i.e.} $x=(x_1,x_2)$. Análogamente se tiene $y=(y_1,y_2)$,
+  $u=(u_1,u_2)$, y $v=(v_1,v_2)$. \\
+  Por hipótesis se tiene que $x_1u_2 = x_2u_1$ y que $ y_1v_2 = y_2v_1 \ldots
+  (\lambda)$ \\
+  Se tiene $x + y = (x_1y_2 +y_2x_1, x_2y_2)$; $u +v = (u_1v_2 + v_2 u_1, u_2
+  v_2)$. Así mismo $xy = (x_1y_1, x_2y_2)$ y $uv = (u_1v_1, u_2v_2)$. \\
+  Se debe probar que 
+  \begin{equation}\label{36:alpha} 
+    (x_1y_2 + x_2y1)u_2v_2 = x_2y_2 (u_1v_2 + u_2v_1) 
+  \end{equation}
+  y también
+  \begin{equation}\label{36:beta}
+    x_1y_1u_2v_2 = x_2y_2u_1v_1
+  \end{equation}
+  De $\lambda)$ se tiene que
+  \[
+    (x_1y_2 + x_2 y_1)u_2v_2 = x_1y_2u_2v_2 + x_2y_1u_2v_2 = x_2u_1y_2v_2 +
+    y_2v_1x_2u_2 = (u_1v_2 + v_1u_2)x_2y_2
+  \]
+  Con lo cual se justifica (\ref{36:alpha}).\\
+  Así mismo se tiene de $\lambda)$:
+  \[
+    x_1y_1u_2v_2 = x_2u_1y_2v_1
+  \]
+  lo cual justifica a (\ref{36:beta})
+\end{proof}
+El lema anterior muestra que las siguientes relaciones son operaciones binarias
+en $\mathbb{Q}$.
+\begin{definition}
+  \begin{align*}
+    F &= \{([x],[y], [x+y]) \, \in \, (\mathbb{Q} \times\mathbb{Q})\times
+    \mathbb{Q}\} \\
+    G &= \{([x],[y], [xy]) \, \in \, (\mathbb{Q} \times\mathbb{Q})\times
+    \mathbb{Q}\}
+  \end{align*}
+  Se denominan respectivamente adición y producto en $\mathbb{Q}$.\\
+  Así mismo, $0_q = [(0_z,1_z)]$, $1_q=[(1_z,1_z)]$ se denominan neutro aditivo y
+  neutro multiplicativo respectivamente.
+\end{definition}
+\begin{proposition*}
+  Sea $\mathbb{Q}' = \{[(x_1,x_2)] \in \mathbb{Q} \, |\, x_2 = 1_z \}$.
+  $(\mathbb{Z}, +, \cdot, 1_z, 0_z)$ y $(\mathbb{Q}', +, \cdot, 1_q, 0_q)$ son
+  isomorfas.
+\end{proposition*}
+\begin{proof}
+  Considere la función:
+  \begin{align*}
+    h:\mathbb{Z} &\to  \mathbb{Q}' \\
+    x &\mapsto [(x, 1_z)]
+  \end{align*}
+  Sean $x, y \in \mathbb{Z}$ tales que $h(x) = h(y)$, entonces
+  $[(x,1_z)]=[(y,1_x)]$.\\
+  Así, $x1_z = 1_zy$, $x = y$, entonces $h$ es inyectiva.\\
+  Sea $u \in \mathbb{Q}'$, entonces existe $x\in \mathbb{Z}$ tal que $u =
+  [(x,1_z)] \, \land \, u = h(x)$, lo cual muestra que $h$ es suprayectiva. \\
+  Se tiene además que si $u,v \in \mathbb{Z}$, entonces:
+  \[
+    h(u+v) = [(u+v, 1_z)] = [(u, 1_z)] + [(v, 1_z)] = h(u) + h(v)
+  \]
+  Así mismo:
+  \[
+    h(uv) = [(uv, 1_z)] = [(u, 1_z)]  [(v, 1_z)] = h(u)  h(v)
+  \]
+  Finalmente observe que:
+  \[
+    h(1_z) = [(1_z,1_z)] = 1_q
+  \]
+  \[
+    h(0_z) = [(0_z, 1_z)] =0_q
+  \]
+  $h$ es en consecuencia un isomorfismo.
+\end{proof}
+\begin{proposition}\label{prop:37}
+  Sean $x,y,x \in \mathbb{Q}$ entonces:
+  \begin{align*}
+    x+y &= y+x & (x+y)+z &= x+(y+z) & x +0_q &= x \\
+    \exists u \in \mathbb{Q} \, | \, x+ u &= 0_q & xy &= yx & (xy)z &= x(yz)
+    \\
+    x1_q &= x & \mathrm{si} \quad x \neq0_q \quad \exists v \in \mathbb{Q} \, | \, xv
+         &= 1_q & (x+y)z &= xz + yz
+  \end{align*}
+\end{proposition}
+\begin{remark}
+  \begin{enumerate}
+    \item Sea $a\in \mathbb{Z}$, entonces $0_z = a0_z$.
+    \item $(-1_z)a = -a \, \forall a \in \mathbb{Z}$.
+  \end{enumerate}
+\end{remark}
+\begin{definition}
+  Un cociente $(a,b)$ se dice \textbf{positivo} si $ab \in \mathbb{Z}^+$.
+\end{definition}
+\begin{lemma}
+  Sean $x,y$ cocientes, $x$ positivo y $[x] = [y]$, entonces $y$ es positivo.
+\end{lemma}
+\begin{proof}
+  Sea $x = (a,b)$, $y= (c,d)$. \\
+  Por hipótesis $ab \in \mathbb{Z}^+$. Se probará que $cd \in \mathbb{Z}^+$.\\
+  Como $[x] = [y]$, se tiene
+  \[
+    ad=bc \,\therefore \, (ab)(cd) = (ad)(bc) = (ad)(ad)
+  \]
+  La proposición \eqref{prop:36} implica que $(ad)(ad) \in \mathbb{Z}^+$ \\
+  Se tiene así que $(ab)(cd) \in \mathbb{Z}^+$.\\
+  Para concluir la prueba, basta demostrar que si $u,v \in \mathbb{Z}$, tales
+  que $u \in \mathbb{Z}^+$, entonces $v \in \mathbb{Z}^+$.\\
+  Suponga entonces que $u,v \in \mathbb{Z}$, $u, uv \in \mathbb{Z}^+$.\\
+  Observe que $v \neq 0_z$, ya que en caso contrario $uv = 0_z$.\\
+  Observe de la misma forma que $-v \notin \mathbb{Z}^+$, ya que si ésto no
+  ocurriese:\\
+  \begin{align*}
+    u(-v) &\in \mathbb{Z}^+ \quad \mathrm{ pero} \\
+    u(-v) &= u[(-1_z)v] = (-1_z)(uv) = -(uv)
+  \end{align*}
+  Por lo cual $-(uv) \in \mathbb{Z}^+$, lo cual contradice el que $uv \in
+  \mathbb{Z}^+$ por lo tanto $v \in \mathbb{Z}^+$.
+\end{proof}
+\begin{definition}
+  Sea $x \in \mathbb{Q}$. Se dice que $x$ es positivo si existe $u$
+  cociente positivo y $u \in x$. se denotará $\mathbb{Q}^+$ al conjunto de los
+  racionales positivos.
+\end{definition}
+\begin{remark}
+  $1_q \neq 0_q$ ya que lo contrario implicaría que $1_z = 0_z$.
+\end{remark}
+\begin{proposition}\label{prop:38}
+  $i)$Sean $x,y \in \mathbb{Q}^+$, entonces $x + y \in \mathbb{Q}^+$, y $xy
+  \in \mathbb{Q}^+$.\\
+  $ii)$ Dado $x \in \mathbb{Q}$ se cumple una única de las siguientes tres
+  afirmaciones:
+  \begin{align*}
+    x &= 0_q & x &\in \mathbb{Q^+} & -x &\in \mathbb{Q}^+
+  \end{align*}
+\end{proposition}
+\begin{proof} $i)$ Sean $[(a,b)] = x$, $[(c,d)]=y$. Por hipótesis $ab \in
+  \mathbb{Z}^+ \, \land \, cd \in \mathbb{Z}^+$.\\
+  \begin{align*}
+    x+y &= [(ad+bc, bd)] & &\land & xy &= [(ac,bd)]
+  \end{align*}
+  Observe que:
+  \[
+    (ad + bd)bd = abdd +bbcd
+  \]
+  Como $b \neq 0_z \, \land \, d \neq 0_z$, se tiene $bb \in \mathbb{Z}^+ \,
+  \land \, dd \in \mathbb{Z}^+$.\\
+  Así mismo, como $ab \in \mathbb{Z^+} \, \land \, cd\in \mathbb{Z}^+$\\
+  \begin{align*}
+    (ad +bc)bd &\in \mathbb{Z}^+ & &\land & acbd &\in \mathbb{Z}^+
+  \end{align*}
+  Así $x +y \in \mathbb{Q}^+$ y $xy \in \mathbb{Q}^+$.\\
+  $ii)$ Sea $[(a,b)]=x$.\\
+  Si $x \neq 0_1$, entonces $a \neq 0_z$. Como $a \neq 0_z \land b \neq 0_z$,
+  se tienen las siguientes posibilidades:
+  \begin{align*}
+    &i) & a &\in \mathbb{Z^+}  \, \land \, b \in \mathbb{Z}^+ \\
+    &ii) & -a &\in \mathbb{Z^+} \, \land \, -b \in \mathbb{Z}^+ \\
+    &iii) & (a &\in \mathbb{Z^+} \, \land \,  -b \in \mathbb{Z}^+) \quad
+    \lor \quad (-a \in \mathbb{Z}^+ \land b \in \mathbb{Z}^+)
+  \end{align*}
+  En el caso $i)$ se tendría $ab \in \mathbb{Z^+}$, $x \in \mathbb{Q}^+$.\\
+  En el caso $ii)$ se tendría $(-a)(-b) \in \mathbb{Z^+}$; observe que 
+  \[
+    (-a)(-b) = (-1)a(-b) = (-1)(-1)ab = (-1)(-ab) = ab
+  \]
+  $x \in \mathbb{Q}^+$.\\
+  Finalmente considere el caso $iii)$. Si $a \in \mathbb{Z}^+ \, \land \, -b
+  \in \mathbb{Z}^+$, se tiene: $(-a)b = a(-b) \in \mathbb{Z}^+$.\\
+  Además $-x = -[(a,b)] = [(-a,b)]$, ya que:
+  \[
+    [(a,b)] + [(-a,b)] = [(a,b) + (-a,b)] = [(0_z, bb)] = 0_q
+  \]
+  Así $-x \in \mathbb{Q}^+$.
+  De la misma forma se verifica que si $-a \in \mathbb{Z}^+ \, \land \, b \in
+  \mathbb{Z}^+$, se tiene que $-x \in \mathbb{Q}^+$. Se ha probado así que si
+  $x \neq 0_q$, se tiene: $x \in \mathbb{Q}^+ \, \lor \, -x \in
+  \mathbb{Q}^+$.\\
+  Supóngase que $x \in \mathbb{Q}^+ \, \land \,- x \in \mathbb{Q}^+$, entonces
+  $ab \in \mathbb{Z^+} \, \land \, -ab \in \mathbb{Z^+}$ lo cual contradice la
+  tricotomía en $\mathbb{Z^+}$. Tampoco ocurre que $x \in \mathbb{Q}^+ \,
+  \land \, x= 0_q$, ya que se tendría que $0_z \in \mathbb{Z^+}$.
+\end{proof}
+\begin{remark}
+  Dados $x,y \in \mathbb{Q} \quad x + (-y)$ se denotará $x-y$. Sea
+  $\mathfrak{M}= \{(x,y) \in \mathbb{Q} \times \mathbb{Q} \, | \, x-y \in
+  \mathbb{Q}^+\}$. $(x,y)\in \mathfrak{M}$ se denotará $x>y$.
+\end{remark}
+\begin{proposition} \label{prop:39} $i)$ $\forall x \in \mathbb{Q}^+$ sii $x>
+  0_q$.
+
+  $ii)$ Dados $x,y \in \mathbb{Q}$, se cumple una única de las siguientes
+  afirmaciones:
+  \begin{align*}
+    x&=y & x&>y & x&<y
+  \end{align*}
+
+  $iii)$ Si $x,y,z \in \mathbb{Q}$, $x>y$, si y sólo si $x +z > y +z$. Si,
+  además $z \in \mathbb{Q^+}$, entonces $x>y$ si y sólo si $xz >yz$.
+\end{proposition}
+\begin{proof}
+  $i)$ Son equivalentes $x \in \mathbb{Q}^+$, $x - 0_q \in \mathbb{Q}^+$, $x >
+  0_q$.\\
+  $ii)$ Por la proposición \eqref{prop:38} se cumple una única de las
+  siguientes afirmaciones:
+  \begin{align*}
+    x-y &= 0_q & x-y &\in \mathbb{Q^+} & -(x-y) &\in \mathbb{Q}^+
+  \end{align*}
+  es decir, se cumple alguna única de las siguientes afirmaciones:
+  \begin{align*}
+    x &= y & x&> y & x&<y
+  \end{align*}
+  $iii)$ Son equivalentes:
+  \begin{align*}
+    x&>y & &\Leftrightarrow & x-y&\in \mathbb{Q}^+ & &\Leftrightarrow & x-y +0_q &\in
+    \mathbb{Q}^+ \\
+    x-y + (z-z) &\in \mathbb{Q}^+ & &\Leftrightarrow & (x+z)-(y+z) &\in \mathbb{Q}^+ & &\Leftrightarrow & x+z &> y + z
+  \end{align*}
+  Así mismo son equivalentes:
+  \begin{align*}
+    x &>y & &\Leftrightarrow & x-y &\in \mathbb{Q}^+ & &\Leftrightarrow & (x-y)z &\in \mathbb{Q}^+ \\
+    xz-yz &\in \mathbb{Q}^+ & &\Leftrightarrow & xz &> yz
+  \end{align*}
+\end{proof}
+\begin{notation} Sea $z \in \mathbb{Q}\setminus \{0_q\}$. La
+  proposición \eqref{prop:37} implica que existe $u \in \mathbb{Q}$ tal que
+  $zu = 1_q$. $u$ se denomina \textbf{inverso multiplicativo} de $z$, y se
+  denotará por el símbolo $z^{-1}$.
+\end{notation}
+\begin{remark}
+  Si $z \in \mathbb{Q}^+$ entonces $z^{-1} \in \mathbb{Q}^+$, ya que
+  $zz^{-1}=1q \in \mathbb{Q}^+$.
+\end{remark}
+Se ha probado previamente que $\mathbb{Q}'$ y $\mathbb{Z}$(como anillos) son
+estructuras algebráicas isomorfas. Dado $n \in \mathbb{Z}$, denotaremos a $h(n)$
+como $n_q$. Los elementos de $\mathbb{Q}'$ se denominarán \textbf{racionales
+enteros}.\\
+\begin{remark}
+  Todo racional puede ser escrito en términos de racionales enteros.\\
+  Ya que $h$ es un isomorfismo, sea $x \in \mathbb{Q}$, $x = [(a,b)]$, 
+  \[
+    [(a, 1_z)] [(1_z,b)] = [(a, 1_z)][(b, 1_z)]^{-1}= ab^{-1}
+  \]
+\end{remark}
+\begin{notation}
+  $a_qb_q^{-1}$ se escribirá en la forma $\frac{a_q}{b_q}$.\\
+  Dados $x,y \in \mathbb{Q}$, si $x>y\, \lor \, x=y$, ello se escribirá de la
+  forma $x \geq y$.
+\end{notation}
+\begin{problem}
+  $i)$ Sean $x,y \in \mathbb{Q}^+$. Verifique que existen $a_q,b_q,c_q,d_q$
+  racionales enteros positivos tales que:
+  \begin{align*}
+    x &= \frac{a_q}{b_q} & y &= \frac{c_q}{d_q}
+  \end{align*}
+  $ii)$ Sean $x,y \in \mathbb{Q}$. Con $x = \frac{a_q}{b_q}$, $y =
+  \frac{c_q}{d_q}$. Verifique que:
+  \begin{align*}
+    x+y &= \frac{a_qd_q + c_qb_q}{b_qd_q} & xy &= \frac{a_qc_q}{b_qd_q}
+  \end{align*}
+  $iii)$ Sean $a_q, b_q$ racionales enteros positivos, demuestre que $a_qb_q$
+  es un racional entero positivo, y $a_qb_q \geq 1_q$.
+\end{problem}
+\begin{remark}
+  $1_q$ y $0_q$ son el mismo objeto ya sea en la definición del elemento
+  neutro, o como racionales enteros. 
+\end{remark}
+\begin{proposition}[Propiedad arquimedeana]\label{prop:40}
+  Sean $r,s \in \mathbb{Q^+}$, entonces existe un racional entero $n_q$ tal
+  que $s < n_qr$.
+\end{proposition}
+\begin{proof}
+  Existen $a_q,b_q,c_q,d_q$ racionales enteros, tales que:
+  \begin{align*}
+    r&= \frac{a_q}{b_q} & s&= \frac{c_q}{d_q}
+  \end{align*}
+  De acuerdo con el ejercicio previo, se puede asumir que $a_q,b_q,c_q,d_q \in
+  \mathbb{Q}^+$. \\
+  Observe que son equivalentes las afirmaciones: 
+  \begin{align*}
+    s&<n_qr  & n_qr -s &\in \mathbb{Q}^+ & \frac{n_1a_q}{b_q}
+    -\frac{c_q}{d_q} &\in \mathbb{Q}^+
+  \end{align*}
+  Por el ejercicio anterior, se tiene también que $b_qd_q \in \mathbb{Q}^+$.
+  En general, se tiene que:
+  \[
+    \frac{u_q}{v_q}\in\mathbb{Q}^+ \,\land \, v_q \in \mathbb{Q}^+\quad
+    \Rightarrow \quad u_q \in \mathbb{Q}^+
+  \]
+  Así $s <n_qr$ es equivalente a $n_qa_qd_q-c_qb_q \in \mathbb{Q}^+$.\\
+  Basta entonces demostrar que existe $n_q$ racional entero tal que
+  $n_qa_qd_q> c_qb_q$.\\
+  Sea $n_q = 2_qc_qb_q$, entonces $n_q$ es un racional entero positivo.
+  Observe que $1_q > 0_1$. De la proposición \eqref{prop:39} se tiene que $1_q
+  + 1_q = 2_q > 0_q + 1_q = 1_q$. Además, como $c_qb_q \in \mathbb{Q}^+$, se
+  tiene que:
+  \[
+    n_q=2_qc_qb_q>1_qc_qb_q = c_qb_q
+  \]
+  Además $a_qd_q \geq 1_q$, por lo cual $n_qa_qd_q \geq n_q$. Por
+  transitividad
+  \[
+    n_q a_qd_q > c_qb_q
+  \]
+  Así $s < n_q r$.
+\end{proposition}
+\section{Los Números Reales}
+\begin{definition}
+  Sea $x \in \mathbb{Q}$. Se define el valor absoluto de $x$, denotado por
+  $|x|$, como:
+  \[
+    |x| =\begin{cases}
+      x  &\mbox{si } x \in \mathbb{Q}^+\cup \{0_q\} \\
+      -x &\mbox{si } x \notin \mathbb{Q}^+\cup \{0_q\} \\
+    \end{cases}
+  \]
+\end{definition}
+\begin{problem} Demuestre que si $x,y \in \mathbb{Q}$
+  \begin{align*}
+    i) \,|x| &\geq 0_q & ii)\, |xy|&= |x||y| & iii) \, |x+y| &\leq |x| + |y|
+             & iv)\, |x|-|y| &\leq |x-y|
+  \end{align*}
+\end{problem}
+\begin{definition}
+  Sea $A$ un conjunto. Una \textbf{sucesión} en $A$ es una función de $\mathbb{N}$ en
+  $A$. Para cada $n \in \mathbb{N}$, $f(n)$ se denotará por $x_n$, y $f$ por
+  $\{x_n\}$.
+\end{definition}
+\begin{definition}
+  Sea $\{x_n\}$ una sucesión en $\mathbb{Q}$. Se dice que la sucesión es de
+  \textbf{Cauchy} si 
+  \[
+    \forall \epsilon \in \mathbb{Q}^+ \quad \exists N \in \mathbb{N} \mbox{
+    tal que } |x_n - x_m|< \epsilon \quad \forall n \geq N, \, \forall m \geq
+    N.
+  \]
+\end{definition}
+\begin{definition}
+  Dadas dos sucesiones $\{x_n\}, \{y_n\}$ en $\mathbb{Q}$, se define su
+  \textbf{suma}, denotada por $\{x_n\} + \{y_n \}$ como la sucesión $\{x_n +
+  y_n\}$ y se define su
+  \textbf{producto}, denotado por $\{x_n\} \{y_n \}$ como la sucesión $\{x_n
+  y_n\}$.
+\end{definition}
+$\mathcal{C}$ denotará al conjunto de sucesiones de Cauchy en $\mathbb{Q}$.
+\begin{proposition}\label{prop:41}
+  Sea $\{x_0, \ldots, x_N\}$ un subconjunto de $\mathbb{Q}$. Existe $K \in
+  \{0, \ldots, N\}$ tal que $x_K \geq x_i \, \forall i \in \{0, \ldots, N\}$.
+  $x_K$ se denotará como $\max \{x_0, \ldots, x_N\}$.
+\end{proposition}
+\begin{proof}
+  Se procederá por inducción sobre $N$.\\
+  Si $N=0$, entonces $K=0$. \\
+  Suponga que la proposición se cumple para algún $N$. \\
+  Considere el conjunto $\{x_0, \ldots, x_N, x_{N+1}\}$. \\
+  Se tiene que $x_K \leq x_{N+1} \, \lor \l x_K \geq x_{N+1}$.
+  En el primer caso  $K' = N+1$, en el segundo caso $K' = K$. En cualquiera de
+  ellos, $K' \in \{0, \ldots, N+1 \}$, y $x_K' \geq x_i \, \forall i \in \{0,
+  \ldots, N+1\}$.
+\end{proof}
+\begin{proposition}\label{prop:42}
+  Sea $\{x_n\}$ una sucesión de Cauchy en $\mathbb{Q}$. Entonces existe $M \in
+  \mathbb{Q}^+$, tal que $|x_n| \leq M \, \forall n  \in \mathbb{N}$. 
+\end{proposition}
+\begin{proof}
+  Como $\{x_n\}$ es de Cauchy, y $1_q \in \mathbb{Q}^+$, existe $N \in
+  \mathbb{N}$ tal que $|x_n -x_m| < 1_q \, \forall n \geq N, \, \forall m \geq
+  N$.\\
+  En particular se tiene que si $n \geq N$ 
+  \begin{align*}
+    |x_n| - |x_N| &\leq |x_n - x_N| < 1_q & &\therefore & |x_n| &\leq |x_N|
+    + 1_q &\forall n \geq N.
+  \end{align*}
+  Sea $K= \max\{|x_0|, \ldots, |x_N|\}$, considere $M = K + 1_q$. Entonces
+  \[
+    |x_N| + 1_q \leq M \, \land K \leq M \quad \therefore \quad |x_n| \leq M
+    \quad \forall n \in \mathbb{N}
+  \]
+\end{proof}
+\begin{proposition}\label{prop:43}
+  Sean $\{x_n\}, \{y_n\}$ sucesiones de Cauchy en $\mathbb{Q}$. Entonces
+  $\{x_n\} + \{y_n\}$, y $\{x_n\}\{y_n\}$ son sucesiones de Cauchy.
+\end{proposition}
+\begin{proof}
+  Sea $\epsilon \in \mathbb{Q}^+$. Como $\{x_n\}$ es sucesión de Cauchy,
+  $\exists N \in \mathbb{N}$ tal que si $n,m \geq N$, entonces:
+  \[
+    |x_n - x_m| < \epsilon \cdot 2_q^{-1}
+  \]
+  Así mismo existe $N' \in \mathbb{N}$ tal que si $n,m \geq N'$, entonces:
+  \[
+    |y_n - y_m| < \epsilon \cdot 2_q^{-1}
+  \]
+  Sea $K = \max \{N, N'\}$, entonces $n,m \geq K$, así:
+  \begin{align*}
+    |(x_n +y_n) - (x_m -y_m)| &= |x_n -x_m +y_n -y_m | \leq |x_n - x_m| +
+    |y_n -y_m| < \epsilon \cdot (2_q^{-1} + 2_q^{-1}) = \epsilon
+  \end{align*}
+  Lo anterior muestra que $\{x_n\} + \{y_n\}$ es de Cauchy.\\
+  Para la segunda parte, como $\{x_n\}$ y $\{y_n\}$ son de Cauchy, existen $M$
+  y $M'$ tales que:
+  \begin{align*}
+    |x_n| &\leq M & \forall n &\in \mathbb{N} & &\land & |y_n| &\leq M' &
+    \forall n &\in \mathbb{N}
+  \end{align*}
+  Dado $\epsilon \in \mathbb{Q}^+$, sean $\epsilon' = \epsilon
+  2_q^{-q}(M')^{-1}$, y  $\epsilon' = \epsilon''=  2_q^{-q}M^{-1}$, entonces
+  $\exists K', K'' \in \mathbb{N}$, tales que:
+  \[
+    |x_n-x_m| < \epsilon' \mbox{ si } n,m \geq K' \quad \land \quad |y_n-y_m| <
+    \epsilon'' \mbox{ si } n,m \geq K''
+  \]
+  Sea $L = \max \{ K', K''\}$, entonces si $n,m \geq L$, se tiene:
+  \begin{align*}
+    |x_ny_n -x_my_m| &= |x_nyn-x_ny_m +x_ny_m -x_my_m| \\
+                     &\leq |x_n(y_n-y_m)|(x_n-x_m)y_m| \\
+                     &\leq |x_n||y_n-y_m| + |x_n -x_m||y_m| \\
+                     &< M\epsilon'' + \epsilon'M' \\
+                     &=\epsilon(2_q^{-1} + 2_q^{-1}) = \epsilon
+  \end{align*}
+  Lo anterior demuestra que $\{x_n\}\{y_n\}$ es de Cauchy.
+\end{proof}
+\begin{definition}
+  La proposición \eqref{prop:43} muestra que en $\mathcal{C}$ están definidas
+  2 operaciones binarias:
+  \begin{align*}
+    f: \mathcal{C} \times \mathcal{C} &\to \mathcal{C} & g: \mathcal{C}
+    \times \mathcal{C} &\to \mathcal{C} \\
+    (\{x_n\},\{y_n\}) &\mapsto \{x_n\} + \{y_n\} &
+    (\{x_n\},\{y_n\}) &\mapsto \{x_n\}\{y_n\} \\
+  \end{align*}
+  A $f$, y $g$ se le denominan respectivamente adición y producto en
+  $\mathcal{C}$.
+\end{definition}
+\begin{proposition}\label{prop:44}
+  Sean $\{x_n\}, \{y_n\}, \{z_n\} \in \mathcal{C}$. Entonces:
+  \begin{enumerate}
+    \item $\{x_n\} + \{y_n\} = \{y_n\} + \{x_n\}$ 
+    \item $\{x_n\} + (\{y_n\} + \{z_n\}) =  (\{x_n\} + \{y_n\}) + \{z_n\}$
+    \item $\exists \{u_n\} \in \mathcal{C}$ tal que $\{u_n\} + \{v_n\} =
+      \{v_n \} \forall \{v_n\} \in \mathcal{C}$.
+    \item $\exists \{h_n\} \in 
+      \mathcal{C}$ tal que $\{x_n\} + \{h_n\} = \{u_n\}$
+    \item $\{x_n\}  \{y_n\} = \{y_n\}  \{x_n\}$ 
+    \item $\{x_n\}  (\{y_n\}  \{z_n\}) =  (\{x_n\}  \{y_n\})  \{z_n\}$
+    \item $\exists \{w_n\} \in \mathcal{C}$ tal que $\{w_n\}  \{v_n\} =
+      \{v_n \} \forall \{v_n\} \in \mathcal{C}$.
+    \item $\{x_n\}(\{y_n\} + \{z_n\}) = \{x_n\}\{y_n\} + \{x_n\}\{z_n\}$. 
+  \end{enumerate}
+\end{proposition}
+Sea $R = \{(\{x_n\}, \{y_n\}) \in \mathcal{C} \times \mathcal{C} \, | \, \forall
+  \epsilon \in \mathbb{Q}^+ \quad \exists N \in \mathbb{N} \, |x_n - y_n| <
+\epsilon \, \forall \n \geq N \}$. \\
+Observe que $R$ es transitiva; ya que si $(\{x_n\},\{y_n\}), (\{y_n\},
+\{z_n\})\in R$. Se tiene que para $\epsilon \in \mathbb{Q}^+$ existen $M,N \in
+\mathbb{N}$ tales que:
+\[
+  |x_n-y_n|< \epsilon 2_q^{-1} \, \forall n \geq M \quad \land \quad |y_n
+  -z_n| < \epsilon 2_q^{-1} \, \forall n \geq N
+\]
+Sea $K = \max \{N,M\}$. Si $n>K$, entonces:
+\[
+  |x_n -z_n| = |x_n-y_n + y_n -z_n| \leq |x_n -y_n| + |y_n -z_n| < \epsilon
+  2_q^{-1} + \epsilon 2_q^{-1} = \epsilon
+\]
+Así $(\{x_n\}, \{z_n\})\in R$.\\
+Se tiene así mismo que $(\{x_n\},\{x_n\})\in R \quad \forall \{x_n\} \in
+\mathcal{C}$. Y si $(\{x_n\},\{y_n\}) \in R$, entonces $(\{y_n\},\{x_n\}) \in
+R$.\\
+Así $R$ es una relación de equivalencia en $\mathcal{C}$.
+\begin{definition}
+  Se define al conjunto cociente $\mathcal{C}/_R$ como el conjunto de
+  \textbf{números reales}, y se denotará por el símbolo $\mathbb{R}$.
+\end{definition}
+\begin{proposition}\label{prop:45}
+  Sean $\{x_n\}, \{y_n\}, \{r_n\}, \{z_n\} \in \mathcal{C}$. Si $(\{x_n\},
+  \{r_n\}), (\{y_n\},\{z_n\})\in R$, entonces:
+  \begin{align*}
+    i)\, (\{x_n\} + \{y_n\}, \{r_n\} + \{z_n\})&\in R &
+    ii)\, (\{x_n\} \{y_n\}, \{r_n\} \{z_n\})&\in R 
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  $ii)$ Sea $\epsilon \in \mathbb{Q}^+$. Sea $\epsilon'= \epsilon 2_q^{-1}$.\\
+  Como $(\{x_n\},\{r_n\})\in R \quad \exists N \in \mathbb{N}$ tal que
+  $|x_n-r_n|< \epsilon' \quad \forall n \geq N$. \\
+  Así mismo $\exists N' \in \mathbb{N}$ tal que
+  $|y_n-z_n|< \epsilon' \quad \forall n \geq N'$. \\
+  Sea $K = \max \{N,N'\}$. Entonces $\forall n \geq K$, se tiene:
+  \begin{align*}
+    |(x_n +y_n)-(r_n +z_n)| &= |(x_n-r_n) + (y_n-z_n)| \\
+                            &\leq |x_n-r_n|+|y_n-z_n| \\
+                            &< \epsilon' + \epsilon' = \epsilon
+  \end{align*}
+  lo anterior muestra que $(\{x_n\} + \{y_n\}, \{r_n\} + \{z_n\})\in R$.\\
+  $ii)$ Como $\{y_n\},\{r_n\}$ pertenecen a $\mathcal{C}$. $\exists M, M' \in
+  \mathbb{Q}^+$ tales que:
+  \[
+    |y_n|<M \quad \forall n \in \mathbb{N} \quad \land \quad |r_n| < M'
+    \quad \forall n \in \mathbb{N}
+  \]
+  Dado $\epsilon \in \mathbb{Q}^+$, sean $\epsilon' = \epsilon2_q^{-1}M^{-1}$,
+  y $\epsilon'' = \epsilon2_q^{-1}M'^{-1}$. \\
+  Como $(\{x_n\},\{r_n\})\in R$, para $\epsilon' \, \exists N \in \mathbb{N}$,
+  tal que $|x_n-r_n|<\epsilon' \quad \forall n \geq N$.\\
+  Así mismo $\exists N' \in \mathbb{N}$,
+  tal que $|y_n-z_n|<\epsilon'' \quad \forall n \geq N'$.\\
+  Sea $K =\max \{N,N'\}$, se tiene entonces, si $n\geq K$:
+  \begin{align*}
+    |x_ny_n-r_nz_n| &= |x_ny_n -y_nr_n + y_nr_n -r_nz_n| \\
+                    &\leq |x_ny_n-y_nr_n| + |y_nr_n-r_nz_n| \\
+                    &\leq |y_n||x_n-r_n| + |r_n||y_n-z_n| \\
+                    &<M\epsilon' + M'\epsilon'' = \epsilon
+  \end{align*}
+  Lo anterior muestra que $ (\{x_n\} \{y_n\}, \{r_n\} \{z_n\})\in R $.
+\end{proof}
+\begin{definition}
+  La proposición justifica la definición de las siguientes 2 operaciones
+  binarias en $\mathbb{R}$:
+  \begin{align*}
+    F: \mathbb{R}\times \mathbb{R} &\to \mathbb{R} &
+    G: \mathbb{R}\times \mathbb{R} &\to \mathbb{R} \\
+    ([\{x_n\}],[\{y_n\}]) &\to [\{x_n\}+\{y_n\}] &
+    ([\{x_n\}],[\{y_n\}]) &\to [\{x_n\}\{y_n\}] \\
+  \end{align*}
+  $F, G$ se denominan respectivamente adición y producto en $\mathbb{R}$.\\
+  Denotamos así:
+  \begin{align*}
+    0_r &= [\{x_n\}] \mbox{ siendo } x_n =0_q \quad \forall n \in
+    \mathbb{N} \\
+    1_r &= [\{y_n\}] \mbox{ siendo } y_n =1_q \quad \forall n \in
+    \mathbb{N} 
+  \end{align*}
+\end{definition}
+Se tiene entonces de la proposición $\eqref{prop:44}$ lo siguiente:
+\begin{proposition}\label{prop:46}
+  Sean $a,b,c \in \mathbb{R}$, se tiene entonces:
+  \begin{enumerate}
+    \item $a + b = b +a$
+    \item $a +(b +c ) = (a+b)+c$
+    \item $a + 0_r = a$
+    \item $\exists -a \quad a + (-a) = 0_r$
+    \item $a  b = b a$
+    \item $a (b c ) = (ab)c$
+    \item $a  1_r = a$
+    \item Si $a\neq 0_r$, $\exists a^{-1} \quad a  a^{-1} = 1_r$
+    \item $a(b + c) = ab + ac$
+  \end{enumerate}
+\end{proposition}
+La prueba de $8.$ será consecuencia de las proposiciones subsecuentes.
+\begin{definition}
+  Una sucesión $\{x_n\} \in \mathcal{C}$ se dice positiva, si $\exists
+  \epsilon \in \mathbb{Q}^+ \, \land \, \exists N \in \mathbb{N}$ tales que
+  $x_n > \epsilon \, \forall n \geq N$.
+\end{definition}
+\begin{proposition}\label{prop:47}
+Sea $\{x_n\} \in \mathcal{C}$ positiva. Si $(x_n\}, \{u_n\})\in R$, entonces
+$\{u_n\}$ también es positiva.
+\end{proposition}
+\begin{proof}
+  Como $\{x_n\}$ es positiva, existen $\epsilon \in \mathbb{Q}^+$, $N \in
+  \mathbb{N}$ tales que $x_n > \epsilon \, \forall n \geq N$.\\
+  Sea $\epsilon' = \epsilon 2_q^{-1}$. entonces $\epsilon' \in
+  \mathbb{Q}^+$.\\
+  Como $(\{x_n\},\{u_n\}) \in R $. Para $\epsilon'$, existe $M \in \mathbb{N}$
+  tal que $|x_n-u_n| < \epsilon' \, \forall n \geq M$.
+  Sea $K = \max{N,M}$, entonces se tiene $\forall n \geq K$:
+  \begin{align*}
+    \epsilon - u_n &< x_n-u_n \\
+                   &\leq |x_n-u_n| \\
+                   &< \epsilon' \\
+    \therefore &\forall n\geq K \\
+               &\epsilon' < u_n
+  \end{align*}
+  lo cual muestra que $\{u_n\}$ es positiva.
+\end{proof}
+\begin{definition}
+  Sea $x \in \mathbb{R}$. $x$ se dice positivo si $\exists \{x_n\} \in
+  \mathcal{C}$ positiva tal que $\{x_n\} \in x$.\\
+  $\mathbb{R}^+$ denotará al conjunto de reales positivos.
+\end{definition}
+\begin{proposition}\label{prop:48}
+  Sean $\{x_n\}, \{y_n\}$ sucesiones de Cauchy positivas, entonces:
+  \begin{enumerate}
+    \item $\{x_n\} + \{y_n\}$ es una sucesión de Cauchy positiva.
+    \item $\{x_n\}  \{y_n\}$ es una sucesión de Cauchy positiva.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Por hipótesis existen $\epsilon_1 \in \mathbb{Q}^+$, $N_1 \in \mathbb{N}$,
+  tales que $x_n > \epsilon_1 \, \forall n \geq N_1$. \\
+  Así mismo, existen $\epsilon_2 \in \mathbb{Q}^+$, $N_2 \in \mathbb{N}$ tales
+  que: $y_n > \epsilon_2 \, \forall n \geq N_2$.\\
+  Sea $N = \max\{N_1,N_2\}$, entonces si $n \geq N$:
+  \[
+    x_n+y_n > \epsilon_1 + \epsilon_2 \in \mathbb{Q}^+
+  \]
+  Así mismo
+  \[
+    x_ny_n > \epsilon_1y_n > \epsilon_1\epsilon_2 \in \mathbb{Q}^+
+  \]
+  Así la suma y el producto son sucesiones positivas.
+\end{proof}
+\begin{proposition}{\label{prop:49}}
+  Sea $\{x_n\} \in \mathcal{C}$, entonces se cumple una única de las
+  siguientes afirmaciones:
+  \begin{align*}
+    (\{x_n\},\{u_n\}) \in R &\mbox{ siendo } u_n = 0_q \forall n \in
+    \mathbb{N} & \{x_n\} &\mbox{ es positiva } & -\{x_n\} &\mbox{ es positiva
+    }
+  \end{align*}
+\end{proposition}
+\begin{proof}
+  Suponga que $(\{x_n\}, \{u_n\}) \notin R$, entonces $\exists \epsilon \in
+  \mathbb{Q}^+$ tal que $\forall N \in \mathbb{N} \quad \exists n > N$ para el
+  cual $|x_n| \geq \epsilon$. Por otra parte, como $\{x_n \} \in \mathcal{C}$,
+  para $\epsilon' = \epsilon 2_q^{-1} \quad \exists M \in \mathbb{N}$ tal que
+  $|x_n-x_m|< \epsilon' \, \forall n,m \geq M$. \\
+  Sea $L = \max \{N, M\}$.\\
+  Como $L\in \mathbb{N}$, $\exists K > L$, tal que $|x_K| \geq \epsilon$.\\
+  En particular se tiene que $x_K \neq 0_q \, \therefore \, x_K > 0_q \, \lor
+  \, -x_K > 0_q$. \\
+  Suponga que $x_K > 0_q$\\
+  Sea $n >L$, entonces $n, K >M$, por lo cual:
+  \[
+    x_K-x_n \leq |x_L-x_n| < \epsilon' \quad \therefore \quad x_K -\epsilon'
+    <x_n
+  \]
+  Además, como $x_K> 0_q $, se tiene $x_K= |x_K| \geq \epsilon$ 
+  \[
+    \epsilon' = 2_q\epsilon' - \epsilon' = \epsilon - \epsilon' \leq x_K -
+    \epsilon' < x_n
+  \]
+  Verificándose que $\{x_n\}$ es positiva.
+  Se procede de forma análoga en el segundo caso verificándose que $-\{x_n\}$
+  es positiva. \\
+  Suponga ahora que $(\{x_n\}, \{u_n\}) \in R$ Así $\forall \epsilon'' \in
+  \mathbb{Q}^+$, $\exists N'$ tal que $\forall n \geq N' \, |x_n| <
+  \epsilon''$, en cualquier caso contradiría que $\{x_n\}$ ó $-\{x_n\}$ fueran
+  positivas. Los otros dos casos se tratan de manera similar a la primer
+  parte.
+\end{proof}
+\begin{proposition}\label{prop:50}
+  Sea $\{x_n'\} \in \mathcal{C}$ tal que $(\{x_n\}, \{u_n\})\in R$, siendo
+  $u_n= 0_q \, \forall n \in \mathbb{N}$ entonces existe
+  $\{y_n\} \in \mathcal{C}$, tal que $(\{x_n\}\{y_n\}, \{v_n\}) \in R$, siendo
+  $v_n = 1_q \, \forall n \in \mathbb{N}$.
+\end{proposition}
+\begin{proof}
+  Por la proposición \ref{prop:49}, se tiene que $\{x_n\}$ es positiva ó $-
+  \{x_n\}$ lo es. Así existen $\epsilon \in \mathbb{Q}^+$, $N \in \Bbb{N}$ tales
+  que $x_n > \epsilon \, \forall n > N$ ó  $- x_n > \epsilon \, \forall n > N$.
+  Entonces $|x_n| > \epsilon \, \forall n > N$. \\
+  Para cada $n \in \mathbb{N}$ sea
+  \[
+    x_n' = 
+    \begin{cases} 
+      \epsilon &\mbox{ si } n \leq N \\
+      x_n &\mbox{ si } n > N \\
+    \end{cases}
+  \]
+  Entonces $x_n' \neq 0_q \forall n \in \mathbb{N}$. Observe que $\{x_n'\} \in
+  \mathcal{C}$,
+  además $(\{x_n\}, \{x_n'\}) \in R$. \\
+  Para cada $n \in \mathbb{N}$ sea $y_n = (x_n)'^{-1}$ \\
+  Como $(\{y_n\}, \{y_n\}) \in R$ se tiene que:
+  \[
+    (\{x_n\}\{y_n\}, \{x_n'\}\{y_n\}) \in R
+  \]
+  Observe que $\{x_n'\}\{y_n\} = \{v_n\}$ lo cual implica que $(\{x_n'\}\{y_n\},
+  \{v_n\}) \in R$. \\
+  Para concluir se verifica que $\{y_n\} \in \mathcal{C}$. \\
+  \begin{align*}
+    |y_n - y_m | = | (x_n')^{-1} -(x_m')^{-1} | &= |(x_m' -
+    x_n')(x_n'^{-1})(x_m'^{-1})| \\
+    &= |x_n'- x_m'||x_n'^{-1}||x_m'^{-1}
+  \end{align*}
+  Observe que $|x_n'|> \epsilon \, \forall n \in \mathbb{N}$ Así: 
+  \[
+    |(x_n')^{-1}|= |x_n'|^{-1} \leq \epsilon^{-1} \quad \forall n \in \mathbb{N}
+  \]
+  En consecuencia:
+  \[
+    |y_n - y_m| \leq |x_n' - x_m'| \epsilon^{-1}\epsilon^{-1} \quad \forall n,m
+    \in \mathbb{N}
+  \]
+  Sea $\delta \in \mathbb{Q}^+$ como $\{x_n'\}$ es de Cauchy, $\exists L \in
+  \mathbb{N}$ tal que $|x_n' - x_m'| < \delta \epsilon \epsilon \quad \forall n,m >
+  L$. \\ 
+  Así si $n, m > L$ se tiene 
+  \[
+    |y_n - y_m | < \delta 
+  \]
+  Así $\{y_n\} \in \mathcal C$ lo cual concluye la prueba.
+\end{proof}
+
+La proposición anterior justifica la propiedad 9) de la proposición
+\ref{prop:46}, ya que dado $[\{x_n\}] \in  R$ existe $\{y_n\}\in \mathcal{C}$
+tal que $(\{x_n\}\{y_n\} , \{u_n\}) \in R$.
+
+\begin{proposition}\label{prop:51}
+  \begin{enumerate} 
+    \item $1_{r} \neq 0_{r}$
+    \item Si $x, y \in \mathbb{R}$ entonces $x+y \in \mathbbb{R} \, \, \land xy
+      \in \mathbb{R}^+$ 
+    \item Sea $x \in \mathbb{R}$ se cumple una única de las siguientes
+      afirmaciones: 
+      \begin{align*}
+        x &\in \mathbb{R}^+ & x &=0_r & -x &\in \mathhb{R}^+ 
+      \end{align*}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  \begin{enumerate}
+    \item Si $1_r = 0_r$, se tendría que $\{u_n\}, \{v_n\}$ serían sucesiones de Cauchy
+      relacionadas, siendo $u_n = 1_q \, \forall n \in \mathbb{N} \, \land \, u_n =
+      0_1 \, \forall n \in \mathbb{n}$, lo cual no ocurre  
+    \item Es consecuencia de la proposición \ref{prop:48}
+    \item Es consecuencia de la proposición \ref{prop:49}
+  \end{enumerate}
+\end{proof}
+Sea $ R = \{ (x,y) \in \mathbb{R} \times \mathbb{R} \, | \, y-c \in
+  \mathbb{R}^+$. \\
+  $R$ es una relación binaria en $\mathbb{R}$, transitiva ya que si $(x,y) \in
+  R \, \land \, (y,z) \in R$ entonces $y-x \in \mathbb{R}^+ \, \land \, z-y \in
+  \mathbb{R}^+$, así $(y-x) + (x-u= \in  \mathbb{R}^+$, $z-x \in \mathbb{R}^+
+  \, \therefore \, (x,z) \in R$.
+  \begin{notation} $(x,y)\in R$ se denotará por $y>x$. \\
+    Si $y>x$ ó $y=x$, ello se denotará por $y\geq x$.
+  \end{notation}
+  \begin{proposition} \label{prop:52} 
+    \begin{enumerate}
+      \item $x \in \mathbb{R}$ es positivo sí y solamente sí $x> 0_r$.
+      \item Sea $x \in \mathbb{R} \setminus \{0_r\} $, entonces $xx \in
+        \mathbb{R}^+$ 
+      \item Dados $x,y \in \mathbb{R}$ se cumple una única de las siguientes
+        afirmaciones:
+        \begin{align*}
+          y &> x & x &=y & x &> y
+        \end{align*}
+      \item Sean $x,y \in \mathbb{R}$, $x<y$ si y sólo si $\forall z \in
+        \mathbb{R}$ $x +z < y + z$. 
+      \item Sean $x,y \in \mathbb{R}$, $x \in \mathbb{R}^+$. $x<y$ si y sólo si
+        $xz < yz$.
+    \end{enumerate}
+  \end{proposition}
+  \begin{proof}
+    \begin{enumerate}
+      \setcounter{enumi}{1}
+    \item Como $x\neq 0_r$, la proposición \ref{prop:51} implica que $x \in
+      \mathbb{R}^+ \, \land \, -x \in \mathbb{R}^+$.
+      \begin{itemize}
+        \item En el primer caso, trivialmente $xx \in \mathbb{R}^+$
+        \item En el segundo caso la proposición \ref{prop:46} implica que si $a,
+          b \in \mathbb{R}$
+          \[
+            (-a)(b) + ab =[(-a) + a]b = 0_r b
+          \]
+          Por otra parte $\forall u \in \mathbb{R}$
+          \begin{align*}
+            0_r u + u &= (0_r + 1_r) u = 1_ru = u \, \therefore \\
+            (0_ru + u) - u &= u-1 \, \therefore \, 0_ru = 0_r \, \therefore \\
+            (-a)(b) + ab &= 0_r
+          \end{align*}
+          Lo cual muestra que $(-a)b = -(ab)$. Se tiene en consecuencia:
+          \begin{align*}
+            (-a)(-b) &= -[a(-b)] &= -[(-b)(a)] \\
+                     &= [-(ba)] &= -[-(ab)] = ab
+          \end{align*}
+          Así $(-x)(-x) = xx$ así $xx \in \mathbb{R}^+$.
+      \end{itemize}
+    \item La proposición \ref{prop:51} muestra que se cumple una única de las
+      afirmaciones:
+      \begin{align*}
+        y-x &\in \mathbb{R}^+ & y-x &= 0 & -(y-x) &\in \mathbb{R}^+
+      \end{align*}
+    \item Son equivalentes:
+      \begin{align*}
+        y&>x & y-x &\in \mathbb{R}^+ & (y+x=-(x+z) &\in \mathbb{R}^+
+      \end{align*}
+    \item Si $x<y \, \land \, z \in \mathbb{R}^+$, se tiene: $y-x \in
+      \mathbb{R}^+ \, \land \, z \in \mathbb{R}^+$. Así $(y-x)z \in
+      \mathbb{R}^+$, es decir, $yz-xz \in \mathbb{R}^+ \, \therefore \, yz >
+      xz$. \\
+      Recíprocamente si $yz > xz \, \land \, z \in \mathbb{R}^+$, se tiene $z
+      \neq 0_r$ por lo tanto está definido $z^{-1} \in \mathbb{R}$ tal que
+      $zz^{-1} = 1_r$. Como $z^{-1} \neq 0_r$ ya que $0_r u = 0_r \, \forall u
+      \in \mathbb{R}$ así $z^{-1} \in \mathbb{R}^+ \, \land \, -z^{-1} \in
+      \mathbb{R}^+$. Si $-z^{-1} \in \mathbb{R}^+$ se tendría que $(z)(-z^{-1})
+      \in \mathbb{R}^+$, $1_r \in \mathbb{R}^+$ lo cual no ocurre. Por lo cual
+      $z^{-1} \in \mathbb{R}^+$. Así como $yz-xz \in \mathbb{R}^+$ se tiene 
+      $(yz- xz)z^{-1} \in \mathbb{R^+}$, es decir $y-x \in \mathbb{R}^+$.
+  \end{enumerate}
+\end{proof}
+\begin{definition}
+  Dado $x \in \mathbb{R}$ se define el valor absoluto de $x$ denotado $|x|$
+  como:
+  \[
+    |x| = 
+    \begin{cases}
+      x &\mbox{ si } x \geq 0_r \\
+      -x &\mbox{ si } x < 0_r \\
+    \end{cases}
+  \]
+\end{definition}
+\begin{proposition}\label{prop:53}
+  Sean $xy \in \mathbb{R}$ entonces:
+  \begin{enumerate}
+    \item $|x| \geq 0_q$.
+    \item $|x| = 0$ si y sólo si $x = 0$.
+    \item $|xy| = |x||y|$.
+    \item $|x + y| \leq |x| + |y|$.
+    \item $|x|-|y| \leq |x-y|$.
+  \end{enumerate} 
+\end{proposition} 
+Dado $x \in \mathbb{R}$, considere la función
+\begin{align*}
+  G_x : \mathbb{R} &\to \mathbb{R} \\
+  y &\mapsto xy
+\end{align*}
+\begin{definition}
+  Por el teorema de recurrencia $\exists ! F_x: \mathbb{N} \to \mathbb{R}$ tal
+  que:
+  \begin{align*}
+    F_x(0) &= 1_r & F_x(n^+) &= G_x(F(n)) 
+  \end{align*}
+  Considere la función
+  \begin{align*}
+    F: \mathbb{N} \times \mathbb{R} &\to \mathbb{R} \\
+    : (n,x) &\mapsto F_x(n)
+  \end{align*}
+  $F(n,x)$ se denotará $x^n$. \\
+\end{definition}
+\begin{proposition}\label{prop:54}
+  Sean $a, b \in \mathbb{R}$, $a < b$. Existe $c \in \mathbb{Q}$ tal que 
+  $a <c < b$.
+\end{proposition}
+\begin{proof} Somo $a<b$, se tiene $a + a < a + b$, \textit{i.e.},  $(1_q+ 1_q)
+  a < a + b$, o bien $2_qa < a +b$. \\
+  Como $2_q > 0_q$, se tiene $2_q^{-1}(a + b)$.
+  \[
+    2_q^{-1} (2_q a) < 2_q^{-1}(a + b)
+  \]
+  Así $a < 2_q^{-1} (a+b)$.
+  Así mismo se tiene $a+b < b + b$, es decir $a + b < 2_q b$, $2_q^{-1}(a + b)
+  <b$.  Eligiendo a $c = 2_q^{-1}(a + b)$ se concluye la prueba.
+\end{proof}
+\begin{definition}
+  Dado $a \in \mathbb{Q}$, considere la sucesión $\{x_n\}$ tal que  $x_n = a
+  \forall n \in \mathbb{N}$. Sea $a_r = [\{x_n\}]$ y $\mathbb{R}' = \{x \in
+  \mathbb{R} \, | \, \exists a \in \mathbb{Q} \, x = a_r \}$. \\
+
+  Considere la función:
+  \begin{align*}
+    h_3 : \mathbb{Q} &\to \mathbb{R'} \\
+    a & \mapsto a_r
+  \end{align*}
+  Se tiene entonces $h_3(0_q) = 0_r \, , \, h_3(1_q) = 1_r$. \\
+  Dados $a,b \in \mathbb{Q}$ se tiene:
+  \begin{align*}
+    h_3(a+b) &= h_3(a) + h_3(b) &  h_3(ab) &= h_3(a)h_3(b)
+  \end{align*}
+  $h_3$ es además una biyección, así, un isomorfismo. Se ha probado que existen
+  isomorfismos $h_1$ entre $\{\mathbb{N}, +, \cdot, 0, 1\}$ y $\{\mathbb{Z^0}, +,
+  \cdot, 0_z, 1_z\}$. $h_2$ entre $\{\mathbb{Z}, +, \cdot, 0_z, 1_z \}$ y
+  $\{\mathbb{Q}^+, +, \cdot, 0_q, 1_q\}$. Así existe un isomorfismo $h_3 \circ
+  h_2 \circ h_1$ entre $\{\mathbb{N}, +, \cdot, 0, 1\}$ y $\{\mathbb{N'}, +,
+  \cdot, 0_r, 1_r\}$. \\
+  Se denomina a un elemento de $\mathbb{N}'$, real natural. \\
+  Se denomina a un elemento de $\mathbb{Q}'$, real racional. \\
+  Se denomina a un elemento de $h_3 \circ h_2(\mathbb{Z})$, real entero. 
+\end{definition}
+
+\begin{proposition}\label{prop:55}
+  Sean $x, y \in \mathbb{R}, x < y $. Existe $z \in \mathbb{R'}$ tal que $x < z
+  < y$.
+\end{proposition}
+\begin{proposition}[Propiedad Arquimediana]\label{prop:56} Sean $x, y \in \mathbb{R}^+$, existe $n$ real
+  natural tal que $nx > y$.
+\end{proposition}
+\begin{proof}
+  Sean $\{x_n\}, \{y_n\}$ sucesiones en $C$ positivas tales que $x=[\{x_n\}]$, y
+  $y = [\{y_n\}]$. Como $\{y_n\}$ es de Cauchy, ambas son acotadas, así existe
+  un $\delta \in \mathbb{Q}^+$ tal que $|y_n| \leq \delta \, \forall n \in
+  \mathbb{N}$. Como $y_n \leq |y_n| \quad  \forall n \in \mathbb{N}$, se tiene $y_n
+  \leq \delta \quad \forall n \in \mathbb{N}$. \\
+  Sea $d = [\{u_n\}]$, siendo $u_n = \delta \, \forall n \in \mathbb{N}$. \\
+  Como $x \in\mathbb{R}^+$, se tiene $x > 0_r$; la proposición \ref{prop:55}
+  implica que existe $s \in \mathbb{R}'$ tal que $x > s > 0_r$ \\ 
+  Así mismo, como $y \leq d$ existe $t \in \mathbb{R}'$ tal que $y \leq t \leq
+  d$. \\
+  La existencia de tal $t \in \mathbb{R}'$ es consecuencia de la proposición
+  \ref{prop:55}, si $y < d$; en el caso $y = d$, se elige a $t =d$. \\
+  Como $\mathbb{R}' = h_3(\mathbb{Q})$, se tiene que existen $\hat{t}, \hat{s}
+  \in \mathbb{Q}$ tales que: $t = h_3(\hat{t}) $ y $s = h_3(\hat{s})$. \\
+  Como$t \geq y > 0$, se tiene que tanto $s$ como $t$, pertenecen a
+  $\mathbb{R}^+$. Se verificará que $\hat{t}$ y $\hat{s}$ pertenecen a
+  $\mathbb{Q}^+$. \\
+  \[
+    t = [\{w_n\}] \quad s = [ \{v_n\}] \quad \mbox{ siendo } w_n=\hat{t} \quad
+    \land \quad v_n = \hat{s} \, \, \forall n \in \mathbb{N}
+  \]
+  Como $t,s \in \mathbb{R}^+$, $\{w_n\}, \{v_n\}$ son sucesiones de Cauchy
+  positivas y por ello $\hat{t}, \hat{s}$ son racionales positivos. \\
+
+  Por la proposición \ref{prop:40}, existe $n_q$ racional entero tal que
+  \[
+    n\hat{s} > \hat{t} > 0_q
+  \]
+  Sea $n = h_3(n_q)$. Observe que $n \in \mathbb{R}^+$. Se verificará finalmente
+  que $ns > t$. \\
+  Se tiene que $n_q \hat{s} - \hat{t} > 0_q$ con $\{n_q\hat{s} - \hat{t}\}$ una
+  sucesión de Cauchy positiva. Así $ns - t \in \mathbb{R}^+$. $ns > t$. Por la
+  tricotomía de $>$, $nx > y$ que era lo que se buscaba demostrar.
+
+\end{proof}
+\begin{definition} Sea $a \subset \mathbb{R}$. Se dice que $A$ es acotado
+  superiormente si $\exists x \in \mathbb{R}$ tal que $a \leq x \, \forall a \in
+  A$. En tal caso $x$ se denomina cota superior de $A$. Se dice que $x$ cota
+  superior de $A$ es supremo de $A$ si $z \leq y \, \forall y$ cota superior de
+  $A$.
+\end{definition}
+\begin{proposition}\label{prop:57} 
+  Sea $A \subset \mathbb{R}$, $A \neq \emptyset$, conjunto acotado
+  superiormente, entonces existe un supremo en $A$.
+\end{proposition}
+\begin{proof}
+  Como $A$ es acotado superiormente, se puede asumir sin pérdida de generalidad
+  que existe $t \in \mahtbb{R}^+$ tal que $x \leq r \, \forall x \in
+  \mathbb{A}$. Como  $A \neq \emptyset$, existe $a \in A$. \\
+  Se verificará que existe $m \in \mathbb{R}$ real entero tal que $m$ no es
+  cota superior de $A$.
+  \begin{enumerate}
+    \item Si $a = 0_r$, trivialmente $-1_r < a$.
+    \item Si $-a \in \mathbb{R}^+$, entonces de la proposición \ref{prop:56},
+      existe $n$ real entero tal que $n1_r > -a$. Eligiendo a $m = -n$, se
+      tiene $m < a$.
+    \item Si $a \in \mathbb{R}^+$ trivialmente $-1_r < a$.
+  \end{enumerate}
+  Así, existen reales naturales $M, m$ tales que $M$ es cota superior de $A$, y
+  $m$ no es cota superior de $A$. \\
+  Veamos que $\exists q$ real entero tal que $q$ es cota superior de $A$, pero
+  $q-1_r$ no lo es. \\
+  Procedamos por reducción al absurdo y supongamos que no existe tal $q$, es
+  decir, que para cada $M$ cota superior real entero, $M-1_r$ también es cota
+  superior de $A$. Considere $m$ real entero tal que  $m$ no es cota superior
+  de $A$. Veamos que como $M$ es un real entero, $m+1_r$ también lo es, y
+  como cada $M-n1_r$ es cota superior $n \in \mathbb{N'}$, así $m$ es cota
+  superior de $A$, lo cual no sucede. Así $\exists q$ real entero, cota superior
+  de $A$ con $q-1$ no cota superior de $A$.
+
+
+\end{proof}
+

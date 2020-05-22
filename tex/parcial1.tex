@@ -1,0 +1,618 @@
+\section{Paradoja de Russel.}
+\textbf{Conceptos Primarios:} Conceptos no definidos los cuales se asumen debido a su claridad.\\
+
+Sea $\mathcal{N}$ el conjunto de todos los conjuntos, entonces $\mathcal{N} \in \mathcal{N}$. Ahora, considere el conjunto $\mathcal{A}$ de todos los conjuntos que no son elementos de sí mismos. 
+
+\[ \mathcal{N} \notin \mathcal{A} \]
+
+Así $\mathcal{A} \in \mathcal{A} \vee \mathcal{A}\notin\mathcal{A}$ es una tautología, y de hecho se cumple una única de las proposiciones.\\
+
+Si $\mathcal{A} \in \mathcal{A}$ es verídica, entonces $\mathcal{A} \notin \mathcal{A}$. Se tendría así $\mathcal{A} \in \mathcal{A} \wedge	\mathcal{A} \notin \mathcal{A}$. Por lo tanto $\mathcal{A} \in \mathcal{A}$ no es verídica.\\
+
+Si $\mathcal{A} \notin \mathcal{A}$ es verídica, entonces $\mathcal{A} \in \mathcal{A}$, se tendría así  $\mathcal{A} \notin \mathcal{A} \wedge \mathcal{A} \in \mathcal{A}$. Por lo tanto  $\mathcal{A} \notin \mathcal{A}$ no es verídica.En ambos casos se ha obtenido una contradicción.\\
+\medskip
+\\
+\textbf{Proposición 0.} No existe una biyección entre $\mathbb{N}$ y $\mathbb{R}$.\\
+\textbf{Demostración.}\\
+Suponga que existe una función $f:\mathbb{N}\longrightarrow\mathbb{R}$, para cada $n \in \mathbb{N}$ sea
+$A_{n}.a_{n1}a_{n2}...$ la expresión decimal de la imagen de $n$ bajo $f$. Así $a_{nj}$ es el decimal j-ésimo de $f(n).$ Considere el número real z cuya expresión decimal es $0.z_{1}z_{2}...$ siendo $z_i \in \{1,2\}$ y además
+
+\[z_i = \left \{ \begin{matrix} 1 & \mbox{si }a_{ii}\neq1.
+\\ 2 & \mbox{si } a_{ii}=1\end{matrix}\right. \]
+
+Suponga que para algún $n \in \mathbb{N}$ $z=f(n)$, luego:
+
+\[z_n = \left \{ \begin{matrix} 1 & \mbox{si }a_{nn}\neq1.
+\\ 2 & \mbox{si } a_{nn}=1\end{matrix}\right. \]
+
+Si $z_n = 1$, entonces $a_{nn} \neq 1$ y así la identidad $z = f(n)$ implica que $a_{nj}$. Sea $n \in \mathbb{N}$.
+\begin{iteritem}
+\item i) Si $z_n = 1$, entonces $a_{nn} \neq 1$ existen dos posibilidades, para que $z = f(n)$ la primera es $a_{nn} = 0$
+y la segunda $a_{nn} = 2$. La primera implica que $a_{nj} = 9$ $\forall j > n$ $\wedge$ $z_j \notin \{1,2\}$ $\forall j \in \mathbb{N}$.
+La segunda posibilidad i.e. $a_{nn} = 2$ implicaría que $a_{nj} = 0$ $\forall j > n$ $\wedge$ $z_j = 9$ $\forall j > n$ y esto último 
+no es posible.
+\item ii) Si $z_n = 2$ entonces $a_{nn} = 1$ la identidad $z = f(n)$ implica $a_{nj} = 9$ $\forall j > n$ $\wedge$ $z_j = 0$ 
+$\forall j > n$ lo cual contradice que $z_j = \{1,2\}$ $\forall j \in \mathbb{N}$. 
+\end{iteritem}
+
+\section{Axiomas de Zermelo-Fraenkel}
+
+Aprincipios de l siglo XX, fue el matemático aleman \textbf{Ernest Zermelo} quien puso la teoría de conjuntos sobre una base
+aceptable reduciendola a un sistema axiomático más restringido que no permita la obtención de la \textbf{Paradoja de Russel}.
+Las ideas de \textbf{Zermelo} fueron después precisadas por \textbf{Thoralf Skolen} y \textbf{Abrahm Fraenkel}, resultado de
+ello la primera teoría axiomática de conjuntos, conocida como \textbf{teoría de Zermelo-Fraenkel}, aunque sería más adecuado 
+llamarla \textbf{teoría de Zermelo-Fraenkel-Skolen}.\\
+
+Hasta ahora el alumno ha desarrollado una noción de \textit{conjunto}, y se ha
+hablado y trabajado con conjuntos como $\mathbb{N}$, $\mathbb{R}$, \O,
+\textit{etc}... En éste curso se busca presentar una fundación rigurosa de las
+matemáticas conocidas en términos de la teoría axiomática de conjuntos. Los
+axiomas de Zermelo-Fraenkel conforman, junto con el Axioma de Elección, el
+modelo de facto para la teoría de conjuntos.
+En las notas, las letras se referirán a conjuntos a menos que se especifique. El
+orden de presentación de los axiomas es primeramente la noción de igualdad,
+luego axiomas de construcción de conjuntos, axiomas de existencia de ciertos
+conjuntos, y posteriormente en las notas, el axioma de elección.:
+
+\begin{axiom} \textbf{Axioma de Extensionalidad}\\
+Los conjuntos son iguales si tienen los mismos elementos.
+    \[
+        \forall A, \forall B \quad A = B \, \Longleftrightarrow (\forall \mathbf{x};  \quad \mathbf{x} \in A \, \Longleftrightarrow
+        \, \mathbf{x} \in B)
+    \]
+\end{axiom}
+\begin{axiom} \textbf{Axioma del Vacío.}\\
+Existe un conjunto sin elementos.
+    \[
+    \exists B \, \quad \forall \mathbf{x}; \quad \mathbf{x} \notin B
+    \]
+
+\end{axiom}
+
+\begin{axiom} \textbf{Axioma de Parejas.}\\
+    Para cualquiera dos conjuntos, existe un tercer conjunto del cual son
+    elementos.
+   \[
+        \forall A, \forall B \quad \exists C  \quad (\forall \mathbf{x}; \quad \mathbf{x} \in B \Longleftrightarrow \mathbf{x} = A \vee \mathbf{x}=B)
+    \]
+\end{axiom}
+
+\begin{axiom} \textbf{Axioma de la unión.}\\
+    Para cualquier conjunto, existe un conjunto cuyos elementos son todos los
+    elementos de los miembros del conjunto.
+    \[
+        \forall A, \forall B \quad (\forall \mathbf{x}; \quad \mathbf{x}\in B \Longleftrightarrow \exists \mathbf{y} \in A, \mathbf{x} \in \mathbf{y})
+    \]
+\end{axiom}
+\begin{axiom} \textbf{Axioma del Conjunto Potencia.}\\
+    Para cada conjunto existe otro cuyos elementos cumplen la propiedad necesaria y suficiente de 
+    que en sus elementos están elementos del ya dado.
+    \[
+        \forall A \quad \exists B \quad [\forall \mathbf{y}; \quad \mathbf{y} \in B \Longleftrightarrow ( \mathbf{x} \in \mathbf{y} \Longleftrightarrow \mathbf{x} \in A)]
+    \]
+\end{axiom}
+\begin{axiom} \textbf{Esquema Axiomático de Especificación.}\\
+    Dado un conjunto y una proiedad independiente de tal conjunto, existe otro cuyos elementos son tales que 
+    cumplen tal propiedad. Sea $A$ un conjunto y $\mathcal{P}(\mathbf{x})$ una propiedad independiente de $A$.
+    \[
+        \forall A \exists B \quad [\forall \mathbf{x}; \quad \mathbf{x} \in B \Longleftrightarrow \mathbf{x} \in A \wedge \mathcal{P}(\mathbf{x}) ]
+   \]
+\end{axiom}
+El axioma anterior presenta una restricción importante, sólamente se pueden
+co nstruir conjuntos a partir de conjuntos cuya existencia es previamente
+conocida. \\
+
+\begin{proposition}
+\textbf{Paradoja de Russell:} No existe un conjunto al que pertenezca todo conjunto.
+\end{proposition}
+\begin{proof2}
+Sea $\mathcal{A}$ un conjunto, para probar la proposición basta demostrar que existe un conjunto que no pertenezca a $\mathcal{A}$.
+Considere la propiedad siguiente: 
+\[
+\mathcal{P}(\mathbf{x}) \quad | \quad \mathbf{x} \notin \mathbf{x}
+\]
+En virtud de \textbf{ZF 6} implica que existe un conjunto $\mathcal{B}$ tal que:
+\[
+\forall \mathbf{x}, \quad \mathbf{x} \in \mathcal{B} \Longleftrightarrow \mathbf{x} \in \mathcal{A} \wedge \mathcal{x} \notin \mathbf{x}
+\]
+Se verificará que $\mathcal{B} \notin \mathcal{A}$. En efecto, procediendo por \textit{Reductio ad absurdum}, suponga que $\mathcal{B} \in \mathcal{A}$, se tiene que:
+\[ 
+\mathcal{B} \in \mathcal{B} \vee \mathcal{B} \notin \mathcal{B}
+\]
+\begin{iteritem}
+\item Si $\mathcal{B} \in \mathcal{B} \Longrightarrow \mathcal{B} \notin \mathcal{B}$.
+\item Si $\mathcal{B} \notin \mathcal{B} \Longrightarrow \mathcal{B} \in \mathcal{B}$.
+\end{iteritem}
+
+En cualquier caso se tiene una contradicción. Por lo tanto $\mathcal{B} \notin \mathcal{A}$.\\
+\end{proof2}
+\\
+\\
+\medskip
+\\
+\\
+\medskip
+\\
+\\
+\medskip
+
+\begin{centering}
+	\textbf{Definiciones Iniciales.} \\
+\end{centering}
+Los axiomas anteriores justifican las siguientes definiciones en el sentido en que se asegura
+la existencia de los conjuntos que se definen.
+
+\begin{iteritem}
+\item \textbf{I)} Para cada par de conjuntos $\mathcal{A},\mathcal{B}$ se define el conjunto determinado por ellos, 
+como el conjuntoo cuyos únicos elementos son $\mathcal{A},\mathcal{B}$ ta conjunto se denotará por 
+$\{\mathcal{A},\mathcal{B}\}$ y su existenica es asegurada por \textbf{ZF 3}.
+\item \textbf{II)} El conjunto definido por \textbf{ZF 4}, se denotará por $\bigcup \mathcal{A}$ y se denominará
+la unión de elementos de $\mathcal{A}$, o bien se denotará por $\bigcup_{\mathbf{x} \in \mathcal{A}} \mathbf{x}$.
+\item \textbf{III)} El conjunto definido por \textbf{ZF 4} se denomina \textbf{conjunto potencia}
+de $\mathcal{A}$, siendo $\mathcal{A}$ un conjunto, y se denotará por $\mathcal{P}(\mathcal{A})$.
+\item \textbf{IV)} Sean $\mathcal{A},\mathcal{B}$ conjuntos, sea $\mathcal{P}(\mathbf{x})$ la propiedad $\mathbf{x} \in \mathcal{B}$.
+Por el \textbf{ZF 6} para el conjunto $\mathcal{A}$.
+\[ \exists \mathcal{D} \quad (\forall \mathbf{x}; \quad \mathbf{x} \in \mathcal{D} \Longleftrightarrow \mathbf{x} \in \mathcal{A} \wedge \mathbf{x} \in \mathcal{B})\]
+$\mathcal{D}$ se denomina \textbf{intersección} de $\mathcal{A}$ y $\mathcal{B}$ y se denota por $\mathcal{A} \bigcap \mathcal{B}$.
+\item \textbf{V)} Sean $\mathcal{A}, \mathcal{B}$ conjuntos, sea $\mathcal{P}(\mathbf{x})$ la propiedad $\mathbf{x} \notin \mathcal{B}$.
+Por \textbf{ZF 6}, para el conjunto $\mathcal{A}$.
+\[
+\exists \mathcal{D} \quad (\forall \mathbf{x}; \quad \mathbf{x} \in \mathcal{A} \Longleftrightarrow \mathbf{x} \in \mathcal{A} \wedge \mathbf{x} \notin \mathcal{B})
+\]
+$\mathcal{D}$ se denomina la diferencia de $\mathcal{A}$ con $\mathcal{B}$, o el complemento de $\mathcal{B}$ en $\mathcal{A}$,
+y se denota como $\mathcal{A} \setminus \mathcal{B}$.
+\item \textbf{VI)} Sean $\mathcal{A}, \mathcal{B}$ conjuntos, por el axioma de parejas existe un conjunto cuyoos únicos elementos son
+$\mathcal{A}$ y $\mathcal{B}$, sea $\mathcal{C}$ tal conjunto, i.e. $\mathcal{C} = \{ \mathcal{A}, \mathcal{B}\}$. Por \textbf{ZF 4}
+existe un conjunto $\mathcal{D}$ tal que:
+\[
+\exists \mathcal{D} \quad (\forall \mathbf{x}; \quad \mathbf{x} \in \mathcal{D} \Longleftrightarrow \exists \mathbf{y} \in \mathcal{C}, \mathbf{x} \in \mathbf{y})
+\]
+Es decir tenemos que $\mathcal{D} = \bigcup_{\textbf{x} \in \mathcal{C}} \mathbf{x}$, \mathcal{D} se denomina la unión de $\mathcal{A}$
+y $\mathcal{B}$, y se denotará por $\mathcal{A} \bigcup \mathcal{B}$. El axioma \textbf{ZF 6} garantiza la unicidad de los conjuntos así definidos.
+\item \textbf{VII)} Sea $\mathcal{A}$ un conjunto distinto del vacío. Por el axioma \textbf{ZF 6} existe un conjunto $\mathcal{B}$, tal
+que
+\[
+\exists \mathcal{B} \quad [ \forall \mathbf{x}; \quad \mathbf{x} \in \mathcal{B} \Longleftrightarrow (\forall \mathbf{y}; \quad \mathbf{y} \in \mathal{A} \Longrightarrow \mathbf{x} \in \mathbf{y})]
+\]
+$\mathcal{B}$ se denomna la intersección de $\mathcal{A}$, se denotará por $\bigcap \mathcal{A}$ o bien $\bigcap_{\mathbf{x} \in \mathcal{A} \mathbf{x}}$.
+\item \textbf{VIII)} El conjunto cuya existencia se justifica por \textbf{ZF 2}, es decir el conjunto sin elementos se denotará por \O.
+\end{iteritem}
+
+\begin{proposition} 
+\textbf{Unicidad del Vacío:} Hay un único conjunto que no tiene elementos.\\
+\underline{Demostración.} (La demostración es elemental)
+\end{proposition}
+
+\begin{proposition}
+	Sean $\mathcal{A,B,C}$ conjuntos. Entonces se cumplen las siguientes propiedades.
+	\begin{iteritem}
+		\begin{centering}
+	\item \textbf{Leyes Distributivas.}
+		\begin{iteritem}			
+			
+		\item $\mathcal{A} \bigcap (\mathcal{B} \bigcup \mathcal{C}) = (\mathcal{A} \bigcap \mathcal{B}) \bigcup (\mathcal{A} \bigcap \mathcal{C}).$
+		\item $\mathcal{A} \bigcup (\mathcal{B} \bigcap \mathcal{C}) = (\mathcal{A} \bigcup \mathcal{B}) \bigcap (\mathcal{A} \bigcup \mathcal{C}).$
+		\end{iteritem}
+
+	\item \textbf{Leyes de DeMorgan.}
+		\begin{iteritem}	
+		\item $\mathcal{C}$\textbackslash$(\mathcal{A} \bigcup \mathcal{B}$) = $(\mathcal{C}$\textbackslash$\mathcal{A}) \bigcap (\mathcal{C}$ \textbackslash $\mathcal{B}).$	
+		\item $\mathcal{C}$\textbackslash$(\mathcal{A} \bigcap \mathcal{B}$) = $(\mathcal{C}$\textbackslash$\mathcal{A}) \bigcup (\mathcal{C}$ \textbackslash $\mathcal{B}).$	
+		\end{iteritem}
+
+	\item \textbf{Leyes Asociativas.}
+		\begin{iteritem}
+		\item $\mathcal{A} \bigcup (\mathcal{B} \bigcup \mathcal{C}) = (\mathcal{A} \bigcup \mathcal{B}) \bigcup \mathcal{C}).$
+		\item $\mathcal{A} \bigcap (\mathcal{B} \bigcap \mathcal{C}) = (\mathcal{A} \bigcap \mathcal{B}) \bigcap \mathcal{C}).$
+		\end{iteritem}
+
+	\item \textbf{Leyes de Idempotencia.}
+		\begin{iteritem}
+		\item $\mathcal{A} \bigcup \mathcal{A} = \mathcal{A}.$
+		\item $\mathcal{A} \bigcap \mathcal{A} = \mathcal{A}.$
+		\end{iteritem}
+		
+		\end{centering}
+	\end{iteritem}
+\end{proposition}
+\begin{proof2}
+Se verificará que  $\mathcal{A} \cap (\mathcal{B} \cup \mathcal{C}) = (\mathcal{A} \cap \mathcal{B}) \cup (\mathcal{A} \cap \mathcal{C})$. Para probar la identidad anterior,
+basta verificar en virtud del axioma de extensionalidad que los conjuntos  $\mathcal{A} \cap (\mathcal{B} \cup \mathcal{C})$ y $(\mathcal{A} \cap \mathcal{B}) \cup (\mathcal{A} \cap \mathcal{C})$ tienen los mismos elementos. \\ 
+
+Dado $\mathbf{x}, \mathbf{x} \in \mathcal{A} \cap (\mathcal{B} \cup \mathcal{C})$ es equivalente a cada una de las siguientes afirmaciones siguientes: 
+	\[ \mathbf{x} \in \mathcal{A} \quad \wedge \quad \mathbf{x} \in \mathcal{B} \cup \mathcal{C} \]
+	\[ \mathbf{x} \in \mathcal{A} \quad \wedge \quad [ \mathbf{x}\in\mathcal{B} \vee \mathbf{x}\in\mathcal{C}  ]\]
+	\[ [\mathbf{x}\in\mathcal{A} \wedge \mathbf{x}\in\mathcal{B}] \quad \vee [\mathbf{x}\in\mathcal{A} \wedge \mathbf{x}\in\mathcal{C}]\]
+	\[ \mathbf{x}\in\mathcal{A}\cap\mathcal{B} \quad \vee \quad \mathbf{x}\in\mathcal{A}\cap\mathcal{C}\]
+	\[ \mathbf{x} \in (\mathcal{A}\cap\mathcal{B})\cup(\mathcal{A}\cap\mathcal{C})\]
+
+Se verifcará ahora $\mathcal{C}$\textbackslash$(\mathcal{A}\cup\mathcal{B}) = (\mathcal{C}$\textbackslash$\mathcal{A})\cap(\mathcal{C}$\textbackslash$\mathcal{B})$. Dado $\mathbf{z}, \mathbf{z}\in\mathcal{C}$\textbackslash$(\mathcal{A}\cup\mathcal{B})$ es equivalente a cada una de las siguientes proposiciones: 
+
+\[ \mathbf{z}\in\mathcal{C} \quad \wedge \quad \mathbf{z}\notin(\mathcal{A}\cup\mathcal{B}), \quad \mathbf{z}\in\mathcal{C} \quad \wedge \quad \neg[\mathbf{z}\in \mathcal{A}\cup\mathcal{B}]\]
+\[\mathbf{z}\in\mathcal{C} \quad \wedge \quad \neg[\mathbf{z}\in\mathcal{A} \vee \mathbf{z}\in\mathcal{B}], \quad \mathbf{z}\in\mathcal{C} \quad \wedge\quad [\mathbf{z}\notin\mathcal{A} \wedge \mathbf{z}\notin\mathcal{B}]\]
+\[\mathbf{z}\in\mathcal{C} \quad \wedge \quad [\mathbf{z}\notin\mathcal{A} \wedge \mathbf{z}\notin\mathcal{B}], \quad [\mathbf{z}\in\mathcal{C} \wedge \mathbf{z}\notin\mathcal{A}] \quad \wedge \quad [\mathbf{z}\in\mathcal{C}\wedge\mathbf{z}\notin\mathcal{B}]\] 
+*\begin{centering}
+	$(\mathbf{z}\in\mathcal{C}$\textbackslash$\mathcal{A})\quad\wedge\quad(\mathbf{z}\in\mathcal{C}$\textbackslash$\mathcal{B}), \quad \mathbf{z}\in(\mathcal{C}$\textbackslash$\mathcal{A})\cap(\mathcal{C}$\textbackslash$\mathcal{B})$\\
+\end{centering}
+$\therefore$ el axioma de extensionalidad permite concluir la identidad $\mathcal{C}$\textbackslash$(\mathcal{A} \bigcup \mathcal{B}$) = $(\mathcal{C}$\textbackslash$\mathcal{A}) \bigcap (\mathcal{C}$ \textbackslash $\mathcal{B})$. Las demás propiedades se demuestran de manera análoga. 
+\end{proof2} 
+
+\textbf{Definición:} Sean $\mathcal{A,B}$ conjuntos se dice que $\mathcal{A}$ es subconjunto de $\mathcal{B}$ si $\forall \mathbf{x}(\mathbf{x}\in\mathcal{A} \Longrightarrow \mathbf{x}\in\mathcal{B})$. Ello se denotará por $\mathcal{A}\subset\mathcal{B}$.\\
+
+\begin{proposition}
+Sean $\mathcal{A,B,C,D}$ conjuntos. Entonces se cumplen las siguientes propiedades. 
+	\begin{iteritem}
+	\item I) $\mathcal{A}\cap\mathcal{B} \subset \mathcal{A} \quad \wedge \quad \mathcal{A} \subset \mathcal{A}\cup\mathcal{B}$
+	\item II) Si $\mathcal{A}\subset\mathcal{C}\quad\wedge\quad\mathcal{B}\subset\mathcal{D}$,$\quad$ entonces $\mathcal{A}\cap\mathcal{B}\subset\mathcal{C}\cap\mathcal{D}\quad\wedge\quad\mathcal{A}\cup\mathcal{B}\subset\mathcal{C}\cup\mathcal{D}$.
+	\end{iteritem}
+\end{proposition}
+\begin{proof2}
+	\begin{iteritem}
+	\item I) Sea $\mathbf{x}\in\mathcal{A}\cap\mathcal{B}$, entonces $\mathbf{x}\in\mathcal{A} \quad\wedge\quad \mathbf{x}\in\mathcal{B}$.
+		$\therefore\quad\forall\mathbf{x}(\mathbf{x}\in\mathcal{A}\cap\mathcal{B}\longrightarrow\mathbf{x}\mathcal{A})$ i.e $\mathcal{A}\cap\mathcal{B}\subset\mathcal{A}$. Sea $\mathbf{y}\in\mathcal{A}$, entonces $\mathbf{y}\in\mathcal{A}\quad\vee\quad\mathbf{y}\in\mathcal{B}$, i.e. $\mathbf{y}\in\mathcal{A}\cup\mathcal{B} \quad\therefore\quad\forall\mathbf{y}(\mathbf{y}\in\mathcal{A}\longrightarrow\mathbf{y}\mathcal{A}\cup\mathcal{B})$ i.e. $\mathcal{A}\subset\mathcal{A}\cup\mathcal{B}$. 
+	\item II) Sea $\mathbf{x}\in\mathcal{A}\cup\mathcal{B}$, entonces $\mathbf{x}\in\mathcal{A}\quad\vee\quad\mathbf{x}\in\mathcal{B}$. Por hipótesis se tiene:
+\[\mathbf{x}\in\mathcal{A}\longrightarrow\mathbf{x}\in\mathcal{C},\quad\mathbf{x}\in\mathcal{B}\longrightarrow\mathbf{x}\in\mathcal{D}\]
+		Por el silogismo disyuntivo se concluye que $\mathbf{x}\in\mathcal{C}\quad\vee\quad\mathbf{x}\in\mathcal{D}$ i.e. $\mathbf{x}\in\mathcal{C}\cap\mathcal{D}$. Se ha verificado que $\forall\mathbf{x}[\mathbf{x}\in(\mathcal{A}\cup\mathcal{B})\longrightarrow\mathbf{x}\in(\mathcal{C}\cup\mathcal{D})]$ $\thereore \quad\mathcal{A}\cup\mathcal{B}\subset\mathcal{C}\cup\mathcal{D}$. \\
+
+Sea $\mathbf{y}\in\mathcal{A}\cap\mathcal{B}$, entonces $\mathbf{y}\in\mathcal{A}\quad\wedge\quad\mathcal{B}\quad\therefore\quad\mathbf{y}\in\mathcal{C}\quad\wedge\quad\mathbf{y}\in\mathcal{D}$, i.e. $\mathbf{y}\in\mathcal{C}\cap\mathcal{D}$.
+\end{iteritem}
+\end{proof2}
+
+\begin{proposition}
+Sean $\mathcal{A,B}$ conjuntos. Son equivalentes las siguientes proposiciones:
+	\begin{iteritem}
+	\item $\mathcal{A}\subset\mathcal{B}$.
+	\item $\mathcal{A}=\mathcal{A}\cap\mathcal{B}$.
+	\item $\mathcal{B}=\mathcal{A}\cup\mathcal{B}$.
+	\end{iteritem}
+\end{proposition}
+\begin{proof2}
+I)$\Longrightarrow$ II) Desde que $\mathcal{A}\cap\mathcal{A}=\mathcal{A}$ (Ley de Idempotencia). Por la \textbf{Proposición x-II)}, dado que $\mathcal{A}\subset\mathcal{A}$ $\wedge$ $\mathcal{A}\subset\mathcal{B}$. Se tiene que $\mathcal{A}\cap\mathcal{A}\subset\mathcal{A}\cap\mathcal{B}$ i.e $\mathcal{A}\subset\mathcal{A}\cap\mathcal{B}$ y por la \textbf{Proposición x-I)}, $\mathcal{A}\cap\mathcal{B}\subset\mathcal{A}$. $\therefore \quad \forall\mathbf{x}(\mathbf{x}\in\mathcal{A}\Longleftringhtarrowthcal\mathbf{x}\in\mathcal{A}\cap\mathcal{B})$. El axioma de extensionalidad implica que $\mathcal{A}=\mathcal{A}\cap\mathcal{B}$.\\
+
+II)$\Longrightarrow$III) Por la \textbf{Proposición x-I)} $\mathcal{B}\subset\mathcal{A}\cup\mathcal{B}$. Por hipótesis $\mathcal{A}=\mathcal{A}\cap\mathcal{B}$.\\
+	$\therefore\quad\mathcal{A}\cup\mathcal{B}=(\mathcal{A}\cap\mathcal{B})\cup\mathcal{B}=(\mathcal{A}\cup\mathcal{B})\cap(\mathcal{B}\cup\mathcal{B})=(\mathcal{A}\cup\mathcal{B})\cap\mathcal{B}$ (Ley Distributiva y de Idempotencia).\\
+
+Además $(\mathcal{A}\cup\mathcal{B})\cap\mathcal{B}\subset\mathcal{B}$ por la \textbf{Proposición X-I)} $\therefore$ $\mathcal{A}\cup\mathcal{B}\subset\mathcal{B}$. Como $\mathcal{B}\subset\mathcal{A}\cup\mathcal{B}\quad\wedge\quad\mathcal{A}\cup\mathcal{B}\subset\mathcal{B}$ $\forall\mathbf{x}(\mathbf{x}\in\mathcal{B} \Longleftrightarrow \mathbf{x}\in\mathcal{A}\cup\mathcal{B})$. Por el axioma de extensionalidad, se concluye que $\mathcal{B}=\mathcal{A}\cup\mathcal{B}$.\\
+
+	III)$\Longrightarrow$I) Por hipótesis $\mathcal{B}=\mathcal{A}\cup\mathcal{B}$, $\mathcal{A}\subset\mathcal{A}\cup\mathcal{B}$ \textbf{Proposición X-I)} $\therefore$ $\mathcal{A}\subset\mathcal{B}$.\\
+\end{proof2}
+\pagebreak 
+
+\textbf{Ejercicios 1:} Sean $\mathcal{A,B}$ subconjuntos de $\mathcal{D}$. Demuestre:
+\begin{iteritem}
+\item   I) $\mathcal{A}\cap(\mathcal{D}$\textbackslash$\mathcal{A})=$ \O
+\item  II) $\mathcal{D}$\textbackslash$(\mathcal{D}$\textbackslash$\mathcal{A})=\mathcal{A}$
+\item III) $\mathcal{A}\subset\mathcal{B}$, si y sólo sí, $(\mathcal{D}$\textbackslash$\mathcal{B})\subset(\mathcal{D}$\textbackslash$\mathcal{A})$\\
+\end{iteritem}
+
+\textbf{Definición:} Sean $\mathbf{a,b}$ conjuntos, elementos de un conjunto $\mathcal{A}$, se define la pareja ordenada determinada por $\mathbf{a,b}$ y denotada por $(\mathbf{a,b})$ como el conjunto $\{\{\mathbf{a},\{\mathbf{a,b}\}\}$.\\
+
+Observe que $\{\mathbf{a}\}$ es un conjunto por el axioma de especificación, ya que por tal axioma existe un conjunto $\mathcal{B}$ tal que:
+\[\forall\mathbf{x}\quad[\mathbf{x}\in\mathcal{B} \Longleftrightarrow \mathbf{x}\in\mathcal{A} \wedge \mathcal{P}(\mathbf{x}) ]\] 
+Siendo $\mathcal{P}(\mathbf{x})$ la propiedad $\mathbf{x}=\mathbf{a}$. Por otra parte $\{\mathbf{a,b}\}$ es un conjunto en virtud del axioma de parejas. Este mismo axioma justifica que $\{\{\mathbf{a}\},\{\mathbf{a,b}\}\}$ es un conjunto. \\
+
+\begin{proposition}
+	Sean $\mathbf{a,b,c,d}$ elementos de un conjunto $\mathcal{A}$, entonces:
+	\begin{centering}
+	$(\mathbf{a},\mathbf{b})=(\mathbf{c},\mathbf{d})$, si y sólo si, $\mathbf{a}=\mathbf{c}$ $\wedge$ $\mathbf{b}=\mathbf{d}$.
+	\end{centering}
+\end{proposition} 
+\begin{proof2}
+$\Longleftarrow)$ Si $\mathbf{a}=\mathbf{c}$ $\wedge$ $\mathbf{b}=\mathbf{d}$, entonces
+	\[ \{\{\mathbf{a} \}\]
+$\Longrightarrow)$
+\end{proof2}
+
+
+
+
+
+
+
+
+
+
+\begin{proposition}
+    Sea $(N,R)$ un conjunto parcialmente ordenado tal que toda cadena
+    contenida en $N$ tiene un supremo en $N$. Sea $f:N\rightarrow N$ una
+    función tal que $\forall x \in N \quad x \prec f(x)$. Entonces, existe
+    algún $n \in N \quad f(n)=n$.
+\end{proposition}
+\begin{definition}
+    Dado $u \in N$ se dice que $A \subset N$ es \textbf{admisible} con relación a $u$
+    si se cumple: 
+	\begin{enumerate}
+        \item $u \in A$.
+        \item $f(A) \subset A$.
+        \item Si $B$ es una cadena contenida en $A$, entonces en $A$ mismo
+            existe el supremo de $B$.
+    \end{enumerate}
+\end{definition}
+\begin{proof}
+    Dado $u \in N$, sea $M$ el conjunto de todos los conjuntos admisibles de
+    $u$ en relación a $N$. \\
+    Definamos: $S= \bigcap\limits_{x\in M} x$.  Veamos que:\\
+    \begin{enumerate}
+        \item $u \in S$ ya que $u \in S $
+        \item Sea $t \in S$, $t \in  x$, $\,\therefore\,$ $f(t) \in x \,
+            \forall x  \in M$, lo cual muestra que $f(S) \subset S$.
+        \item Sea $B$ una cadena contenida en $S$. $B \subset x \, \forall x
+            \in N$ $\, \therefore \,$ $\sup B \in S$.
+    \end{enumerate}
+    Así $S$ es admisible con respecto a $u$. Observe que si $S' \subset S \,
+    \land \, S'$ es $u$-admisible, entonces $S' =S$. \\
+    \textbf{Hecho 1} $u$ es el primer elemento de $S$, es decir, $u\prec x
+    \, \forall x \in S$.
+    Sea $A= \{ x \in S\, | \, u \prec x\}$. Se demostrará que $A =S$.
+    Como $A \subset S$, bastará probar que $A$ es $u$ admisible.
+    \\
+    \begin{enumerate}
+        \item Como $R$ es en particular reflexiva: $u \prec u$. Además $u
+            \in S$. Así $u \in A$.
+        \item Sea $x \in A$, veamos que $f(x) \in A$ ya que $u \prec x$, por
+            transitividad $u \prec f(x)$. Así $x \in S$ y al ser
+            $u$-admisible, $f(x) \in A$. Así $f(A) \subset A$.
+        \item Sea $B$ una cadena contenida en $A$, 
+    \end{enumerate}
+\end{proof}
+
+
+\section{Problemas}
+\begin{definition}
+    Sean $R_1$, $R_2$ relaciones en $A$, se define la relación
+    \textbf{composición} $R_1 \circ R_2$
+    \[
+        R_1 \circ R_2 = \{\, (a,b) \in A \times A  | (a,c) \in R_1 \land (c,b)
+        \in R_2 , \, c \in A\,\}
+    \]
+\end{definition}
+\begin{definition}
+    Sea $R$ una relación binaria en $A$, se define la relación
+    \textbf{inversa} $R^{-1}$ como sigue:
+    \[
+        (a,b) \in R^{-1} \Leftrightarrow (b,a) \in R
+    \]
+\end{definition}
+\begin{problem}
+    Sean $R$, $S$ y $T$ relaciones binarias en $A$, demuestre que $(R \circ
+    S) \circ T = R \circ (S \circ T)$. Muestre que si $R$ y $S$ son
+    relaciones de
+    equivalencia, $R \circ S$ no es
+    necesariamente una relación de equivalencia. 
+\end{problem}
+\begin{sol}
+    Considere $(a,b) \in (R \circ S) \circ T$ arbitrario. Existe entonces
+    $c\in A$ tal que
+    $(a,c) \in (R \circ S)$, $(c,b) \in T$. Existe entonces $d\in A$ tal que
+    $(a,d) \in R$, $(d,c) \in S$. Así $(d,b) \in (S \circ T)$, y como $(a,d)
+    \in R$, $(a,b) \in R \circ (S \circ T)$. $(R \circ
+    S) \circ T \subset R \circ (S \circ T)$; la segunda contención se
+    demuestra analogamente.
+    \hfill$\square$ \\
+    Considere $A=\{\clubsuit, \spadesuit, \blacklozenge\}$, 
+    $R=\{(\clubsuit, \clubsuit), (\spadesuit,\spadesuit),
+    (\blacklozenge,\blacklozenge),(\clubsuit,\spadesuit),(\spadesuit,\clubsuit)\}$
+    y 
+    $S=\{(\clubsuit, \clubsuit), (\spadesuit,\spadesuit),
+        (\blacklozenge,\blacklozenge),(\blacklozenge, \clubsuit), (\clubsuit,
+    \blacklozenge)\}$.\\
+    Veamos que $(\spadesuit, \blacklozenge) \in R \circ S$ pero $(\blacklozenge,
+    \spadesuit) \notin R \circ S$. Lo cual asegura que $R \circ S$ no es de
+    equivalencia.
+\end{sol}
+\begin{problem}
+    Sea $R$ una relación binaria en $A$, $R$ es de equivalencia sí y solo sí $R=R\circ R \, \land \, R=R^{-1}$.
+\end{problem}
+
+\begin{sol}
+    $\Rightarrow$ \\
+    Se probará que $R=R\circ R$ y $R=R^{-1}$. \\
+    Suponga que $R$ es una relación de equivalencia, y suponga que $x=(a,b) \in
+    R$, veamos que $(b,b) \in R$ al ser $R$ reflexiva, entonces $(a,b) \in R
+    \circ R$ entonces $R \subset R \circ R$, como $R$ es simétrica $(b,a) \in
+    R$, así $(a,b) \in R^{-1}$ $\therefore$ \, $R \subset R^{-1}$. Ahora suponga que
+    $x = (a,b) \in R\circ R$, entonces $\exists c \in A \, (a,c) \in R \land
+    (c,b) \in R$, pero al ser $R$ transitiva $(a,b) \in R$ $\therefore$ \, $ R\circ R
+    \subset R$. Finalmente suponga que $x=(a,b) \in R^{-1}$, entonces $(b,a) \in
+    R$, pero como $R$ es simétrica, $(a,b)\in R$ así $R^{-1} \subset R$, y $R=R
+    \circ R \, \land \, R = R^{-1}$. \\
+    $\Leftarrow$ \\
+    Suponga ahora que $R=R\circ R$ y $R=R^{-1}$. Se probará que $R$ es de
+    equivalencia. \\
+    Suponga que $(a,b) \in R$, arbitrario; como $R=R^{-1}$, $(b,a)\in R$ por lo tanto es
+    simétrica. Veamos que al ser $R=R\circ R$ $(a,a) \in R \, \land \, (b,b)
+    \in R$, y por ser $(a,b)$ arbitrario, $R$ es reflexiva. Finalmente suponga
+    que $(a,b) \in R \, \land \, (b,c) \in R$, entonces $(a,c) \in R \circ R$,
+    $(a,c)\in R$, así $R$ es transitiva, por lo tanto, de equivalencia.
+\end{sol}
+\begin{problem}
+    Sea $R$ una relación binaria reflexiva y transitiva en $A$. Demuestre
+    que $S = R \cap R^{-1}$ es de equivalencia.
+\end{problem}
+\begin{sol}
+    Considere $a\in A$ arbitrario, como $R$ es reflexiva, $(a,a) \in R$,
+    $(a,a) \in R^{-1}$ $\,\therefore \,$ $(a,a) \in S$. Suponga que
+    $(a,b)\in S$, entonces $(a,b)\in R$, $(a,b) \in R^{-1}$, así $(b,a) \in
+    R^{-1} \, \land \, (b,a) \in R$ $\, \therefore \,$ $(b,a) \in S$.
+    Finalmente suponga que $(a,b)\in S, \, (b,c) \in S$ como $R$ es
+    transitiva, $(a,c)\in R$, como $S$ es simétrica $(c,b), (b,a)\in R$ así,
+    $(c,a) \in R$ por lo tanto $(a,c) \in R^{-1}$, $(a,c)\in S$. Así, $S$ es
+    una relación de equivalencia.
+\end{sol}
+\begin{problem}
+    Sean $R$ y $S$ relaciones en $A$ y $B$ respectivamente. Se define la
+    relación $R \times S$ como el conjunto $\{ \, ((a,b),(c,d)) \in (A\times
+    B) \times (A \times B) \, | \, (a,c) \in R \, , \, (b,d) \in S \,\}$. Si
+    $R$ y $S$ son de equivalencia, demuestre que $R \times S$ es de
+    equivalencia.
+\end{problem}
+\begin{sol}
+    Considere $(a,b)$ arbitrario en $A \times B$, como $R$,$S$, son de
+    equivalencia $(a,a) \in R$, $(b,b)\in S$; así $((a,b),(a,b))\in R \times
+    S$, $R \times S$ es reflexiva. Considere ahora a $((a,c),(b,d))\in
+    R\times S$ arbitrario. Por la definición $(a,b) \in R \, \land \, (c,d)
+    \in S$; así $(b,a) \in R$, $(d,c) \in S$, de forma que $((b,d),(a,c))
+    \in R \times S$, $R \times S$ es simétrica. Finalmente considere
+    $((a,c),(b,d)$, $((b,d), (f,e)) \in R \times S$. Las relaciones
+    $(a,b)$, $(b,f) \in R$, así $(a,f) \in R$; y $(c,d)$, $(d,e) \in S$ con
+    $(c,e) \in S$. Ésto último nos asegura que $((a,c),(f,e))\in R \times
+    S$, es decir, $R \times S$ es transitiva; lo que demuestra que es de
+    equivalencia.
+\end{sol}
+\begin{problem}
+    Sea $A$ un conjunto, se define la diagonal de $A$, $\Delta A = \{(a,a)
+    \in A \times A | a \in A\}$. Sea $R$ una relación binaria, demuestre que
+    $R$ es un preorden sí y solo sí $\Delta A \subset R \, \land \, R =
+    R\circ R $.
+\end{problem}
+\begin{sol}
+    $\Rightarrow$ \\
+    Suponga que $R$ es un preorden, como $R$ es reflexivo $(a,a)\in R
+    \forall a \in A$ así $\Delta A \subset R$. Considere $(a,b) \in R$, como
+    $R$ es reflexivo, $(b,b) \in R$, por lo tanto $(a,b) \in R \circ R$. \\
+    Ahora considere $(a,b) \in R \circ R$, entonces existe $c \in A$ tal que 
+    $(a,c)\in R \land (c,b) \in R$; pero al ser $R$ transitiva $(a,b) \in
+    R$, así $R=R\circ R$.\\
+    $\Leftarrow$ \\
+    Suponga ahora que $\Delta A \subset R \land R = R \circ R$. Trivialmente
+    $R$ es reflexiva ya que $(a,a) \in \Delta A \forall a \in A$. Considere
+    ahora $(a,b)$, $(b,c) \in R$ por la definición $(a,c) \in R \circ R = R$
+    $\therefore$ $R$ es transitiva.
+\end{sol}
+\begin{remark}
+    El siguiente problema no tiene mucho caso según como se planteó en la
+    lista, la idea interesante del problema sucede cuando se retira al 1, y
+    así lo voy a resolver.
+\end{remark}
+\begin{problem}
+    Defínase $R$ en $A=\mathbb{Z}^{+}\setminus\{1\}$ como $\{(n,m) \in R \, | \, m | n\}$.
+    Muestre que $R$ es un orden parcial, que toda cadena tiene cota superior
+    y determine el conjunto de elementos maximales. 
+\end{problem}
+\begin{sol}
+    Sea $n \in A$, trivialmente $n | n$, así $(n,n) \in R$. Considere
+    ahora $(m,n)$, $(n,p) \in R$, entonces $m=na$, $n=pb$$\Rightarrow$
+    $m=pab$, $p | m$, así $(m,p) \in R$. Finalmente suponga que $(m,n) \in R
+    \land (n,m) \in R$, entonces $m | n \,\land \, n | m$; lo cual implica
+    $n \geq m \, \land \, n \leq m$. así $n=m$. Lo cual prueba que $R$ es un
+    orden parcial. 
+    Sea $B$ una cadena no vacía de $A$, veamos que $B \subset \mathbb{N}$,
+    así $B$ tiene un primer elemento $u$ respecto al orden de los naturales.
+    Suponga que existe $v \in B$ tal que $(u,v)\in R$, entonces $v | u$ y $v
+    \leq u$, como $u$ era un primer elemento $v=u$. Así, en particular, $u$
+    es cota superior de $B$. Como $B$ fue arbitrario, cualquier cadena está
+    acotada superiormente. Ahora veamos que el conjunto de elementos
+    maximales de $A$ es el conjunto $P=\{p \, | \,$ $p$ es primo $\}$. Sea
+    $p \in P$, entonces si $(p,b) \in A$, $b | p$; por la definición de
+    primo, $b=p \, \lor \, b=1$. Como $b \in A$, $b =p$, lo cual prueba que
+    $p$ es un elemento maximal de $A$. Se puede proceder de la definición de
+    primo, recíprocamente, para demostrar que si un elemento es maximal,
+    entonces es primo.
+    %Por contradicción, suponga que existe una cadena $C$ que
+    %carece de cota superior, es decir, $\nexists a \in A , b\prec a \quad \forall
+    %b \in C$. En particular, $\forall b \in C \quad \exists c \neq b \in C$ tal que $b
+    %\prec c$. Tome un $b_0$ arbitrario pero fijo en $C$, y considere la
+    %subcadena $\{c_1, c_2, \ldots, c_{b_0}\}$ tal que $b_0 \prec c_1 \prec
+    %\ldots \prec c_{b_0}$ y $c_i \neq c_j$, $i \neq j$. Así como cada $c_i
+    %|c_{i-1}$, $c_i < c_{i-1}$, así se construye una sucesión decrecientes de $b_0$ 
+    %números positivos menores a $b_0$ lo cual contradice que $C\subset
+    %\mathbb{Z}^{+}$, por lo tanto todas las cadenas tienen una cota superior. \\
+    %Es fácil ver que el conjunto de elementos maximales en $\mathbb{Z}^{+}$ es el
+    %conjunto $\{1\}$ ya que $\forall x \in \mathbb{Z}^{+} \quad 1 | x$.
+\end{sol}
+\begin{problem}
+    Suponga que $R$ es un buen orden en $A$, demuestre que si $A$ no es
+    finito $R^{-1}$ no es un buen orden.
+\end{problem}
+\begin{sol}
+    Suponga que $A$ no es finito, entonces para cualquier conjunto finito
+    $B_i$ no vacío, existe un conjunto finito $B_{i+1}$ que lo contiene
+    propiamente $\forall i \in \mathbb{N}$. $A$ es no vacío, así podemos
+    tomar un $x_0$ cualquiera y tomar a $B_0= \{x_0\}$, y a cada
+    $B_{i+1}=B_i \cup \{x_i\} \quad x_i\notin B_i$. Veamos que cada $B_i$ es
+    una cadena en $A$, y consideremos a $C=\bigcup\limits_{x \in B_i} x
+    \quad i \in \mathbb{N}$. Como $C$ es una cadena, podemos ordenarlos en
+    una sucesión $\{x_k\}$ tal que $(x_k,x_{k+1}) \in R\, \land \, x_k \neq
+    x_{k+1} \forall k \in \mathbb{N}$. Veamos que $(x_{k+1}, x_k)\in R^{-1} \forall k
+    \in \mathbb{N}$. Así por el problema \ref{pr:pr11}, $R^{-1}$ no puede
+    ser un buen orden.
+\end{sol}
+\begin{problem}
+    Considere a $A$ el conjunto de las sucesiones en $\mathbb{R}$, definimos el
+    orden lexicográfico como $R=\{(\{x_k\},\{y_k\}) \, | \, x_k = y_k
+    \forall k \, \lor \, x_n < y_n$ si $x_i = y_i \forall i < n  \}$.
+    Demuestre que $R$ es un orden total en $A$.
+\end{problem}
+\begin{sol}
+    Considere $\{x_k\}$ arbitrario en $A$. $(\{x_k\},\{x_k\})\in R$. Así,
+    $R$ es reflexiva. Considere ahora $(\{x_k\},\{y_k\})\in
+    R$, $(\{y_k\},\{z_k\})\in R$.
+    Podemos considerar entonces los casos siguientes:
+    \begin{itemize}
+        \item  $x_k = y_k\forall k \, \land \, y_k = z_k \, \forall k$ \\
+            Trivialmente $\{x_k\}=\{z_k\}$.
+        \item  $x_k = y_k\forall k \, \land \, y_i 
+            = z_i \, \forall i < n $ si $x_n<y_n$\\
+            Como $\{x_k\}=\{y_k\}$. $x_i < z_i \, \forall \, i < n$ si
+            $x_n<z_k$.
+        \item $x_i = y_i \forall i<n$ si $x_n < y_n \, \land \, y_k = z_k \,
+            \forall k$. \\
+            Como $\{y_k\} = \{z_k\}$, se tiene $x_i = z_i \forall i<n$ si
+            $x_n < z_n$.
+        \item $x_k = y_k \forall k<n$ si $x_n < y_n \, \land \, y_i = z_i
+            \forall i<n$ si $y_n < z_n$ \\
+            Como el orden en $\mathbb{R}$ es ya un orden total, por
+            transitividad. $x_k=z_k \forall k<n$ si $x_n<z_n$.
+    \end{itemize}
+    En cualquiera de los casos concluímos que $(\{x_k\},\{z_k\})\in R$. Así
+    $R$ es transitiva.
+    Suponga ahora que $(\{x_k\},\{y_k\}) \in R$ y que $(\{y_k\},\{x_k\}) \in
+    R$. 
+    En el primer caso de la disyunción $\{x_k\} = \{y_l\}$, no hay nada que
+    hacer. En el segundo caso, $x_k=y_k \forall k<n$ si $x_n<y_n$, 
+    $y_k=x_k \forall k<n$ si $y_n<x_n$. En tal caso no existe $n$ cual $x_n
+    \neq y_n$, entonces $x_n =y_n \, \forall n $. Así $R$ es un orden parcial.
+    Demostremos ahora que es una cadena. \\
+    Sean $x=\{x_k\}$, $y=\{y_k\}$ sucesiones arbitrarias, en el caso que sean
+    iguales, trivialmente $(x,y)\in R$. Si son distintas, existe un primer
+    $k_0$ (dado que cualquier subconjunto de los naturales tiene un primer
+    elemento) tal que $x_{k_0}\neq y_{k_0} \, \land \, x_i = y_i \quad
+    \forall i < k_0$. En dado caso $(x,y)\in R$ ó $(y,x)\in R$.
+
+
+\end{sol}
+\begin{problem}
+    Sea $A$ un conjunto finito, demuestre que todo orden total es un buen
+    orden.
+\end{problem}
+\begin{sol}
+    Sea $R$ un orden total en $A$, y $B$ una cadena arbitraria no vacía. Al
+    ser $A$ finito, $B$ es finito, se demostrará que $B$ tiene primer
+    elemento. Suponga que $B$ tiene $n$ elementos y que no tiene un primero, es decir, para cualquier $a \in B \quad
+    \exists b, c \neq a \in B \quad , a \prec b \land c \prec a$. Considere
+    un $c_0 \in B$ arbitrario, se puede entonces construir una secuencia
+    $\{c_0, c_1, \ldots, c_n \}$ de forma inductiva ya que $B$ es no vacío y
+    $B$ no tiene un primer elemento, con la condición de que cada $c_i \prec
+    c_{i-1}$, $c_i \neq c_{i-1}$ $i=\{0,1,\ldots,n\}$. Como observación ésta
+    secuencia es un subconjunto de $B$. Veamos que por transitividad cada
+    $c_i \prec c_j$ si $j>i$. De igual forma, todos son distintos, pero esto
+    contradiría que $B$ tiene $n$ elementos ya que la secuencia tiene $n+1$.
+    Así $B$ tiene primer elemento. Como fue arbitrario $R$ es un buen orden.
+\end{sol}
+\begin{problem}
+    Sea $(A,R)$ un conjunto bien ordenado. Demuestre que no existe una
+    sucesión $\{x_n\}$ tal que $x_{n+1} \prec x_n$ $\, \land \, x_{n+1} \neq
+    x_n \quad \forall n \in
+    \mathbb{N}$
+    \label{pr:pr11}
+\end{problem}
+\begin{sol}
+    Procediendo por contradicción, suponga que dicha sucesión $\{x_k\}$
+    existe. Por la forma en que está definida, el conjunto $B =\{x_k \forall
+    k \in \mathbb{N}\}$ es una cadena en $A$. Así $B$ tiene un primer
+    elemento. Existe entonces $i_0 \in \mathbb{N}$ tal que $x_k \prec
+    x_{i_0} \forall k \in \mathbb{N}$, se llega aquí a una contradicción
+    ya que $x_{i_0+1} \prec x_{i_0} \, \land \, x_{i_0 +1} \neq x_{i_0}$. 
+    Así $R$ no sería un buen orden, por lo tanto dicha sucesión no puede
+    existir.
+\end{sol}

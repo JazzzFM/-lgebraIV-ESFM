@@ -1,0 +1,82 @@
+%----------------------------------------------------------------------------------------
+%	Cabecera
+%----------------------------------------------------------------------------------------
+\documentclass[b5paper]{book}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{setspace}
+\usepackage{subcaption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{flushend}
+\usepackage{dblfloatfix}[tbp]
+\usepackage{pxfonts}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+\usepackage{booktabs}
+\usepackage[backend=biber]{biblatex-chicago}
+\usepackage{enumerate}
+\usepackage[font={small,sc}]{caption}
+\usepackage{systeme, mathtools}
+\usepackage{wrapfig}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposición}
+\newtheorem*{proposition*}{Proposición}
+\newtheorem{axiom}{ZF}
+\newtheorem{problem}{Problema}[section]
+\newtheorem{lemma}{Lema}[section]
+\newtheorem{definition}{Definición}[section]
+\theoremstyle{definition}
+\newmdtheoremenv{definition}{Definición}
+\theoremstyle{plain}
+\newtheorem*{remark}{{\color{blue}\textit{Observación}}}
+\newtheorem*{notation}{{\color{gray}\textit{Notación}}}
+\decimalpoint
+\addbibresource{algebra.bib}
+\newenvironment{sol}{\paragraph{Solución: \\}\noindent}{\hfill$\blacksquare$}
+\newenvironment{proof2}{\paragraph{\underline{Demostración}:\\}\noindent}{\hfill$\textit{Quod erat demonstrandum.}$}
+\newcommand{\setzero}{\{0\}}
+\renewcommand{\labelenumi}{\theenumi}
+\renewcommand{\theenumi}{\alph{enumi}.}
+\newtheorem*{prop12}{Proposición 12}
+\newtheorem*{prop13}{Proposición 13}
+\newtheorem*{prop14}{Proposición 14}
+
+%----------------------------------------------------------------------------------------
+%	Título
+%----------------------------------------------------------------------------------------
+
+\title{\textsc{Apuntes del Cuarto Curso de Álgebra \vspace{3mm}
+\vspace{1cm}}}
+
+\author{\textsc{Eder A. Trujillo Montaño} \\
+\textsc{Edgar D. Miguel Monjaraz.} \\ 
+\textsc{Jaziel D. Flores Rodríguez}\\
+\textsc{Profesor: Octavio Fabián Loyzaga} \vspace{1cm}}
+
+\newpage
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	Documento
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+\maketitle
+\onehalfspace
+\chapter{Primer Parcial}
+\input{tex/parcial1.tex}
+\chapter{Segundo Parcial}
+\input{tex/parcial2.tex}
+\chapter{Tercer Parcial}
+\input{tex/parcial3.tex}
+\end{document}
+
+
+

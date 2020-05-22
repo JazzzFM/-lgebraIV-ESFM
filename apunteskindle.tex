@@ -1,0 +1,69 @@
+
+%----------------------------------------------------------------------------------------
+%	Cabecera
+%----------------------------------------------------------------------------------------
+\documentclass[a6paper]{book}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{subcaption}
+\usepackage{pxfonts}
+\usepackage{mdframed}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage[margin=0.6in]{geometry}
+\usepackage[export]{adjustbox}% http://ctan.org/pkg/adjustbox
+\usepackage{booktabs}
+\usepackage[backend=biber]{biblatex-chicago}
+\usepackage{enumerate}
+\usepackage[font={small,sc}]{caption}
+\usepackage{systeme, mathtools}
+\usepackage{wrapfig}
+\newtheorem{theorem}{Teorema}
+\newtheorem{proposition}{Proposición}
+\newtheorem{axiom}{Axioma}
+\newtheorem{problem}{Problema}[section]
+\newtheorem{lemma}{Lema}[section]
+\theoremstyle{definition}
+\newmdtheoremenv{definition}{Definición}
+\theoremstyle{plain}
+\newtheorem*{remark}{{\color{blue}\underline{Nota}}}
+\decimalpoint
+\addbibresource{algebra.bib}
+\newenvironment{sol}{\paragraph{Solución: \\}\noindent}{\hfill$\blacksquare$}
+\newenvironment{proof2}{\paragraph{\underline{Demostración}: \\}\noindent}{\hfill$\textit{Quod erat demonstrandum.}$}
+
+\newcommand{\setzero}{\{0\}}
+
+ \usepackage{setspace}
+
+%----------------------------------------------------------------------------------------
+%	Título
+%----------------------------------------------------------------------------------------
+
+\title{\textsc{Apuntes del Cuarto Curso de Álgebra \vspace{3mm}
+\vspace{1cm}}}
+
+\author{\textsc{Eder A. Trujillo Montaño} \\
+		\textsc{Profesor: Octavio Fabián Loyzaga} \vspace{1cm}}
+
+\newpage
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+%	Documento
+%----------------------------------------------------------------------------------------
+%----------------------------------------------------------------------------------------
+ 
+\begin{document}
+\maketitle
+\onehalfspace
+    \section{Primer Parcial}
+    \input{tex/parcial1.tex}
+    \section{Segundo Parcial}
+    \input{tex/parcial2.tex}
+\end{document}
+
+
+

@@ -1,0 +1,391 @@
+\begin{prop12}
+Sea $ (N,R) $ un conjunto parcialmente ordenado, tal que toda cadena contenida en $ N $, tiene un supremo en N. 
+Sea $ f:N\rightarrow N $ una funcion que satisface:
+\[ \forall x \in N   \ \ \  (x,f(x)) \in R \]
+Entonces existe $ n \in N $ tal que $ f(n) = n $.
+
+
+\end{prop12}
+
+
+
+
+\begin{proof}
+Dado $ u \in  N  $ se dice que $ A \subset N$ es admisible con relación a $ u $ si cumple:
+\begin{itemize}
+\item[\textit{i)}] $ u \in A$
+\item[\textit{ii)}]$ f(A)\subset A $
+\item[\textit{iii)}] Si B es una cadena contenida en A, entonces en A  mismo existe el \textit{supremo} de B
+\end{itemize}
+
+Sea $ M $ el conjunto cuyos elementos son todos los subconjuntos  admisibles conrespecto a u de N y sea:
+$S= \bigcap\limits_{x\in M} x$.
+\begin{proof}
+
+\begin{itemize}
+
+\item[a)]
+ $$ v \in S  \ \ \ \  ya \ \ que  \ \ \ \  u \in x \  \ \ \forall x \in M $$
+ 
+\item[b)]
+Sea $ t \in S$
+$$ t \in x \ \ \  \forall \ x\in M$$
+$$f(t) \in x \ \ \ \forall \ x\in M $$
+Lo cual muestra que $ f(S) \subset S $
+
+\item[c)] Sea B una cadena contenida en S
+$$ B \subset x \ \ \ \forall x \in M $$
+$$ \therefore \ \ \ Sup(B) \in S$$ 
+
+\end{itemize}
+a), b) c) muestra que S es admisible con relación a u
+\end{proof}
+Observe que: si  $ S' \subset S      \ \ \wedge \ \ S' $ es u-admisible entonces $ S' = S $ 
+
+
+\bigskip
+\bigskip
+
+\textbf{Hecho 1:} u  es el primer elemento de S,
+ i.e.:$$ (u,x) \in R \ \ \forall \ x \in S $$
+ 
+\begin{proof}
+Sea $ A = \lbrace x \in S \ \ \ \vert (u,x) \in R \rbrace $
+
+  
+
+Para probar el hecho anterior  se debe probar que  $ A = S $. \linebreak 
+Como $ A \subset S $, por  la observacion anterior basta con verificar que A es u-admisible.
+\begin{itemize}
+\item[\textit{i)}] Como $ R $ es en particular reflexiva  $(u,u) \in R$. Además $ u \in S $ ya que S es  u-admisible.
+\item[\textit{ii)}] Sea $ x \in A $, se verificara que $ f(x) \in A $
+\bigskip
+Como $ x \in A $,  $ (u,x) \in R $. Además $ (x,f(x)) \in  R $ Por hipostesis de la proposioción. \\
+
+$ \therefore $  siendo $ R $ transitiva se tiene $ (u,f(x)) \in R $ \\
+
+Como $ x \in A \ \ \ \wedge \ \ \ A \subset S $,  $ x \in S $  y por ser S u-admisible $ f(x) \in S $
+$\therefore f(x) \in A $.   En consecuencia $ f(A) \in A $
+
+\item[\textit{iii)}] Sea B una cadena contenida en A. Por hipotesis, $ supB $ existe  en N.\\
+Como $ A \subset S $ se tiene a $ B \subset S $.\\
+Así siendo S u-admisible se tiene $ supB \in S $\\
+$$ (t,supB) \in R \ \ \ \forall t \in B $$
+Además como $ B \subset A  $ se tiene  que $ (u,t) \in R \ \ \ \forall t \in B $.
+$$ \therefore \ \ \ (u,supB) \in R \ \ \ \ \therefore supB \in A $$.
+
+\end{itemize}  
+\textit{i), ii), iii)} muestran que A es u-admisible  
+\end{proof}
+Dado $ x \in  $, P(x) denotara la propiedad $$ [y \in S \diagdown {x} \wedge (y,x) \in R] $$
+
+\textbf{Hecho 2:}   Si   $ \overline{x} \in S \ \ \ \ \wedge \ \ \ \ P(\overline{x}) $  entonces  $ \forall
+z \in S \ \ \ \ \ (z,\overline{x}) \in R \vee (f(\overline{x}),z) \in R $
+
+\begin{proof}
+Sea $$ B =  \lbrace z \in S \vert (z,\overline{x}) \in R \vee (f(\overline{x}),z) \in R \rbrace $$
+ Se debe probar que $B=S$.\\
+Como $B \subset S$, basta con probar que B es u-admisible
+\begin{itemize}
+\item[\textit{i)}] Como  $ u \in S \ \ $ puesto que S es u-admisible\\
+Como $u$ es el  primer elemento de S y $ \overline{x} \in S $ se tiene $ (u, \overline{x}) \in R $
+$$ \therefore \ \ \ \ u \in B $$
+\item[\textit{ii)}] Sea $x \in B$ se verificará que $ f(x) \in B $\\
+Como $ x \in B \ \ \ \wedge \ \ \  B \subset S $, se tiene $x \in S$ $ \therefore$ por ser S u-admisible se tiene $f(x) \in S $ 
+$$ x = \overline{x} \ \ \vee \ \  x \neq \overline{x} $$
+\begin{itemize}
+\item[a)] Si $ x = \overline{x} $,  entonces $ f(x) = f(\overline{x}) $
+$$ \therefore \ \ (f(x), f(\overline{x})) \in R $$
+y así $f(x) \in B$
+\item[b)]
+Considere $ x \neq \overline{x} $ \\
+Como $x \in B$ se tiene $(x,\overline{x}) \in R \ \  \vee \ \ (f(\overline{x}),x) \in R$.  \\
+\begin{itemize}
+\item[I)] Si $ (x,\overline{x}) \in R $, como $ x \neq \overline{x} $ y además se tiene $ P(\overline{x}) $,  entonces $ (f(x),\overline{x}) \in R $\\
+ lo cual  muestra que $ f(x) \in B $
+\item[II)] Suponga que $ (x,f(x)) \in R $ se tiene que $ (f(x), f(\overline{x}) \in R $ \\
+$ \therefore \ \ \ \  f(x) \in B $
+
+\end{itemize}
+
+\end{itemize}
+Se ha probado que $ f(B) \subset B $
+
+\item[\textit{iii)}] Sea $ F \subset B $ una cadena, F es entonces ena cadena en S,\\
+ entonces  $ \therefore \ \ \ F \in S  $\\
+ Como $ F \subset  B $\\
+ $ \forall z \in  F $ se tiene $ (z, \overline{x}) \in R \ \ \ \vee \ \ \ (f(\overline{x}), z) \in R $
+ $$ \therefore \ \ \  (\forall z \in F \ \  (z,\overline{x}) \in R \ \ \vee \ \  (\exists z \in F \ \ \pitchfork (f(\overline{x}),z) \in R ) $$
+ 
+\begin{itemize}
+\item[a)]
+Suponga que $ \forall z \in F (z,\overline{x}) $ entonces $ \overline{x} $ es una cota superior de F\\
+$ \therefore \ \ \ (supF, \overline{x}) \in R $ lo cual implica $ supF \in B $
+\item[b)] Suponga ahora que $ \exists z \in F tal que (f(\overline{x}), z) \in R $ \\
+Como $$ z \in F \ \ \ \ (z,supF) \in R \ \ \ \therefore (supF,f(\overline{x}) \in R $$
+Por lo cual $ supF \in B $ 
+\end{itemize}
+
+\end{itemize}
+\textit{i), ii), iii)} muestran que B es u-admisible  $ \therefore \ \ \ B=S $.
+\end{proof}
+\textbf{Hecho 3:}  $$\forall x \in S \ \ \ \  se \ \ \  tiene \ \ \ \  P(x) $$
+\begin{proof}
+Como $ C \subset S $ basta probar que C es u-admisible 
+\begin{itemize}
+\item[\textit{i)}] Como S es u-admisible, $ u \in S $ se verificara P(u).\\
+Suponga $ \neg P(u) $\\
+Entonces $ \exists y \in S \diagdown \lbrace u \rbrace $ tal que $ (y,u) \in R $\\
+Como $ y\in S  $ y $ u $ es el primer elemento de S, se tiene $(u,y) \in R  $. Dado que $ (y,u) \in R $ 
+se tiene $ u=y $ (por ser R un orden parcial) lo cual contradice 
+$$ y \in S \diagdown \lbrace u \rbrace $$ 
+Lo cual implica $ u \in C $
+\item[\textit{ii)}] Se verificara ahora que $ f(C) \subset C $
+Sea $ x \in C $, se debe probar que  $ f(x) \in C $\\
+Como $ x \in C  \ \ \wedge \ \ C \subset S $ se tiene $ x \in S $ y asi, por ser S u-admisible \\
+Se tiene $ f(x) \in S $ .\\
+ Para concluir que $f(x) \in C  $ basta probar que $ P(f(x)) $\\
+Asuma que $ y \in S \diagdown \lbrace f(x) \rbrace $ tal que $ (y,f(x)) \in R $\\
+Se verificara que $ (y,f(x)) \in R $\\
+Como $ x \in C $ se tiene $ x \in S \ \ \ \wedge \ \ \ P(x) $\\
+dado que $ y \in S $, y el \textbf{Hecho 2}, se tiene $ (y,x) \in R \ \ \ \vee \ \ (y,f(x)) \in R $\\
+
+\newpage
+
+Observe que $ \neg ((f(x),y) \in R)  $ ya que si $ (f(x),y) \in R $, como\\
+ $ (y,f(x)) \in R $ se tendría $ y=f(x) $ lo cual contradice que $ y \in S \diagdown \lbrace f(x) \rbrace $ 
+ $$\therefore \  \  \ (y,x) \in R $$
+$$ y=x \ \ \vee y \neq x $$
+\begin{itemize}
+\item[a)] Si $ y=x $, $ f(y)=f(x)$ Por lo cual $(f(y),f(x)) \in R  $
+\item[b)] Considere ahora $ y \neq x $, entonces $$ y \in S \diagdown \lbrace x \rbrace \ \ \ (y) $$
+por lo cual, dado $ P(x) $ se concluye que $ (f(y), x) $. Asi mismo  se tiene que $ (f(y),x) \in R $ \\
+por transitividad se tiene  $ (f(y),f(x)) \in R $
+\end{itemize}
+ \item[\textit{iii)}] Sea $ F \subset C $  y  una cadena. Se probara que $ supF \in C $ \\
+ Como $ C \subset S $ y $ F \subset S $ por lo cual siendo S u-admisible se tiene\\
+  $$  supF \in S $$ \\
+ Así para probar que $ supF \in F $ basta verificar que se cumple $ P(supF) $\\
+ Sea $  w = supF $ \\
+ Sea $ y \in S \diagdown \lbrace w \rbrace $ tal que $ (y,w) \in R $. Se debe probar $ (f(y),w) \in R $
+ Observe $ \exists y_{1} \in F $ tal que $ (y, y_{1}) $\\
+ (Ya que en caso contrario dado cualquier elemento $ y_{1} \in F $ se tiene $ \neg (y,y_{1}) $ Además como $ F \subset C $ ; $ y_{1} \in C $  y así $ P(y_{1}) $ y por el \textit{Hecho 2}, como $ y_{1} \in S \ \ \ \wedge P(y_{1}) $ y además  y $ y \in S $, necesariamente 
+ $$ (y,y_{1})\in R \ \ \ \vee \ \ \  (y,f(y_{1})) \in R $$ 
+ Así como se tiene $ \neg ( (y,y_{1})\in R) $ se tendría $ (f(y_{1}),y) \in R $. Además $$ (y_{1},f(y_{1})) \in R \ \ \ \ \therefore (y_{1},y) \in R $$
+ Lo cual implicaria  que y es cota superior de  de F $ \therefore (w,y) \in R $\\
+ y como se tiene además que $ (y,w) \in R $ se concluiria  $ y=w $ lo  cual contradice que $ y \in S \diagdown \lbrace w \rbrace  $ )
+ 
+$$ y_{1}  = y \ \ \ \vee \ \ \ y_{1} \neg y $$
+
+\begin{itemize}
+\item[a)] Si $ y_{1} = y $, entonces $ y \in F $ por lo tanto se tiene $ P(y_{1}) $\\
+Así como $ y \in S \ \ \ \wedge P(y) $ del \textbf{Hecho 2}\\
+dado que $ w \in S $ se tiene 
+$$ (w,y) \in R \ \ \ \vee (f(y),w) \in R $$
+No ocurre $ (w,y) \in R $ ya que así como $ (y,w) \in R $ \\
+Se tendría que $ w=y $ lo cual contradice $ y \in S \diagdown  \lbrace w \rbrace $
+$$ \therefore \ \ \ (f(y),w) \in R $$
+\item[b)]Suponga ahora que $ y_{1} \neq y $ Como $ y_{1} \in F $ se tiene $ P(y_{1}) $, así como\\
+$$ (y, y_{1}) \in R \ \ \ \wedge \ \ y \neq y_{1} \ \ \  y \in S \diagdown \lbrace y_{1} \rbrace  $$
+por lo cual se concluye que  $ (f(y), y_{1}) \in R $ y como $ (y_{1}, w) \in R $ se  concluye  $ (f(y),w) \in R $
+\end{itemize}
+  
+\end{itemize}
+\textit{i), ii), iii)} muestran que C es u-admisible y por ello $ C=S $
+\end{proof}
+Sea $ x \in S $, entonces por el \textbf{Hecho 3} se tiene $ P(x) $ \\
+Por el \textbf{Hecho 2}, para cualquier $ y \in S $ se tiene $ (y,x) \in R \ \ \ \vee \ \ \  (f(x),y)\in R $\\
+Además S es u-admisible así, siendo S una cadena contenida en S, se tiene $ SupS \in S $ \\
+Sea $ x_{0} = supS $\\
+Como $ f(S) \subset S \ \ \ \therefore f(x_{0}) \in S $
+$$(f(x_{0}),x_{0}) \in R \ \ \ \ \wedge \ \ \ \ (x_{0}, f(x_{0})) \in R$$
+$$\therefore \ \ \ \ \ x_{0}=f(x_{0})$$
+
+%Fin de la prueba de la proposicion 12
+\end{proof} 
+
+\textit{El teorema anterior fue probado por Baurbaki en 1939 y se conoce como el teorema del punto fijo de Baurbaki}
+
+\newpage
+
+
+\theoremstyle{definition}
+\begin{definition}{\textbf{Axioma de elección}}
+Sea $ A $ un conjunto cuyos elementos son ajenos no vacios existe un conjunto $ B $  tal que $ \forall \ \ x \in A \diagdown \lbrace \varnothing \rbrace  \ \ \ \ \ B \cap x \ \ \ $ es  un conjunto con un único elemento. 
+\end{definition}
+\begin{prop13}Son equivalentes las sigueintes proposiciones
+\begin{itemize}
+\item[I)]Axioma de eleccion
+\item[II)]Para cada conjunto $ X $, existe una funcion $$ f: P(X)\diagdown \lbrace \varnothing \rbrace \longrightarrow X $$
+Tal que $ f(A) \in A \ \ $ para cada $ A \in P(X) \diagdown \lbrace \varnothing  \rbrace $  
+\end{itemize}
+\end{prop13}
+\begin{proof}
+$ I) \rightarrow II) \ \ $ Sea $ X $ un conjunto.\\
+Considere al conjunto $ N = \lbrace \lbrace A \rbrace \times A \in P(P(X) \times X) \ \ \vert \ \ A \in P(X) \diagdown \lbrace \varnothing \rbrace \rbrace $\\
+El axiomma de especificación permite probar que $ N $  es un conjunto.\\
+
+\bigskip
+
+
+Se verificara que $ N $ satisface las hipotesis del axioma de elección.\\
+Sea $ x \in N  $ entonces $ \exists \ A \in  P(X) \diagdown \lbrace \varnothing \rbrace $ tal que\\
+$$ x= \lbrace A \rbrace \times A \ \ \ \ \lbrace A \rbrace \neq \varnothing $$
+Así mismo $ A \neq \varnothing \ \ \ \ \therefore x \neq  \varnothing $.\\
+Considere otro elemento $y \in N  \ \ \ \  \exists A' \in P(X) \diagdown \lbrace \varnothing \rbrace $ tal que $ y = \lbrace A' \rbrace \times A' $ 
+Sea $ t \in  x \cap y $ Como $ t \in y \ \ \ \therefore  t=(A,a) \ \ $ con $ a \in A $ \\
+Así mismo como $ t \in y \ \ \  \therefore t=(A',a') \ \ $ con $ a' \in A' $
+$$ \therefore \ \ \ (A,a)=(A',a') $$ 
+Se tiene en particular que $ A = A' $
+$$ x = y$$
+Dado que $ N $ satisface las hípotesis del  axioma de elección , existe  un conjunto B tal  que  
+$$ \forall \ \ A \in P(X) \diagdown \lbrace \varnothing \rbrace, \ \ \ \ \  B \cap (\lbrace A \rbrace \times A) $$
+tiene un único elemento.\\
+Sea $ f=B \cap (\cup N) $.\\
+$ \ \ u \in f \ \ \ $, entonces $ u \in B \ \ \ \wedge \ \ \ u \in (\cup N) $.\\
+Como $ u \in (\cup N) \ \ \ \  \exists m \in N $ tal que $ u \in m \ \ \ $. Por ser $ m $ un elemnto de $ N $ existe  $ A \in P(X) \diagdown \lbrace \varnothing \rbrace \ \ $ tal que  $ m = \lbrace A \rbrace                 \times A  \ \ \ \ \therefore $ como $ u \in m $ existe $ a \in A $ tal que $ u = (A,a)$.\\
+$$ \therefore \ \ \ u \in [P(X) \diagdown \lbrace \varnothing \rbrace] \times X $$
+Suponga que $ (A,b) \in f $ se verificara que $ a=b $\\
+ Como $ (A,b) \in (\cup N) \ \ \ \exists s \in N  $ tal que $(A,b) \in s $\\
+ Como $ s \in N   $ existe  $ A' \in P(X) \diagdown \lbrace \varnothing \rbrace $  tal que  $ s= \lbrace A' \rbrace \times A' $
+ $$ A=A' \ \ \ \wedge b \in A  $$ 
+$\therefore \ \ $ como $ f \subset B $
+$$ (A,b) \in B \cap (\lbrace A \rbrace \times A) $$
+$$ (A,a) \in B \cap (\lbrace A \rbrace \times A ) $$
+Dado que $ b \cup (\lbrace  A \rbrace \times A)  $ tiene un único elemnto, se concluye  que $ a=b $\\
+Lo anterior muestra que $ f $ es función.\\
+Sea $ k \in P(X) \diagdown \lbrace \varnothing \rbrace  $ se verificara que existe $ w \in X $ tal que 
+$$ (k,x) \in f $$
+$$ k \subset V  \  \ \wedge  \  \   k \neq \varnothing $$
+$$ \therefore \ \ \ \lbrace k \rbrace  \times k \in N $$
+$ B \cup ( \lbrace k \rbrace \times k)  \ \ $ Tiene un solo elemento
+Sea  $ r $ tal elemnto $ r=(k,w) $ con $ w \in K $\\
+Así $ w \in X $,  $ (k,w) \in B $ y $ (k,w) \in cup N $
+$$ (k,w) \in f $$
+
+Se probara que el dominio de f es $ P(X) \diagdown \lbrace \varnothing \rbrace $\\
+Para concluir que $ f(A) \in A $\\
+$ \ \ \forall A  \in P(X) \diagdown \lbrace \varnothing  \rbrace  \ \ \ $ si $ A  \in P(X) \diagdown \lbrace \varnothing  \rbrace \ \ \ $  $ (A,f(A)) \in f $ 
+$$  \therefore \ \ \  (A,f(A)) \in \cup N \ \  \ \therefore \  \ \exists \lbrace T \rbrace \times T \in N $$ tal que 
+$$ (A,f(A)) \in \lbrace T \rbrace \times T \  \ \ \ \therefore A=T \ \ \ \wedge  \ \ \ f(A) \in T \ \ \therefore f(A) \in A $$
+
+ \newpage
+\textit{ii)}$ \Rightarrow $ \textit{i)}\\.
+Sea  A un conjunto cuyos elemntos son ajenos no vacios. Se debe probar  que existe un conjunto $ B $ tal que  $ B \cap x $ tiene un único elemnto  $ \forall x \in A $.
+
+Sea $ X = \cup A \ \ $ Por hipotesis existe.
+$$ f: P(\cup A ) \diagdown \lbrace \varnothing \rbrace \longrightarrow \cup A $$
+Tal que $ \ \ \ f(y) \in y \ \ \  \forall y \in P(\cup A) \diagdown \lbrace \varnothing \rbrace $
+Observe que si   $ \ \ y \in A $ entonces  $ \ \ y \in P( \cup A) $\\
+(Ya que si $\ \  t \in y \ \  $, entonces $ t \in \cup A \ \ $ y  así  $ \ \ \ y \subset \cup A \ \  $)\\
+Además  si $ y \in A \ \  $, $ y \neq \varnothing  $\\
+$$ \therefore \ \ \  y \in P(\cup A) \diagdown \lbrace \varnothing \rbrace $$
+i.e. $ y $ pertenece al dominio de $ f $ pol lo cual esta definido $ f(y) $  \\
+Por el axioma de especificación existe 
+$$ B \ \ \forall x  ( x \in B \Leftrightarrow x \in \cup A \ \  \wedge  \ \ \   P(x)) $$
+Siendo $P(x)$ la propiedad $ \exists  y \ \ \ x = f(y) $\\
+Se verificará que $ B \cap z  $ tiene un único elemento $ \forall z \in A $ \\
+Sea  $ z \in A $, entonces $ z \in P(\cup  A) \diagdown \lbrace \varnothing \rbrace  $\\
+$ \ \ \ \therefore \ \ $ esta definida $f(z) $\\
+Se tiene $ f(z) \in B \ \ \ \wedge  f(z) \in Z \ \ \ \ f(z) \in B \cap Z $\\
+Así $ \lbrace f(z) \rbrace  \ \ \subset \ \ B \cap Z $\\
+\bigskip
+Sea $ v \in B \cap Z $. Como $ v \in B  \ \  \ \  \exists z' \in P(\cup A) \diagdown \lbrace \varnothing  \rbrace $\\
+tal que $ v = f(z') $. Como $ f(z') \in Z' $, se tiene $ v \in z' $\\
+Además $ \  \ v \in Z \ \ \ \ \ Z' \cap Z \neq \varnothing   \ \ \ \  \therefore z'=z  $ y así.
+$$ v=f(z) $$
+Lo anterio demuestra que $ B \cap Z \subset \lbrace f(z) \rbrace $
+$$ \ \ \therefore \ \ \  B \cap Z = \lbrace f(z) \rbrace  $$
+
+\end{proof} 
+
+\newpage
+
+\begin{prop14}Son equivalentes las siguientes proposiciones.
+\begin{itemize}
+\item[\textit{i)}]Axioma de elección 
+\item[\textit{ii)}](Principio maximal de Hausdorqq)\\
+Todo conjunto parcialmente ordenado tiene una cadena maximal, i.e. una cadena que no está contenida propiamente en otra cadena
+
+\item[\textit{iii)}](\textit{Lema de Zorn}) Todo conjunto parcialmente ordenado no vacío,en el cad cadena tiene una cota superior, tiene un elemento maximal
+\item[\textit{iv)}](\textit{Principio del buen orden}) Todo conjunto puede ser un buen orden
+ 
+\end{itemize}
+\end{prop14}
+
+ \begin{proof}
+ \textit{i)} $ \Rightarrow $ \textit{ii)}\\
+ Sea $(A,R)$ un conjunto parcialmente ordenado, por el axioma de especificación\\
+ Sea $ C= \lbrace x \in P(A) \vert \ \ \ \forall a,b \in x  \ \ \ a < b \ \  \vee \ \  b < a \rbrace $
+ $$ \varnothing \in C \ \ \ \  \therefore C \neq  \varnothing $$
+ Procediendo por reduccion ela absurdo, suponga que A no tien una cadena maximal.
+ 
+Entoonces $ \forall x \in C $\\
+$ \ \ \ \  C_{x} = \lbrace y  \in C \vert x \subset y \wedge x \neq y \rbrace \ \ $ Es  un conjunto no vacío de C
+ 
+Como hipotesis de cumple el Axioma de elección, la proposicion 13 implica, tomsndi $ X=C $, que existe 
+$  f:  P(C)  \diagdown  \lbrace \varnothing \rbrace \Longrightarrow C $, tal  que 
+
+$\ \ \ f(u) \in u \ \  \ \forall u \in  P(C) \diagdown \lbrace \varnothing \rbrace  \ \ $ Se tiene así 
+
+$ f(C_{x}) \in C_{x} \ \ \forall  x \in C $\\
+
+
+Sea $ R_{c} \lbrace (x,y) \in C  \times C \vert \ \ \ x \subset y \rbrace  $
+\begin{itemize}
+\item[i)]  $ \ \ \ \ (c, R_{c})  $ es un conjunto ordenado
+\item[ii)]Considere la finción  $$ g: C \longleftrightarrow C $$ 
+$$ x \mapsto f(C_{x})  $$ Observe que\\
+$$ (x,g(x)) \in R_{c} $$
+$$ x \subset g(x) = f(C_{x}) \in C_{x} $$
+Si se verifica que 
+\item[iii)] Toda cadena en C tiene un supremo  en C\\
+Entonces $ (c,R_{c}) \ $ satisfece las hipotesis  de la proposición 12, por lo cual existe  $ x_{0} \in C$ tal que $ g(x_{0}) = x_{0} $ \\
+$\therefore f(C_{x_{0}})=x_{0} \ \ $  Sin embargo $ f(C_{x_{0}}) \in C_{0} $ 
+$ \therefore f(C_{x_{0}}) \neq x_{0} $ \\
+ Se tendria así un acontradicción.\\
+
+Por lo  tanto para concluir que $ i) \Rightarrow ii) $ basta probar que tod a cadena  en C tiene  en supremo en C.
+
+Sea N  una cadena en C.\\
+Se vericará que $ \cup N  $ es supremo de N en C.\\
+Sea $ t \in  \cup N $, entonces existe $ z \in N $ tal que $ t \in z $. Como $ z \in N \ \  \vee N \subset C $\\
+$ \ \therefore \ \ \ t \in A  $.  Así   $ \cup N \subset A  $ \\
+Sean $ a,b \in \cup N $ entonces existen $ u,v \in N $ tales que $ a  \in u \  \ \ \  \wedge
+ b \in w $\\
+ Como N es una cadena en C se tiene $ u \subset v \vee v \subset u $. \\
+  
+$ \therefore a, b \in V \ \  \vee  \ \ a,b \in U  $. En cualquier caso como $ u $ y $ v$ son cadenas en A se tiene $ a < b \ \ \vee \ \  b < a $ \\
+lo anterior muestra que $ \cup N \in C $\\
+\begin{itemize}
+\item[a)] Sea $ w \in N $\\
+entonces  $ r \in w, \ \ \ r \in \cup N  \therefore w \subset \cup N $ \\
+Así $ (w,  \cup N) \in R_{c} \ \ \  \ \forall w  \in N $\\
+$  \ \ \ \ \ \  \ \ \ \ \cup N  $ es cota superior de $ N $ \\
+\item[b)] Suponga que $ M \in C $ satisface $ (w, M) \in R_{c}  \forall w \in N  $ \\
+Entonces $ w \subset  M \ \ \ \  \forall w \in N  $.\\
+Sea $ s \in \cup N  $, entonces existe $ m \in N $ tal que $ s \in m $.\\
+Como $ m \in N  \  \ \ \ \  (m, M) \in R_{c} $\\
+$ \therefore  \  \  \  m \subset M \Rightarrow  s \in M  \  \  \therefore \cup N  $ y así $ (\cup N, M) \in R_{c} $ \\
+a),b) muestran que $ \cup N  $ es supremo de $ N $ en $ C $
+
+\end{itemize}
+
+\item[\textit{iii)}$ \Longrightarrow $  \textit{iv)}] Sea $ X $ un conjunto.\\
+Se debe probar  que en $  X $ se puede definir un buen orden.
+
+Sea $$ S = \lbrace (A,R) \in P(X) \times P(X \times X) | R \  es \ \  un \   buen \ \  orden \ \  en  \ \   A \rbrace $$
+$$ \rho = \lbrace ((A_{1},R_{1}), (A_{2},R_{2})) \in S \times S | A_{1} \subset A_{2} \ \  R_{1} \subset R_{2} \ \ \wedge \ \ [ (x \in A_{1} \wedge y \in A_{2} \diagdown A_{1}) \rightarrow (x,y) \in R_{2} ]  \rbrace $$
+
+Hecho $(S, \rho)$ es un conjunto parcialmente  ordenado no vacío en el que toda cadena tiene una cota superior.\\
+
+\begin{proof}
+\begin{itemize}
+\item[\textit{i)}] Sea $ (A,R) \in S $
+\end{itemize}
+\end{proof}
+
+
+\end{itemize}
+ \end{proof}
+
