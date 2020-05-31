@@ -231,13 +231,14 @@ Se verifcará ahora $\mathcal{C}$\textbackslash$(\mathcal{A}\cup\mathcal{B}) = (
 \[ \mathbf{z}\in\mathcal{C} \quad \wedge \quad \mathbf{z}\notin(\mathcal{A}\cup\mathcal{B}), \quad \mathbf{z}\in\mathcal{C} \quad \wedge \quad \neg[\mathbf{z}\in \mathcal{A}\cup\mathcal{B}]\]
 \[\mathbf{z}\in\mathcal{C} \quad \wedge \quad \neg[\mathbf{z}\in\mathcal{A} \vee \mathbf{z}\in\mathcal{B}], \quad \mathbf{z}\in\mathcal{C} \quad \wedge\quad [\mathbf{z}\notin\mathcal{A} \wedge \mathbf{z}\notin\mathcal{B}]\]
 \[\mathbf{z}\in\mathcal{C} \quad \wedge \quad [\mathbf{z}\notin\mathcal{A} \wedge \mathbf{z}\notin\mathcal{B}], \quad [\mathbf{z}\in\mathcal{C} \wedge \mathbf{z}\notin\mathcal{A}] \quad \wedge \quad [\mathbf{z}\in\mathcal{C}\wedge\mathbf{z}\notin\mathcal{B}]\] 
-*\begin{centering}
-	$(\mathbf{z}\in\mathcal{C}$\textbackslash$\mathcal{A})\quad\wedge\quad(\mathbf{z}\in\mathcal{C}$\textbackslash$\mathcal{B}), \quad \mathbf{z}\in(\mathcal{C}$\textbackslash$\mathcal{A})\cap(\mathcal{C}$\textbackslash$\mathcal{B})$\\
+\begin{centering}
+	$\mathbf{z}\in(\mathcal{C}$\textbackslash$\mathcal{A})\quad\wedge\quad\mathbf{z}\in(\mathcal{C}$\textbackslash$\mathcal{B}), \quad \mathbf{z}\in(\mathcal{C}$\textbackslash$\mathcal{A})\cap(\mathcal{C}$\textbackslash$\mathcal{B})$\\
 \end{centering}
 $\therefore$ el axioma de extensionalidad permite concluir la identidad $\mathcal{C}$\textbackslash$(\mathcal{A} \bigcup \mathcal{B}$) = $(\mathcal{C}$\textbackslash$\mathcal{A}) \bigcap (\mathcal{C}$ \textbackslash $\mathcal{B})$. Las demás propiedades se demuestran de manera análoga. 
 \end{proof2} 
 
-\textbf{Definición:} Sean $\mathcal{A,B}$ conjuntos se dice que $\mathcal{A}$ es subconjunto de $\mathcal{B}$ si $\forall \mathbf{x}(\mathbf{x}\in\mathcal{A} \Longrightarrow \mathbf{x}\in\mathcal{B})$. Ello se denotará por $\mathcal{A}\subset\mathcal{B}$.\\
+\textbf{Definición:}\\
+Sean $\mathcal{A,B}$ conjuntos se dice que $\mathcal{A}$ es subconjunto de $\mathcal{B}$ si $\forall \mathbf{x}(\mathbf{x}\in\mathcal{A} \Longrightarrow \mathbf{x}\in\mathcal{B})$. Ello se denotará por $\mathcal{A}\subset\mathcal{B}$.\\
 
 \begin{proposition}
 Sean $\mathcal{A,B,C,D}$ conjuntos. Entonces se cumplen las siguientes propiedades. 
@@ -276,8 +277,8 @@ Además $(\mathcal{A}\cup\mathcal{B})\cap\mathcal{B}\subset\mathcal{B}$ por la \
 
 	III)$\Longrightarrow$I) Por hipótesis $\mathcal{B}=\mathcal{A}\cup\mathcal{B}$, $\mathcal{A}\subset\mathcal{A}\cup\mathcal{B}$ \textbf{Proposición X-I)} $\therefore$ $\mathcal{A}\subset\mathcal{B}$.\\
 \end{proof2}
-\pagebreak 
-
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \textbf{Ejercicios 1:} Sean $\mathcal{A,B}$ subconjuntos de $\mathcal{D}$. Demuestre:
 \begin{iteritem}
 \item   I) $\mathcal{A}\cap(\mathcal{D}$\textbackslash$\mathcal{A})=$ \O
@@ -285,23 +286,253 @@ Además $(\mathcal{A}\cup\mathcal{B})\cap\mathcal{B}\subset\mathcal{B}$ por la \
 \item III) $\mathcal{A}\subset\mathcal{B}$, si y sólo sí, $(\mathcal{D}$\textbackslash$\mathcal{B})\subset(\mathcal{D}$\textbackslash$\mathcal{A})$\\
 \end{iteritem}
 
-\textbf{Definición:} Sean $\mathbf{a,b}$ conjuntos, elementos de un conjunto $\mathcal{A}$, se define la pareja ordenada determinada por $\mathbf{a,b}$ y denotada por $(\mathbf{a,b})$ como el conjunto $\{\{\mathbf{a},\{\mathbf{a,b}\}\}$.\\
+\textbf{Definición:}\\ 
+Sean $\mathbf{a,b}$ conjuntos, elementos de un conjunto $\mathcal{A}$, se define la pareja ordenada determinada por $\mathbf{a,b}$ y denotada por $(\mathbf{a,b})$ como el conjunto $\{\{\mathbf{a},\{\mathbf{a,b}\}\}$.\\
 
 Observe que $\{\mathbf{a}\}$ es un conjunto por el axioma de especificación, ya que por tal axioma existe un conjunto $\mathcal{B}$ tal que:
 \[\forall\mathbf{x}\quad[\mathbf{x}\in\mathcal{B} \Longleftrightarrow \mathbf{x}\in\mathcal{A} \wedge \mathcal{P}(\mathbf{x}) ]\] 
 Siendo $\mathcal{P}(\mathbf{x})$ la propiedad $\mathbf{x}=\mathbf{a}$. Por otra parte $\{\mathbf{a,b}\}$ es un conjunto en virtud del axioma de parejas. Este mismo axioma justifica que $\{\{\mathbf{a}\},\{\mathbf{a,b}\}\}$ es un conjunto. \\
 
 \begin{proposition}
+	\\
 	Sean $\mathbf{a,b,c,d}$ elementos de un conjunto $\mathcal{A}$, entonces:
-	\begin{centering}
+	\begin{center}
 	$(\mathbf{a},\mathbf{b})=(\mathbf{c},\mathbf{d})$, si y sólo si, $\mathbf{a}=\mathbf{c}$ $\wedge$ $\mathbf{b}=\mathbf{d}$.
-	\end{centering}
-\end{proposition} 
+	\end{center}
+\end{proposition}
+
 \begin{proof2}
 $\Longleftarrow)$ Si $\mathbf{a}=\mathbf{c}$ $\wedge$ $\mathbf{b}=\mathbf{d}$, entonces
-	\[ \{\{\mathbf{a} \}\]
-$\Longrightarrow)$
+\[ \{\{\mathbf{a} \}, \{ \mathbf{a}, \mathbf{b} \} \} = \{ \{ \mathbf{c} \}, \{\mathbf{c},\mathbf{d} \} \},\quad i.e. \quad (\mathbf{a},\mathbf{b})=(\mathbf{c},\mathbf{d}) \]
+$\Longrightarrow$) Por hipótesis $ \{\{ \mathbf{a} \}, \{\mathbf{a},\mathbf{b} \}\}=\{\{\mathbf{c}\},\{\mathbf{c,d}\}\}$ es decir se tiene que:
+\[[\{\mathbf{a}\} = \{\mathbf{c}\}\vee\{\mathbf{a}\} = \{\mathbf{c,d}\}]\wedge[\{\mathbf{a,b}\} = \{\mathbf{c}\}\vee\{\mathbf{a,b}\} = \{\mathbf{c,d}\}]\wedge[\{\mathbf{c,d}\} = \{\mathbf{a}\}\vee\{\mathbf{c,d}\} = \{\mathbf{a,b}\}]\]
+Se tienen sólo las siguientes posibilidades:
+	\begin{iteritem}
+	\item \textbf{i)} $\{\mathbf{a}\}=\{\mathbf{c,d}\}$
+	\item \textbf{ii)} $\{\mathbf{a,b}\}=\{\mathbf{c}\}$
+	\item \textbf{iii)} $\{\mathbf{a}\}=\{\mathbf{c}\} \wedge \{\mathbf{a,b}\}=\{\mathbf{c,d}\}$ \\ 
+	\end{iteritem}
+En el caso \textbf{i)} \textbf{a=c=d}, además como $\{\mathbf{a,b}\}=\{\mathbf{c}\}\vee\{\mathbf{a,b}\}=\{\mathbf{c,d}\}$ necesariamente $\mathbf{b}=\mathbf{d}$. En el caso \textbf{ii)}, \textbf{a=b=c}, además como $\{\mathbf{c,d}\}=\{\mathbf{a}\} \vee \{\mathbf{c,d}\}=\{\mathbf{a,b}\}$ necesariamente \textbf{d=b}. En el caso \textbf{iii)} $\mathbf{a=c} \wedge [\mathbf{b}=\mathbf{c} \vee \mathbf{b}=\mathbf{d}]$. Si $\mathbf{b}=\mathbf{c}$, entonces $\mathbf{a=b=c}$, y así como:
+	\[ \{\mathbf{c,d}\} = \{\mathbf{a}\} \vee \{\mathbf{c,d}\}=\{\mathbf{a,b}\} \]
+	Se tiene necesariamente que $\mathbf{d}=\mathbf{b}$. En cualquiera de los casos \textbf{i),ii),iii)} se tiene que $\mathbf{a}=\mathbf{c} \wedge \mathbf{b}=\mathbf{d}$. 
 \end{proof2}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Definición:}\\
+En general si $\mathcal{A,B}$ son conjuntos, $\mathbf{a}\in\mathcal{A}\wedge\mathbf{b}\in\mathcal{B}$, se define 
+\textbf{la pareja ordenada cuyo primer elemento es a y cuyo segundo elementos es b} como $\{\{\mathbf{a},\{\mathbf{a,b}\}\}$. Tal
+pareja se denota por $(\mathbf{a},\mathbf{b})$, y se tiene como antes que $(\mathbf{a,b})=(\mathbf{c,d})$, si y sólo si, 
+$\mathbf{a}=\mathbf{c}\wedge\mathbf{c}=\mathbf{d}$.\\
+}
+
+Observe que $(\mathbf{a,b})\in\mathcal{P}(\mathcal{P}(\mathcal{A}\cup\mathcal{B}))$, ya que $\{\mathbf{a,b}\}\subset\mathcal{A}\cup\mathcal{B}$,
+asímismo $\{\mathbf{a}\}\subset\mathcal{A}\cup\mathcal{B}$ $\therefore \{\mathbf{a,b}\}$ y $\{\mathbf{a}$ son elementos de 
+$\mathcal{P}(\mathcal{A}\cup\mathcal{B})$. De ahí que $\{\{\mathbf{a}\}, \{\mathbf{a,b}\}\}\subset\mathcal{P}(\mathcal{A}\cup\mathcal{B})$, por 
+lo cual $\{\{\mathbf{a}\},\{\mathbf{a,b}\}\}\in\mathcal{P}(\mathcal{P}(\mathcal{A}\cup\mathcal{B}))$.\\
+
+\textbf{Definición:}\\
+Por el axioma \textbf{ZF 6}, con la propiedad siguiente:
+\[ \mathbf{P}(\mathbf{x}):\quad\exists\mathbf{a}\in\mathcal{A}\wedge\exists\mathbf{b}\in\mathca{B}\quad\mathbf{x}=(\mathbf{a,b})\]
+\[ \exists\mathcal{D}\quad\forall\mathbf{x}[\mathbf{x}\in\mathca{D} \Longleftrightarrow\marhbf{x}\in\mathcal{P}(\mathcal{P}(\mathcal{A}\cup\mathcal{B}))\wedge\exists\mathbf{a}\in\mathcal{A},\exists\mathbf{b}\in\mathcal{B}\quad\mathbf{x}=(\mathbf{a,b})]\]
+$\mathcal{D}$ se denomina el producto cartesiano de $\mathcal{A}$ y $\mathcal{B}$, y se denotará por $\mathcal{A}\times\mathcal{B}$.\\
+
+\begin{proposition}
+Sean $\mathcal{A,B}$ conjuntos. Se cumple que $\mathcal{A}\times\mathcal{B}=$\O, si y sólo si, $\mathcal{A}=$\O$\vee\mathcal{B}=$\O.
+\end{proposition}
+\begin{proof2}
+	
+	$\Longrightarrow)$ Por hipótesis $\mathcal{A}\times\mathcal{B}=$\O, se debe probar que $\mathcal{A}=$\O$\vee\mathcal{B}=$\O.\\
+	Suponga que ello no ocurre, i.e. $\mathcal{A}\neq$\O$\wedge\mathcal{B}\neq$\O, entonces $\exists\mathbf{a}\in\mathcal{A}\vee\exists\mathbf{b}\in\mathcal{B}$,
+	y así $(\mathbf{a,b})\in\mathcal{A}\times\mathcal{B}$. Con lo cual se tiene una contradicción.
+
+	$\Longleftarrow)$ Ahora por hipótesis $\mathcal{A}=\O\vee\mathcal{B}=$\O, se debe probar que $\mathcal{A}\times\mathcal{B}=$\O. Suponga que 
+	$\mathcal{A}\times\mathcal{B}\neq$\O. Entonces $\exists\mathbf{a}\in\mathcal{A},\exists\mathbf{b}\in\mathcal{B}$ 
+	$(\mathbf{a,b})\in\mathcal{A}\times\mathcal{B}$ $\therefore \mathcal{A}\neq$\O$\wedge\mathcal{B}\neq$\O. Se tiene así una contradicción.
+
+\end{proof2}
+
+\textbf{Ejercicios:}
+	\begin{iteritem}
+	
+	\item 1) Sean $\mathcal{A,B,C}$ conjuntos. Demuestre que si $\mathcal{C}\times\mathcal{D}\neq$\O, entonces 
+	      $\mathcal{C}\times\mathcal{D}\subset\mathcal{A}\times\mathcal{B}$, si y sólo si, 
+	      $\mathcal{C}\subset\mathcal{A}\wedge\mathcal{D}\subset\mathcal{B}$.
+	
+        \item 2) Sean $\mathcal{A,B,C}$ conjuntos, verifique lo siguiente:
+		\begin{iteritem}
+		\item a) $\mathcal{A}\times(\mathcal{A}\cup\mathcal{B})=(\mathcal{A}\times\mathcal{B})\cup(\mathcal{A}\times\mathcal{C})$.
+		\item b) $\mathcal{A}\times(\mathcal{B}\cap\mathcal{C})=(\mathcal{A}\times\mathcal{B})\cap(\mathcal{A}\times\mathcal{C})$.
+		\item c) $\mathcal{A}\times(\mathcal{B}$\textbackslash$\mathcal{C})=(\mathcal{A}\times\mathcal{B})$\textbackslash$(\mathcal{A}\times\mathcal{C})$.
+		\item d) $\mathcal{A}\times\mathcal{C}=\mathcal{B}\times$, si y sólo si, $\mathcal{A}=\mathcal{B}$.
+		\end{iteritem}
+	\end{iteritem}
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\textbf{Definición:}\\
+Una \textbf{relación binaria} $\mathcal{R}$ es un conjunto cuyos elementos son parejas ordenadas.\\
+
+Sea $(\mathbf{x,y})\in\mathcal{R}$, de donde $(\mathbf{x,y})=\{\{\mathbf{x}\},\{\mathbf{x,y}\}\}$, y $\{\mathbf{x,y}\}\in\cup\mathcal{R}$, ya que $\{\mathbf{x,y}\}\in(\mathbf{x,y})$ $\wedge(\mathbf{x,y})\in\mathcal{R}$. Así $\mathbf{x}\in\cup(\cup\mathcal{R})$, ya que $\mathbf{x}\in\{\mathbf{x,y}\}\wedge\{\mathbf{x,y}\}\in\cup\mathcal{R}$. Asímismo $\mathbf{y}\in\cup\cup\mathcal{R}$. Por el \textbf{Esquema Axiomático de Especificación ZF-6}:
+\[\exists\mathcal{B}\quad\forall\mathbf{x}(\mathbf{x}\in\mathcal{B}\Longleftrightarrow\mathbf{x}\in\cup\cup\mathcal{R}\wedge\exists\mathbf{y}\in\cup\cup\mathcal{R}\quad(\mathbf{x,y})\in\mathcal{R})\]
+$\mathcal{B}$ se denomina el \textbf{dominio de} $\mathcal{R}$ y se denotará por $Dom(\mathcal{R})$\\
+Análogamente por el \textbf{Esquema Axiomático de Especificación ZF 6}: 
+\[\exists\mathcal{D}\quad\forall\mathbf{x}(\mathbf{x}\in\mathcal{D}\Longleftrightarrow\mathbf{x}\in\cup\cup\mathcal{R}\wedge\exists\mathbf{t}\in\cap\cap\mathcal{R}\quad(\mathbf{t,x})\in\mathcal{R})\]
+$\mathcal{D}$ se denomina el \textbf{rango de} $\mathcal{R}$ y se denota por $Ran(\mathcal{R})$.\\
+
+\textbf{Definición:}\\
+Una relación $f$ se dice que es una \textbf{función} si $\forall\mathbf{x}\in Dom(f)$ $\exists !\mathbf{y}\in Ran(f)$
+tal que $(\mathbf{x,y})\in f$.\\
+Tal que $\mathbf{y}$ se denomina \textbf{la imagen de x bajo f} y se denotará por $f(\mathbf{x})$.\\
+\medskip
+Dados dos conjuntos $\mathcal{A}$ y $\mathcal{B}$, se dice que $f$ es una \textbf{función de} $\mathcal{A}$
+a $\mathcal{B}$, lo cual se denota por 
+\begin{center}
+$f:\mathcal{A}\longrightarrow\mathcal{B}$ si $Dom(f)=A$ y $Ran(f)\subset\mathcal{B}$.
+\end{center}
+\begin{iteritem}
+\item $\mathcal{A}$ se dice \textbf{dominio} de $f$ y $\mathcal{B}$ se denomina el \textbf{codominio} de $f$. 
+\item Se dice que $f$ es \textbf{suprayectiva} si: $Ran(f)=\mathcal{B}$.
+\item Se dice que $f$ es \textbf{inyectiva} si: $\forall\mathbf{x,y}\in\mathcal{A}$, $\mathbf{x}\neq\mathbf{y}$ implica $f(\mathbf{x}) \neq f(\mathbf{y})$
+\item Se dice que $f$ es una \textbf{biyección} si $f$ es \textbf{inyectiva} y \textbf{suprayectiva}.\\
+Observe que $f$ es una \textbf{biyección}, si y sólo si, $\forall\mathbf{y}\in\mathcal{B}\quad\exists!\mathbf{x}\in\mathcal{A}\quad f(\mathbf{x})=\mathbf{y}$.\\
+\end{iteritem}
+\\
+Sean $\mathcal{N}\subset\mathcal{A}$, $\mathcal{M}\subset\mathcal{B}$. Por el \textbf{Esquema Axiomático de Especificación ZF 6}:
+\[\exists\mathcal{D}\quad\forall\mathbf{y}[\mathbf{y}\in\mathcal{D}\Longleftrightarrow\mathbf{y}\in\mathcal{B}\wedge\exists\mathbf{x}\in\mathcal{N}\quad\mathbf{y}=f(\mathbf{x})]\]
+\begin{iteritem}
+\item $\mathcal{D}$ se denota por $f[\mathcal{N}]$ y se denomina \textbf{La imagen de} $\mathcal{N}$ \textbf{bajo} $f$.
+\item Por el mismo \textbf{ZF 6} 
+	\[\exists\mathcal{E}\quad\forall\mathbf{x}[\mathbf{x}\in\mathcal{E}\Longleftrightarrow\mathbf{x}\in\mathcal{A}\wedge\exists\mathbf{y}\in\mathcal{M}\quad f(\mathbf{x})=\mathbf{y}]\]
+$\mathcal{E}$ se denota por $f^{-1}[\mathcal{M}]$ y se denomina \textbf{La imagen inversa de} $\mathcal{M}$ \textbf{bajo} $f$. 
+\end{iteritem}
+\newpage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{proposition}
+	Considere una función $f:\mathcal{A}\longrightarrow\mathcal{B}$. Sean $\mathcal{N,M}$ subconjuntos de $\mathcal{A,B}$ respectivamente.
+	Se cumplen las siguientes condiciones:
+	\begin{iteritem}
+	\item i) $\mathcal{N}\subset f^{-1}[f[\mathcal{N}]]$. Si $f$ es inyectiva, entoces $\mathcal{N}=f^{-1}[f[\mathcal{N}]]$.
+	\item ii) $f[f^{-1}[\mathcal{M}]]\subset\mathcal{M}$. Si $f$ es suprayectiva, entonces $f[f^{-1}[\mathcal{M}]]=\mathcal{M}$.
+	\end{iteritem}
+\end{proposition}
+\begin{proof2}
+	i) Sea $\mathbf{x}\in\mathcal{N}$, entonces $f(\mathbf{x})\in f[\mathcal{N}]$ $\therefore$ $\mathbf{x}\in f^{-1}[f[\mathcal{N}]]$.
+	Por lo tanto $\mathcal{N}\subset f^{-1}[f[\mathcal{N}]]$.\\
+\end{proof2} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
